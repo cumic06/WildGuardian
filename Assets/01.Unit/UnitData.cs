@@ -30,6 +30,7 @@ public struct UnitStat
     public int maxHp;
     public float moveSpeed;
     public float defensePower;
+    public float attackRange;
 }
 
 public enum UnitType

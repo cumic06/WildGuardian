@@ -7,17 +7,22 @@ interface IDamageable
     public void TakeDamage(UnitType unitType, int damage);
 }
 
-[RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Unit : MonoBehaviour, IDamageable
 {
     [SerializeField] protected UnitData unitData;
 
     [SerializeField] protected int currentHp = 0;
     public int CurrentHp => currentHp;
+
     [SerializeField] protected float currentMoveSpeed = 0;
     public float CurrentMoveSpeed => currentMoveSpeed;
+
     [SerializeField] protected float currentDefensePower = 0;
     public float CurrentDefensePower => currentDefensePower;
+
+    [SerializeField] protected float currentAttackRange = 0;
+    public float CurrentAttackRange => currentAttackRange;
 
 
     protected virtual void Awake()
@@ -31,6 +36,7 @@ public class Unit : MonoBehaviour, IDamageable
         ResetHp();
         ResetMoveSpeed();
         ResetDefesePower();
+        ResetAttackRange();
     }
 
     protected void ResetHp()
@@ -44,6 +50,10 @@ public class Unit : MonoBehaviour, IDamageable
     protected void ResetDefesePower()
     {
         currentDefensePower = unitData.unitInfo.GetUnitStat().defensePower;
+    }
+    protected void ResetAttackRange()
+    {
+        currentAttackRange = unitData.unitInfo.GetUnitStat().attackRange;
     }
     #endregion
 
