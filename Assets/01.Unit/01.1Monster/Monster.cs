@@ -2,16 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MonsterAI))]
 public class Monster : Unit
 {
+    #region variable
     [SerializeField] protected int damage;
-    protected Rigidbody2D rigid;
     public Rigidbody2D Rigid => rigid;
+
+    protected SpriteRenderer spriteRenderer;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
+
+    protected MonsterAI monsterAI;
+    #endregion
 
     protected override void Awake()
     {
         base.Awake();
-        rigid = GetComponent<Rigidbody2D>();
+        monsterAI = GetComponent<MonsterAI>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        UpdateSystem.Instance.AddFixedUpdateAction(() => monsterAI.AI());
+    }
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        UpdateSystem.Instance.RemoveFixedUpdateAction(() => monsterAI.AI());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,4 +40,10 @@ public class Monster : Unit
             unit.TakeDamage(unitData.unitInfo.GetUnitType(), damage);
         }
     }
+}
+
+[CreateAssetMenu(fileName = "UnitData_MonsterData", menuName = "Data/UnitData/MonsterData")]
+public class MonsterData : UnitData
+{
+
 }

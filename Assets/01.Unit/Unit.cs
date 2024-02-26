@@ -7,22 +7,36 @@ interface IDamageable
     public void TakeDamage(UnitType unitType, int damage);
 }
 
-[RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Unit : MonoBehaviour, IDamageable
 {
+    #region variable
     [SerializeField] protected UnitData unitData;
 
     [SerializeField] protected int currentHp = 0;
     public int CurrentHp => currentHp;
+
     [SerializeField] protected float currentMoveSpeed = 0;
     public float CurrentMoveSpeed => currentMoveSpeed;
+
     [SerializeField] protected float currentDefensePower = 0;
     public float CurrentDefensePower => currentDefensePower;
 
+    [SerializeField] protected float attackCoolTime = 0;
+    public float AttackCoolTime => attackCoolTime;
+
+    protected Rigidbody2D rigid;
+    #endregion
 
     protected virtual void Awake()
     {
+        rigid = GetComponent<Rigidbody2D>();
         ResetAll();
+    }
+
+    protected virtual void Start()
+    {
+
     }
 
     #region Reset

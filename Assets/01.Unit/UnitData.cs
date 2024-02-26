@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitStat", menuName = "UnitStat", order = 0)]
-public class UnitData : ScriptableObject
+public class UnitData : Data
 {
     public UnitInfo unitInfo;
 }
@@ -10,6 +9,7 @@ public class UnitData : ScriptableObject
 [Serializable]
 public class UnitInfo
 {
+    [SerializeField] private string unitName;
     [SerializeField] private UnitStat unitStat;
     [SerializeField] private UnitType unitType;
 
@@ -22,6 +22,11 @@ public class UnitInfo
     {
         return unitType;
     }
+
+    public string GetName()
+    {
+        return unitName;
+    }
 }
 
 [Serializable]
@@ -30,10 +35,12 @@ public struct UnitStat
     public int maxHp;
     public float moveSpeed;
     public float defensePower;
+    public float attackRange;
+    public float attackPower;
 }
 
 public enum UnitType
 {
     Player,
-    Enemy
+    Monster
 }

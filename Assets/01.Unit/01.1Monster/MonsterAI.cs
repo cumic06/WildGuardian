@@ -4,55 +4,61 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
-    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private float attackRange;
+    [SerializeField] private LayerMask playerLayer;
+
+    protected Collider2D boxCollider2D;
+
     private Monster monster;
-    private CapsuleCollider2D capsuleCollider2D;
+    [SerializeField] private float currentAttackCoolTime;
 
     private void Awake()
     {
         monster = GetComponent<Monster>();
-        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        boxCollider2D = GetComponent<Collider2D>();
     }
 
-    private void FixedUpdate()
+    public void AI()
     {
-        FollowPlayer();
-    }
-
-    private void FollowPlayer()
-    {
-        Vector2 followDirection = Player.Instance.transform.position - transform.position;
-        followDirection.Normalize();
-        transform.Translate(monster.CurrentMoveSpeed * Time.deltaTime * followDirection);
-
-        if (IsCheckWall(out Vector2 vertex))
+        if (CheckPlayer())
         {
-
+            Attack();
+        }
+        else
+        {
+            FollowPlayer();
+            currentAttackCoolTime = 0;
         }
     }
-    private bool IsCheckWall(out Vector2 vertex)
-    {
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, transform.right, 1, wallLayer);
-        vertex = Vector2.zero;
 
-        if (rayHit)
-        {
-            if (rayHit.collider.CompareTag("Wall"))
-            {
-                Debug.Log("Wall");
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        return false;
+    public void FollowPlayer()
+    {
+        Vector3 dir = Player.Instance.transform.position - transform.position;
+        Vector3 moveVec = monster.CurrentMoveSpeed * Time.deltaTime * dir;
+        transform.Translate(moveVec);
+    }
+
+    public bool CheckPlayer()
+    {
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
+
+        return checkCircle.Length > 0;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.right);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    public void Attack()
+    {
+        currentAttackCoolTime += Time.deltaTime;
+
+        if (currentAttackCoolTime >= monster.AttackCoolTime)
+        {
+            Debug.Log("Attack");
+            currentAttackCoolTime = 0;
+        }
     }
 }
