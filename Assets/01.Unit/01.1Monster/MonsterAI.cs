@@ -7,6 +7,7 @@ public class MonsterAI : MonoBehaviour
     [SerializeField] protected LayerMask wallLayer;
     protected Monster monster;
     protected Collider2D boxCollider2D;
+    protected Vector2 followDirection;
 
     private void Awake()
     {
@@ -21,44 +22,13 @@ public class MonsterAI : MonoBehaviour
 
     private IEnumerator FollowPlayer()
     {
-        Vector2 followDirection = Vector2.zero;
-        Vector2 closePos;
-        while (Vector3.Distance(Player.Instance.transform.position, transform.position) > monster.CurrentAttackRange)
-        {
-            if (!IsCheckWall(out Wall afs))
-            {
-                followDirection = (Player.Instance.transform.position - transform.position).normalized;
-                Debug.Log("Follow");
-                yield return null;
-            }
-            else if (IsCheckWall(out Wall wall))
-            {
-                closePos = GetCloseDis(wall);
-                Debug.Log(closePos);
-                followDirection = ((Vector3)closePos - transform.position).normalized;
-                Debug.Log("CheckWall");
-                yield return null;
-            }
-            transform.Translate(monster.CurrentMoveSpeed * Time.deltaTime * followDirection);
-            yield return null;
-        }
-        Debug.Log("Attack");
+        yield return null;
     }
 
-    private static Vector2 GetCloseDis(Wall wall)
+    private Vector2 GetCloseDis(Wall wall)
     {
-        float closeDis = Vector2.Distance(Player.Instance.transform.position, wall.Edges[0].position);
-        Vector2 closePos = wall.Edges[0].position;
+        Vector2 closePos = Vector2.zero;
 
-        for (int i = 0; i < wall.Edges.Length; i++)
-        {
-            float distance = Vector2.Distance(Player.Instance.transform.position, wall.Edges[i].position);
-            if (distance < closeDis)
-            {
-                closeDis = distance;
-                closePos = wall.Edges[i].position;
-            }
-        }
         return closePos;
     }
 
@@ -72,7 +42,7 @@ public class MonsterAI : MonoBehaviour
             if (rayHit.collider.TryGetComponent(out Wall tryWall))
             {
                 wall = tryWall;
-                Debug.Log("Wall");
+                Debug.Log(wall.name);
                 return true;
             }
             else

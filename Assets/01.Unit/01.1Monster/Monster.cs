@@ -8,6 +8,9 @@ public class Monster : Unit
     protected Rigidbody2D rigid;
     public Rigidbody2D Rigid => rigid;
 
+    protected SpriteRenderer spriteRenderer;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
+
     protected override void Awake()
     {
         base.Awake();
