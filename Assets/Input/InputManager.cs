@@ -1,18 +1,17 @@
+using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    [SerializeField] private float detect_drag_time;
-    [SerializeField] private float detect_drag_min;
+    [SerializeField] private float swipeDetectTime;
 
-    public Vector2 FirstTouchPoint;
+    [SerializeField] private float swipeDetectMinDistance;
 
-    public Vector2 CurrentTouchPoint;
+    [SerializeField] private float holdDetectTime;
 
-    public Vector2 TouchDirection => (CurrentTouchPoint - FirstTouchPoint).normalized;
-    public float TouchDistance => Mathf.Clamp(Vector2.Distance(CurrentTouchPoint, FirstTouchPoint) / detect_drag_min, 0, 10);
-
-    private float currentSlideTime;
+    [SerializeField] private float holdDetectDistance;
 
     public bool IsTouching
     {
@@ -27,50 +26,104 @@ public class InputManager : MonoSingleton<InputManager>
         }
     }
 
-    public void Update()
+    public bool IsTouchUp
     {
-        if (IsTouchDown())
+        get
         {
-            FirstTouchPoint = GetTouchPoint();
-            currentSlideTime = 0;
-        }
-        if (IsTouching)
-        {
-            CurrentTouchPoint = GetTouchPoint();
-        }
-        currentSlideTime += Time.deltaTime;
-    }
-
-    public bool IsTouchDown()
-    {
-#if UNITY_EDITOR
-        return Input.GetMouseButtonDown(0);
-#elif UNITY_ANDROID
-        if(Input.touchCount > 0)
-        {
-            return Input.touches[0].phase == TouchPhase.Began;
-        }
-        return false;
-#endif
-    }
-
-    public bool IsTouchUp()
-    {
 
 #if UNITY_EDITOR
-        return Input.GetMouseButtonUp(0);
+            return Input.GetMouseButtonUp(0);
 #elif UNITY_ANDROID
-        if(Input.touchCount > 0)
-        {
-            return Input.touches[0].phase == TouchPhase.Ended;
-        }
-        return false;
+            if(Input.touchCount > 0)
+            {
+                return Input.touches[0].phase == TouchPhase.Ended;
+            }
+            return false;
 #endif
+        }
     }
 
-    public bool IsSlide()
+    public bool IsTouchDown
     {
-        return currentSlideTime < detect_drag_time && TouchDistance >= 10 && IsTouchUp();
+        get
+        {
+#if UNITY_EDITOR
+            return Input.GetMouseButtonDown(0);
+#elif UNITY_ANDROID
+            if(Input.touchCount > 0)
+            {
+                return Input.touches[0].phase == TouchPhase.Began;
+            }
+            return false;
+#endif
+        }
+    }
+
+    public bool IsSwipe
+    {
+        get
+        {
+            return lastTouchTime < swipeDetectTime && DragDistance >= swipeDetectMinDistance && IsTouchUp;
+        }
+    }
+
+    public bool IsHolding
+    {
+        get
+        {
+            return IsTouching && lastTouchPoint == firstTouchPoint && lastTouchTime >= holdDetectTime;
+        }
+    }
+
+    public Vector2 DragDirection => (lastTouchPoint - firstTouchPoint).normalized;
+
+    public float DragDistance => Vector2.Distance(lastTouchPoint, firstTouchPoint);
+    public float ScaledDragDistance => Mathf.Min(Vector2.Distance(Camera.main.ScreenToWorldPoint(lastTouchPoint), Camera.main.ScreenToWorldPoint(firstTouchPoint)), 1);
+
+    private Vector2 firstTouchPoint;
+    public Vector2 FirstTouchPoint => firstTouchPoint;
+
+    private Vector2 lastTouchPoint;
+    public Vector2 CurrentTouchPoint => lastTouchPoint;
+
+    public Action OnTouchDownAction;
+
+    public Action OnTouchUpAction;
+
+    public Action OnTouchingAction;
+
+    public Action OnPressAction;
+
+    private float lastTouchTime;
+
+
+    private void Start()
+    {
+        StartCoroutine(Input_Cor());
+    }
+
+    public void OnTouchUp()
+    {
+        OnTouchUpAction?.Invoke();
+
+        firstTouchPoint = Vector2.zero;
+        lastTouchPoint = Vector2.zero;
+        lastTouchTime = 0;
+    }
+
+    public void OnTouching()
+    {
+        lastTouchTime += Time.deltaTime;
+        lastTouchPoint = GetTouchPoint();
+
+        OnTouchingAction?.Invoke();
+    }
+
+    public void OnTouchDown()
+    {
+        firstTouchPoint = GetTouchPoint();
+
+        OnTouchDownAction?.Invoke();
     }
 
     public Vector2 GetTouchPoint()
@@ -86,9 +139,23 @@ public class InputManager : MonoSingleton<InputManager>
 #endif
     }
 
-    public void TouchInputValueReset()
+    IEnumerator Input_Cor()
     {
-        FirstTouchPoint = Vector2.zero;
-        CurrentTouchPoint = Vector2.zero;
+        while (true)
+        {
+            if (IsTouchDown)
+            {
+                OnTouchDown();
+            }
+            if (IsTouching)
+            {
+                OnTouching();
+            }
+            if (IsTouchUp)
+            {
+                OnTouchUp();
+            }
+            yield return null;
+        }
     }
 }
