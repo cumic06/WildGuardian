@@ -12,3 +12,9 @@ public class Player : Unit
         Instance = this;
     }
 }
+
+[CreateAssetMenu(fileName = "UnitData_PlayerData",menuName ="Data/UnitData/PlayerData")]
+public class PlayerData : UnitData
+{
+
+}

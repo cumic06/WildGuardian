@@ -17,50 +17,50 @@ public class MonsterAI : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(nameof(FollowPlayer));
+        //StartCoroutine(nameof(FollowPlayer));
     }
 
-    private IEnumerator FollowPlayer()
-    {
-        yield return null;
-    }
+    //private IEnumerator FollowPlayer()
+    //{
+    //    yield return null;
+    //}
 
-    private Vector2 GetCloseDis(Wall wall)
-    {
-        Vector2 closePos = Vector2.zero;
+    //private Vector2 GetCloseDis(Wall wall)
+    //{
+    //    Vector2 closePos = Vector2.zero;
 
-        return closePos;
-    }
+    //    return closePos;
+    //}
 
-    private bool IsCheckWall(out Wall wall)
-    {
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, transform.right, 1, wallLayer);
-        wall = null;
+    //private bool IsCheckWall(out Wall wall)
+    //{
+    //    RaycastHit2D rayHit = Physics2D.Raycast(transform.position, transform.right, 1, wallLayer);
+    //    wall = null;
 
-        if (rayHit)
-        {
-            if (rayHit.collider.TryGetComponent(out Wall tryWall))
-            {
-                wall = tryWall;
-                Debug.Log(wall.name);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        return false;
-    }
+    //    if (rayHit)
+    //    {
+    //        if (rayHit.collider.TryGetComponent(out Wall tryWall))
+    //        {
+    //            wall = tryWall;
+    //            Debug.Log(wall.name);
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //    return false;
+    //}
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        if (Application.isPlaying)
-        {
-            Gizmos.DrawWireCube(transform.position, monster.CurrentAttackRange * Vector2.one);
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    if (Application.isPlaying)
+    //    {
+    //        Gizmos.DrawWireCube(transform.position, monster.CurrentAttackRange * Vector2.one);
 
-        }
-        Gizmos.DrawRay(transform.position, transform.right);
-    }
+    //    }
+    //    Gizmos.DrawRay(transform.position, transform.right);
+    //}
 }

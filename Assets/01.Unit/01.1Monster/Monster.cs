@@ -25,3 +25,9 @@ public class Monster : Unit
         }
     }
 }
+
+[CreateAssetMenu(fileName = "UnitData_MonsterData", menuName = "Data/UnitData/MonsterData")]
+public class MonsterData : UnitData
+{
+
+}
