@@ -7,6 +7,5 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     protected virtual void Awake()
     {
         Instance = this as T;
-        DontDestroyOnLoad(Instance);
     }
 }
