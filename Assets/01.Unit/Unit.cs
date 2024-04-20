@@ -10,6 +10,7 @@ interface IDamageable
 [RequireComponent(typeof(Rigidbody2D))]
 public class Unit : MonoBehaviour, IDamageable
 {
+    #region variable
     [SerializeField] protected UnitData unitData;
 
     [SerializeField] protected int currentHp = 0;
@@ -24,10 +25,18 @@ public class Unit : MonoBehaviour, IDamageable
     [SerializeField] protected float currentAttackRange = 0;
     public float CurrentAttackRange => currentAttackRange;
 
+    protected Rigidbody2D rigid;
+    #endregion
 
     protected virtual void Awake()
     {
+        rigid = GetComponent<Rigidbody2D>();
         ResetAll();
+    }
+
+    protected virtual void Start()
+    {
+
     }
 
     #region Reset

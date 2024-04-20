@@ -2,19 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MonsterMove))]
 public class Monster : Unit
 {
+    #region variable
     [SerializeField] protected int damage;
-    protected Rigidbody2D rigid;
     public Rigidbody2D Rigid => rigid;
 
     protected SpriteRenderer spriteRenderer;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
-    protected override void Awake()
+    protected MonsterMove monsterMove;
+    #endregion
+
+    protected override void Start()
     {
-        base.Awake();
-        rigid = GetComponent<Rigidbody2D>();
+        base.Start();
+        UpdateSystem.Instance.AddFixedUpdateAction(monsterMove.Move);
+    }
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        UpdateSystem.Instance.RemoveFixedUpdateAction(monsterMove.Move);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

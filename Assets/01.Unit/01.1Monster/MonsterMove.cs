@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
-    protected Monster monster;
     protected Collider2D boxCollider2D;
 
     private void Awake()
     {
-        monster = GetComponent<Monster>();
         boxCollider2D = GetComponent<Collider2D>();
     }
 
-    private void Start()
+    public void Move()
     {
-        UpdateSystem.Instance.AddFixedUpdateAction(Move);
-        //StartCoroutine(nameof(FollowPlayer));
-    }
-
-    private void Move()
-    {
-        Debug.Log("HI");
+        Debug.Log("Move");
     }
 }
