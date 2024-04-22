@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MonsterMove))]
+[RequireComponent(typeof(MonsterAI))]
 public class Monster : Unit
 {
     #region variable
@@ -12,7 +12,7 @@ public class Monster : Unit
     protected SpriteRenderer spriteRenderer;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
-    protected MonsterMove monsterMove;
+    protected MonsterAI monsterMove;
     #endregion
 
     protected override void Start()

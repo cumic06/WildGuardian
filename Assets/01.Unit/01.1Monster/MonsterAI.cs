@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterMove : MonoBehaviour
+public class MonsterAI : MonoBehaviour
 {
     protected Collider2D boxCollider2D;
 
@@ -11,8 +11,14 @@ public class MonsterMove : MonoBehaviour
         boxCollider2D = GetComponent<Collider2D>();
     }
 
-    public void Move()
+    public void AI()
+    {
+
+    }
+
+    public bool Move()
     {
         Debug.Log("Move");
+        return true;
     }
 }
