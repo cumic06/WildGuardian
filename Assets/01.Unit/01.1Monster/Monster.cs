@@ -12,19 +12,25 @@ public class Monster : Unit
     protected SpriteRenderer spriteRenderer;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
-    protected MonsterAI monsterMove;
+    protected MonsterAI monsterAI;
     #endregion
+
+    protected override void Awake()
+    {
+        base.Awake();
+        monsterAI = GetComponent<MonsterAI>();
+    }
 
     protected override void Start()
     {
         base.Start();
-        UpdateSystem.Instance.AddFixedUpdateAction(monsterMove.Move);
+        UpdateSystem.Instance.AddFixedUpdateAction(() => monsterAI.AI());
     }
 
     protected override void OnDead()
     {
         base.OnDead();
-        UpdateSystem.Instance.RemoveFixedUpdateAction(monsterMove.Move);
+        UpdateSystem.Instance.RemoveFixedUpdateAction(() => monsterAI.AI());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

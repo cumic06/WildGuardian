@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 1747037652}
   - component: {fileID: 1747037655}
   - component: {fileID: 1747037654}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &1747037656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &1773201158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitData: {fileID: 11400000, guid: 8462d37ab69c073469035e7c21eb0979, type: 2}
   currentHp: 0
-  currentMoveSpeed: 0
+  currentMoveSpeed: 1
   currentDefensePower: 0
   currentAttackRange: 0
   damage: 10
@@ -580,8 +580,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235901ed6b2c705498c3e1d07d589122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &1773201160
-CapsuleCollider2D:
+  checkRange: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!58 &1773201160
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -613,8 +617,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

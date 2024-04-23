@@ -4,21 +4,54 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
+    [SerializeField] private float checkRange;
+    [SerializeField] private LayerMask playerLayer;
+
     protected Collider2D boxCollider2D;
+
+    private Monster monster;
 
     private void Awake()
     {
+        monster = GetComponent<Monster>();
         boxCollider2D = GetComponent<Collider2D>();
     }
 
     public void AI()
     {
-
+        if (CheckPlayer())
+        {
+            Attack();
+        }
+        else
+        {
+            FollowPlayer();
+        }
     }
 
-    public bool Move()
+    public void FollowPlayer()
     {
-        Debug.Log("Move");
-        return true;
+        Vector3 dir = Player.Instance.transform.position - transform.position;
+        Vector3 moveVec = monster.CurrentMoveSpeed * Time.deltaTime * dir;
+        transform.Translate(moveVec);
+    }
+
+    public bool CheckPlayer()
+    {
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, checkRange, playerLayer);
+
+        return checkCircle.Length > 0;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, checkRange);
+    }
+
+    public void Attack()
+    {
+        Debug.Log("Attack");
+
     }
 }
