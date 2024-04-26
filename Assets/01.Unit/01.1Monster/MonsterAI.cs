@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
-    [SerializeField] private float checkRange;
+    [SerializeField] private float attackRange;
     [SerializeField] private LayerMask playerLayer;
 
     protected Collider2D boxCollider2D;
 
     private Monster monster;
+    [SerializeField] private float currentAttackCoolTime;
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class MonsterAI : MonoBehaviour
 
     public bool CheckPlayer()
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, checkRange, playerLayer);
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
 
         return checkCircle.Length > 0;
     }
@@ -46,12 +47,17 @@ public class MonsterAI : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, checkRange);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     public void Attack()
     {
-        Debug.Log("Attack");
+        currentAttackCoolTime += Time.deltaTime;
 
+        if (currentAttackCoolTime >= monster.AttackCoolTime)
+        {
+            Debug.Log("Attack");
+            currentAttackCoolTime = 0;
+        }
     }
 }

@@ -434,7 +434,7 @@ MonoBehaviour:
   currentHp: 0
   currentMoveSpeed: 0
   currentDefensePower: 0
-  currentAttackRange: 0
+  attackCoolTime: 0
 --- !u!1 &1773201153
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   currentHp: 0
   currentMoveSpeed: 1
   currentDefensePower: 0
-  currentAttackRange: 0
+  attackCoolTime: 2
   damage: 10
 --- !u!114 &1773201159
 MonoBehaviour:
@@ -580,10 +580,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235901ed6b2c705498c3e1d07d589122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkRange: 5
+  attackRange: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  currentAttackCoolTime: 0
 --- !u!58 &1773201160
 CircleCollider2D:
   m_ObjectHideFlags: 0

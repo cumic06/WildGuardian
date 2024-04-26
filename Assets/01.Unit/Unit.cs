@@ -22,8 +22,8 @@ public class Unit : MonoBehaviour, IDamageable
     [SerializeField] protected float currentDefensePower = 0;
     public float CurrentDefensePower => currentDefensePower;
 
-    [SerializeField] protected float currentAttackRange = 0;
-    public float CurrentAttackRange => currentAttackRange;
+    [SerializeField] protected float attackCoolTime = 0;
+    public float AttackCoolTime => attackCoolTime;
 
     protected Rigidbody2D rigid;
     #endregion
@@ -45,7 +45,6 @@ public class Unit : MonoBehaviour, IDamageable
         ResetHp();
         ResetMoveSpeed();
         ResetDefesePower();
-        ResetAttackRange();
     }
 
     protected void ResetHp()
@@ -59,10 +58,6 @@ public class Unit : MonoBehaviour, IDamageable
     protected void ResetDefesePower()
     {
         currentDefensePower = unitData.unitInfo.GetUnitStat().defensePower;
-    }
-    protected void ResetAttackRange()
-    {
-        currentAttackRange = unitData.unitInfo.GetUnitStat().attackRange;
     }
     #endregion
 
