@@ -2,63 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAI : MonoBehaviour
+public abstract class MonsterAI : MonoBehaviour
 {
-    [SerializeField] private float attackRange;
-    [SerializeField] private LayerMask playerLayer;
+    protected Monster monster;
 
-    protected Collider2D boxCollider2D;
-
-    private Monster monster;
-    [SerializeField] private float currentAttackCoolTime;
-
-    private void Awake()
+    protected void Awake()
     {
         monster = GetComponent<Monster>();
-        boxCollider2D = GetComponent<Collider2D>();
     }
 
     public void AI()
     {
         if (CheckPlayer())
         {
-            Attack();
+            monster.currentAttackCoolTime += Time.deltaTime;
+            if (IsCanAttack())
+            {
+                monster.currentAttackCoolTime = 0;
+                Attack();
+                //#if UNITY_EDITOR
+                //                Debug.Log("Attack");
+                //#endif
+            }
         }
         else
         {
+            //#if UNITY_EDITOR
+            //            Debug.Log("FollowPlayer");
+            //#endif
             FollowPlayer();
-            currentAttackCoolTime = 0;
+            monster.currentAttackCoolTime = 0;
         }
     }
 
-    public void FollowPlayer()
+    protected void FollowPlayer()
     {
         Vector3 dir = Player.Instance.transform.position - transform.position;
-        Vector3 moveVec = monster.CurrentMoveSpeed * Time.deltaTime * dir;
-        transform.Translate(moveVec);
+        Vector3 moveVec = monster.CurrentMoveSpeed * dir.normalized;
+        transform.Translate(moveVec * Time.deltaTime);
     }
 
-    public bool CheckPlayer()
+    protected bool CheckPlayer()
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, monster.AttackRange, monster.PlayerLayer);
 
         return checkCircle.Length > 0;
     }
 
-    private void OnDrawGizmos()
+    protected void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
-
-    public void Attack()
-    {
-        currentAttackCoolTime += Time.deltaTime;
-
-        if (currentAttackCoolTime >= monster.AttackCoolTime)
+        if (Application.isPlaying)
         {
-            Debug.Log("Attack");
-            currentAttackCoolTime = 0;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, monster.AttackRange);
         }
     }
+
+    protected bool IsCanAttack()
+    {
+        return monster.currentAttackCoolTime >= monster.AttackCoolTime;
+    }
+
+    public abstract void Attack();
 }

@@ -36,7 +36,7 @@ public struct UnitStat
     public float moveSpeed;
     public float defensePower;
     public float attackRange;
-    public float attackPower;
+    public int attackPower;
 }
 
 public enum UnitType

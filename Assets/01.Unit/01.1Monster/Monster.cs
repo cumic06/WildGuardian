@@ -7,12 +7,21 @@ public class Monster : Unit
 {
     #region variable
     [SerializeField] protected int damage;
+    public int Damage => damage;
     public Rigidbody2D Rigid => rigid;
 
     protected SpriteRenderer spriteRenderer;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
     protected MonsterAI monsterAI;
+
+    [SerializeField] protected float attackRange;
+    public float AttackRange => attackRange;
+
+    [SerializeField] protected LayerMask playerLayer;
+    public LayerMask PlayerLayer => playerLayer;
+
+    public float currentAttackCoolTime;
     #endregion
 
     protected override void Awake()

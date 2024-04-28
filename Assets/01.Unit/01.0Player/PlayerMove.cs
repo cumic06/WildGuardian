@@ -3,19 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestUnit : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     private void Start()
     {
         InputManager.Instance.OnTouchingAction += () => { transform.Translate(InputManager.Instance.ScaledDragDistance * Time.deltaTime * InputManager.Instance.DragDirection * 10); };
     }
 
-    private void Update()
+    public void Dash()
     {
-        Vector2 cameraPos = Camera.main.transform.position;
-        Vector2 dir = (Vector2)transform.position - cameraPos;
-        Camera.main.transform.Translate(dir * Time.deltaTime * 10f);
-
         if (InputManager.Instance.IsSwipe)
         {
             transform.position += (Vector3)InputManager.Instance.DragDirection * 10;
