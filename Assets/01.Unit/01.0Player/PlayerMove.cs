@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     private void Start()
     {
-        InputManager.Instance.OnTouchingAction += () => { transform.Translate(InputManager.Instance.ScaledDragDistance * Time.deltaTime * InputManager.Instance.DragDirection * 10); };
+        InputManager.Instance.OnTouchingAction += () => { transform.Translate(10 * InputManager.Instance.ScaledDragDistance * Time.deltaTime * InputManager.Instance.DragDirection); };
     }
 
     public void Dash()
