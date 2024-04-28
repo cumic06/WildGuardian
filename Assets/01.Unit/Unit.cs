@@ -97,6 +97,16 @@ public class Unit : MonoBehaviour, IDamageable
 
     #endregion
 
+    public UnitInfo GetUnitData()
+    {
+        return unitData.unitInfo;
+    }
+
+    public UnitType GetUnitType()
+    {
+        return unitData.unitInfo.GetUnitType();
+    }
+
     public bool EqualsUnitType(UnitType unitType)
     {
         return unitType.Equals(unitData.unitInfo.GetUnitType());

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: UnitData_MonsterData
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   unitInfo:
-    unitName: StrongMonster
+    unitName: Monster1
     unitStat:
       maxHp: 100
-      moveSpeed: 3
-      defensePower: 10
+      moveSpeed: 1
+      defensePower: 1
       attackRange: 1
       attackPower: 1
     unitType: 1
