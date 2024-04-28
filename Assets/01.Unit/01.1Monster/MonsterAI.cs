@@ -27,6 +27,7 @@ public class MonsterAI : MonoBehaviour
         else
         {
             FollowPlayer();
+            currentAttackCoolTime = 0;
         }
     }
 
