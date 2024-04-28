@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: UnitData_PlayerData
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  m_Script: {fileID: 11500000, guid: 9e8bc9778961c2748822f30e5a9e6007, type: 3}
+  m_Name: UnitData_TMeleeMonster
+  m_EditorClassIdentifier: 
   unitInfo:
-    unitName: TestPlayer
+    unitName: TMeleeMonster
     unitStat:
-      maxHp: 100
-      moveSpeed: 3
-      defensePower: 1
+      maxHp: 300
+      moveSpeed: 1
+      defensePower: 0
       attackRange: 1
-      attackPower: 1
-    unitType: 0
+      attackPower: 2
+    unitType: 1

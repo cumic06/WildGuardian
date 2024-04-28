@@ -2,21 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MonsterAI))]
 public class Monster : Unit
 {
     #region variable
-    [SerializeField] protected int damage;
-    public int Damage => damage;
-    public Rigidbody2D Rigid => rigid;
-
-    protected SpriteRenderer spriteRenderer;
-    public SpriteRenderer SpriteRenderer => spriteRenderer;
-
     protected MonsterAI monsterAI;
 
-    [SerializeField] protected float attackRange;
-    public float AttackRange => attackRange;
+    public float AttackRange => GetUnitData().GetUnitStat().attackRange;
 
     [SerializeField] protected LayerMask playerLayer;
     public LayerMask PlayerLayer => playerLayer;
@@ -46,13 +37,7 @@ public class Monster : Unit
     {
         if (collision.TryGetComponent(out Unit unit))
         {
-            unit.TakeDamage(unitData.unitInfo.GetUnitType(), damage);
+            unit.TakeDamage(unitData.unitInfo.GetUnitType(), GetUnitData().GetUnitStat().attackPower);
         }
     }
-}
-
-[CreateAssetMenu(fileName = "UnitData_MonsterData", menuName = "Data/UnitData/MonsterData")]
-public class MonsterData : UnitData
-{
-
 }
