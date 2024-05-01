@@ -15,22 +15,13 @@ public class TestUI : MonoBehaviour
 
     private void Start()
     {
-        InputManager.Instance.OnTouchDownAction += () => { holdUI.transform.position = InputManager.Instance.GetTouchPoint(); };
-        InputManager.Instance.OnTouchDownAction += () => { pointerImage.transform.position = InputManager.Instance.GetTouchPoint(); };
+        TouchInputManager.Instance.AddTouchBeganAction(() => { holdUI.transform.position = TouchInputManager.Instance.FirstTouchPoint; });
+        TouchInputManager.Instance.AddTouchBeganAction(() => { pointerImage.transform.position = TouchInputManager.Instance.FirstTouchPoint; });
+        GestureInputManager.Instance.AddHoldBeganAction(() => { holdUI.SetActive(true); });
+        GestureInputManager.Instance.AddHoldEndAction(() => { holdUI.SetActive(false); });
     }
 
     private void Update()
     {
-        if (InputManager.Instance.IsTouching)
-        {
-            if (InputManager.Instance.IsHolding)
-            {
-                holdUI.SetActive(true);
-            }
-        }
-        else
-        {
-            holdUI.SetActive(false);
-        }
     }
 }

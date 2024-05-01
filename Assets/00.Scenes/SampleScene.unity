@@ -382,7 +382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &923713583
 RectTransform:
   m_ObjectHideFlags: 0
@@ -454,6 +454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1521248183}
   - component: {fileID: 1521248182}
+  - component: {fileID: 1521248184}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -473,11 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17857d3cf1d9c140820a1afeded1260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeDetectTime: 0.15
-  swipeDetectMinDistance: 500
-  holdDetectTime: 0.4
-  holdDetectDistance: 200
-  scaledMax: 10
 --- !u!4 &1521248183
 Transform:
   m_ObjectHideFlags: 0
@@ -493,6 +489,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1521248184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521248181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8416dab6aef2c24478ef5af9f16bf12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragDistance: 0.35
+  dragDetectTime: 0.15
+  holdingTime: 1
+  holdDistance: 1.25
 --- !u!1 &1533818290
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c92038591889047bb304e324b94d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 10
 --- !u!1 &1773201153
 GameObject:
   m_ObjectHideFlags: 0

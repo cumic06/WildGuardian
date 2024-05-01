@@ -27,7 +27,7 @@ public class FrameChecker : MonoBehaviour
 
         float ms = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;
-        string text = $"Fps:{fps}/ms:{ms:0.0}";
+        string text = $"Fps:{fps:00.00}/ms:{ms:0.0}";
 
         GUI.Label(rect, text, style);
     }

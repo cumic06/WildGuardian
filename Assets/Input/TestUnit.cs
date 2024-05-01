@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class TestUnit : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed;
+
     private void Start()
     {
-        InputManager.Instance.OnTouchingAction += () => { transform.Translate(InputManager.Instance.ScaledDragDistance * Time.deltaTime * InputManager.Instance.DragDirection * 10); };
+        TouchInputManager.Instance.AddTouchingAction(PlayerMove);
     }
 
     private void Update()
@@ -16,10 +18,15 @@ public class TestUnit : MonoBehaviour
         Vector2 dir = (Vector2)transform.position - cameraPos;
         Camera.main.transform.Translate(dir * Time.deltaTime * 10f);
 
-        if (InputManager.Instance.IsSwipe)
+        if (GestureInputManager.Instance.IsSwipe)
         {
-            transform.position += (Vector3)InputManager.Instance.DragDirection * 10;
+            transform.position += (Vector3)TouchInputManager.Instance.TouchDirection * 5;
             Debug.Log("Dash");
         }
+    }
+
+    private void PlayerMove()
+    {
+        transform.Translate((Vector3)TouchInputManager.Instance.TouchDirection * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * moveSpeed);
     }
 }
