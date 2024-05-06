@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: UnitData_PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   unitInfo:
-    unitName: TestPlayer
+    unitName: Player
     unitStat:
-      maxHp: 100
-      moveSpeed: 3
-      defensePower: 1
-      attackRange: 1
-      attackPower: 1
+      maxHp: 0
+      moveSpeed: 0
+      defensePower: 10
+      attackRange: 0
+      attackPower: 0
     unitType: 0

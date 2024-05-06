@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b08e7bf4c5bf8f4e81d54950fc34640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitData: {fileID: 11400000, guid: 181238617af6eac478d01956f171e2d4, type: 2}
+  unitData: {fileID: 11400000, guid: 8330b6b7437dae5408d6595edcd1ff4c, type: 2}
   currentHp: 0
   currentMoveSpeed: 0
   currentDefensePower: 0
