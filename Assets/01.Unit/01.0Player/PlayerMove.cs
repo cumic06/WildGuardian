@@ -5,17 +5,24 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed;
+
     private void Start()
     {
-        InputManager.Instance.OnTouchingAction += () => { transform.Translate(10 * InputManager.Instance.ScaledDragDistance * Time.deltaTime * InputManager.Instance.DragDirection); };
+        TouchInputManager.Instance.AddTouchingAction(PlayerMove);
     }
 
     public void Dash()
     {
-        if (InputManager.Instance.IsSwipe)
+        if (GestureInputManager.Instance.IsSwipe)
         {
-            transform.position += (Vector3)InputManager.Instance.DragDirection * 10;
+            transform.position += (Vector3)TouchInputManager.Instance.TouchDirection * 5;
             Debug.Log("Dash");
         }
+    }
+
+    private void PlayerMove()
+    {
+        transform.Translate((Vector3)TouchInputManager.Instance.TouchDirection * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * moveSpeed);
     }
 }
