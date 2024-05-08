@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        TouchInputManager.Instance.AddTouchingAction(PlayerMove);
+        TouchInputManager.Instance.AddTouchingAction(PlayerMoveMent);
     }
 
     public void Dash()
@@ -21,8 +21,8 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void PlayerMove()
+    private void PlayerMoveMent()
     {
-        transform.Translate((Vector3)TouchInputManager.Instance.TouchDirection * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * moveSpeed);
+        transform.Translate(moveSpeed * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * (Vector3)TouchInputManager.Instance.TouchDirection);
     }
 }

@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 38679334}
   - component: {fileID: 38679335}
+  - component: {fileID: 38679336}
+  - component: {fileID: 38679337}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -167,6 +169,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae74bb177e1afa849839d449246e85ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &38679336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38679333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d3791ab985a784c9bfa3f615c02038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &38679337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38679333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8416dab6aef2c24478ef5af9f16bf12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragDistance: 0.3
+  dragDetectTime: 0.15
+  holdingTime: 1.25
+  holdDistance: 0.25
 --- !u!1 &113486394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,6 +1568,9 @@ MonoBehaviour:
   swipeDetectMinDistance: 500
   holdDetectTime: 0.4
   holdDetectDistance: 200
+  firstTouchPoint: {x: 0, y: 0}
+  lastTouchPoint: {x: 0, y: 0}
+  lastTouchTime: 0
 --- !u!4 &1521248183
 Transform:
   m_ObjectHideFlags: 0
@@ -2035,6 +2068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0938e192c22840d43bc5dccdb947273a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 10
 --- !u!1 &1773201153
 GameObject:
   m_ObjectHideFlags: 0
