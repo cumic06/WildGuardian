@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/02.System/Data.cs.meta
 guid: 6095157252e42e74a8fbf51f5ea2dabf
+========
+guid: 78c92038591889047bb304e324b94d17
+>>>>>>>> main:Assets/01.Unit/01.0Player/PlayerMove.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

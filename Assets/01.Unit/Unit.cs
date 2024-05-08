@@ -26,6 +26,9 @@ public class Unit : MonoBehaviour, IDamageable
     public float AttackCoolTime => attackCoolTime;
 
     protected Rigidbody2D rigid;
+    public Rigidbody2D Rigid => rigid;
+
+    protected SpriteRenderer sprite;
     #endregion
 
     protected virtual void Awake()
@@ -62,7 +65,7 @@ public class Unit : MonoBehaviour, IDamageable
     #endregion
 
     #region Hp
-    public void TakeDamage(UnitType unitType, int damage)
+    public virtual void TakeDamage(UnitType unitType, int damage)
     {
         if (!EqualsUnitType(unitType))
         {
@@ -75,7 +78,7 @@ public class Unit : MonoBehaviour, IDamageable
         }
     }
 
-    protected virtual int ChangeHp(int value)
+    protected int ChangeHp(int value)
     {
         if (currentHp + value > unitData.unitInfo.GetUnitStat().maxHp)
         {

@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
 
     public void SetAttackPower(int bulletDamage)
     {
+        Debug.Log(bulletDamage);
         this.bulletDamage = bulletDamage;
     }
 

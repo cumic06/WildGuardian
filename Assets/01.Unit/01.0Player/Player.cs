@@ -20,10 +20,10 @@ public class Player : Unit
         base.Start();
         UpdateSystem.Instance.AddUpdateAction(playerMove.Dash);
     }
-}
 
-[CreateAssetMenu(fileName = "UnitData_PlayerData", menuName = "Data/UnitData/PlayerData")]
-public class PlayerData : UnitData
-{
-
+    public override void TakeDamage(UnitType unitType, int damage)
+    {
+        base.TakeDamage(unitType, damage);
+        EffectUI.Instance.FlickrImage(new Color(1, 0, 0, 0.5f));
+    }
 }
