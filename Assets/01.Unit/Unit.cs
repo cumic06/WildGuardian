@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Unit : MonoBehaviour, IDamageable
+public abstract class Unit : MonoBehaviour, IHpable
 {
     #region variable
     [SerializeField] protected UnitData unitData;
@@ -59,42 +59,6 @@ public class Unit : MonoBehaviour, IDamageable
     }
     #endregion
 
-    #region Hp
-    public virtual void TakeDamage(UnitType unitType, int damage)
-    {
-        if (!EqualsUnitType(unitType))
-        {
-            if (currentHp <= 0)
-            {
-                OnDead();
-                return;
-            }
-            currentHp = ChangeHp(-damage);
-        }
-    }
-
-    protected int ChangeHp(int value)
-    {
-        if (currentHp + value > unitData.unitInfo.GetUnitStat().maxHp)
-        {
-            return unitData.unitInfo.GetUnitStat().maxHp;
-        }
-        if (currentHp + value < 0)
-        {
-            return 0;
-        }
-        return currentHp + value;
-    }
-
-    protected virtual void OnDead()
-    {
-#if UNITY_EDITOR
-        Debug.Log("Dead");
-#endif
-    }
-
-    #endregion
-
     public UnitInfo GetUnitData()
     {
         return unitData.unitInfo;
@@ -109,4 +73,26 @@ public class Unit : MonoBehaviour, IDamageable
     {
         return unitType.Equals(unitData.unitInfo.GetUnitType());
     }
+
+    #region Hp
+    public virtual void TakeDamage(int damage)
+    {
+
+    }
+
+    public abstract void ChangeHp(int value);
+
+    public int GetMaxHp()
+    {
+        return unitData.unitInfo.GetUnitStat().maxHp;
+    }
+
+    public int GetCurrentHp()
+    {
+        return currentHp;
+    }
+
+    public abstract void OnDead();
+    #endregion
+
 }

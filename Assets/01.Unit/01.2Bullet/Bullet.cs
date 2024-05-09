@@ -22,15 +22,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Unit unit))
+        if (collision.TryGetComponent(out IDamageable unit))
         {
-            unit.TakeDamage(bulletType, bulletDamage);
-
-            if (bulletType != unit.GetUnitType())
-            {
-                UpdateSystem.Instance.RemoveFixedUpdateAction(Move);
-                Destroy(gameObject);
-            }
+            HpManager.Instance.TakeDamage(unit, bulletDamage);
+            UpdateSystem.Instance.RemoveFixedUpdateAction(Move);
         }
     }
 

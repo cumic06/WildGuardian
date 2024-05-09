@@ -1,25 +1,31 @@
-interface IDamageable
+
+public interface IDamageable : IHpable
 {
-    public void TakeDamage(UnitType unitType, int damage);
+    public void TakeDamage(int damage);
 }
 
-interface IHealable
+public interface IHealable : IHpable
 {
     public void TakeHeal(int heal);
 }
 
-interface IHpable
+public interface IHpable
 {
     public void ChangeHp(int value);
+
+    public int GetMaxHp();
+    public int GetCurrentHp();
+
+    public void OnDead();
 }
 
-interface IAttackable
+public interface IAttackable
 {
     public bool IsCanAttack();
     public void Attack();
 }
 
-interface IMoveable
+public interface IMoveable
 {
     public void Move();
 }
