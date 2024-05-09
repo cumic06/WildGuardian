@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : MonoBehaviour, IMoveable
 {
     [SerializeField] private float moveSpeed;
 
     private void Start()
     {
-        TouchInputManager.Instance.AddTouchingAction(PlayerMoveMent);
+        TouchInputManager.Instance.AddTouchingAction(Move);
     }
 
     public void Dash()
@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void PlayerMoveMent()
+    public void Move()
     {
         transform.Translate(moveSpeed * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * (Vector3)TouchInputManager.Instance.TouchDirection);
     }

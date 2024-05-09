@@ -11,8 +11,11 @@ public class MeleeAttackAI : MonsterAI
         {
             foreach (var check in checkCircle)
             {
-                check.TryGetComponent(out Player player);
-                player.TakeDamage(monster.GetUnitType(), monster.GetUnitData().GetUnitStat().attackPower);
+                if (check.TryGetComponent(out IDamageable player))
+                {
+                    HpManager.Instance.TakeDamage(player, monster.GetUnitData().GetUnitStat().attackPower);
+                }
+
             }
         }
     }

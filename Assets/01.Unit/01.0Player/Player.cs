@@ -8,6 +8,7 @@ public class Player : Unit
     public static Player Instance;
     private PlayerMove playerMove;
 
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,9 +22,19 @@ public class Player : Unit
         UpdateSystem.Instance.AddUpdateAction(playerMove.Dash);
     }
 
-    public override void TakeDamage(UnitType unitType, int damage)
+    public override void TakeDamage(int damage)
     {
-        base.TakeDamage(unitType, damage);
+        base.TakeDamage(damage);
         EffectUI.Instance.FlickrImage(new Color(1, 0, 0, 0.5f));
+    }
+
+    public override void ChangeHp(int value)
+    {
+
+    }
+
+    public override void OnDead()
+    {
+
     }
 }

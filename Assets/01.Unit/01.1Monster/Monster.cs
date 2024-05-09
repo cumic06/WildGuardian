@@ -27,17 +27,23 @@ public class Monster : Unit
         UpdateSystem.Instance.AddFixedUpdateAction(() => monsterAI.AI());
     }
 
-    protected override void OnDead()
+
+    public override void ChangeHp(int value)
     {
-        base.OnDead();
+
+    }
+
+    public override void OnDead()
+    {
         UpdateSystem.Instance.RemoveFixedUpdateAction(() => monsterAI.AI());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Unit unit))
+        if (collision.TryGetComponent(out IDamageable unit))
         {
-            unit.TakeDamage(unitData.unitInfo.GetUnitType(), GetUnitData().GetUnitStat().attackPower);
+            HpManager.Instance.TakeDamage(unit, GetUnitData().GetUnitStat().attackPower);
         }
     }
+
 }
