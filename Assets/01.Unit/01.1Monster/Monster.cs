@@ -4,21 +4,40 @@ using UnityEngine;
 
 public class Monster : Unit
 {
-    [SerializeField] protected int damage;
-    protected Rigidbody2D rigid;
-    public Rigidbody2D Rigid => rigid;
+    #region variable
+    protected MonsterAI monsterAI;
+
+    public float AttackRange => GetUnitData().GetUnitStat().attackRange;
+
+    [SerializeField] protected LayerMask playerLayer;
+    public LayerMask PlayerLayer => playerLayer;
+
+    public float currentAttackCoolTime;
+    #endregion
 
     protected override void Awake()
     {
         base.Awake();
-        rigid = GetComponent<Rigidbody2D>();
+        monsterAI = GetComponent<MonsterAI>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        UpdateSystem.Instance.AddFixedUpdateAction(() => monsterAI.AI());
+    }
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        UpdateSystem.Instance.RemoveFixedUpdateAction(() => monsterAI.AI());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Unit unit))
         {
-            unit.TakeDamage(unitData.unitInfo.GetUnitType(), damage);
+            unit.TakeDamage(unitData.unitInfo.GetUnitType(), GetUnitData().GetUnitStat().attackPower);
         }
     }
 }
