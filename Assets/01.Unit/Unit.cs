@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IDamageable
-{
-    public void TakeDamage(UnitType unitType, int damage);
-}
-
 [RequireComponent(typeof(Rigidbody2D))]
 public class Unit : MonoBehaviour, IDamageable
 {
