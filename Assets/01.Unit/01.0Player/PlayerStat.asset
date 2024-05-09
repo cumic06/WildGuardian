@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitInfo:
     unitStat:
+<<<<<<< Updated upstream:Assets/01.Unit/01.0Player/PlayerStat.asset
       maxHp: 100
       moveSpeed: 3
       defensePower: 0
+=======
+      maxHp: 0
+      moveSpeed: 0
+      defensePower: 0
+      attackRange: 0
+      attackPower: 0
+>>>>>>> Stashed changes:Assets/01.Unit/01.0Player/Data/UnitData_Player.asset
     unitType: 0
