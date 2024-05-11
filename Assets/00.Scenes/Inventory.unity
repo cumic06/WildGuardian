@@ -1616,7 +1616,7 @@ MonoBehaviour:
   - {fileID: 2030419845}
   - {fileID: 1427850157}
   - {fileID: 1531816690}
-  playerData: {fileID: 11400000, guid: 8330b6b7437dae5408d6595edcd1ff4c, type: 2}
+  playerData: {fileID: 11400000, guid: 2b8c71603e6014147b2c1162fdfeb7ce, type: 2}
 --- !u!1 &817833984
 GameObject:
   m_ObjectHideFlags: 0

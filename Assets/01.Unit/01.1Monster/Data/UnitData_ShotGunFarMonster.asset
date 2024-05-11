@@ -18,6 +18,6 @@ MonoBehaviour:
       maxHp: 50
       moveSpeed: 1
       defensePower: 1
-      attackRange: 2
+      attackRange: 5
       attackPower: 2
     unitType: 1

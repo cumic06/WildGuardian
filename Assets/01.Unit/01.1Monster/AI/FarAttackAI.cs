@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class FarAttackAI : MonsterAI
 {
+    #region veriable
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform bulletPos;
+    #endregion
 
     public override void Attack()
     {
@@ -17,11 +19,15 @@ public class FarAttackAI : MonsterAI
 
             if (bulletPos != null)
             {
-                Debug.Log("BulletPos");
+//#if UNITY_EDITOR
+//                Debug.Log("BulletPos");
+//#endif
                 spawnBullet.transform.position = bulletPos.position;
             }
             spawnBullet.transform.position = transform.position;
-            Debug.Log("BulletPosNull");
+            //#if UNITY_EDITOR
+            //            Debug.Log("BulletPosNull");
+            //#endif
         }
     }
 }

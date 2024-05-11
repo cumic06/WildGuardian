@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private UnitType bulletType;
     [SerializeField] private float bulletSpeed;
-    private int bulletDamage;
+    [SerializeField] private int bulletDamage;
 
     private void Start()
     {
@@ -16,7 +15,6 @@ public class Bullet : MonoBehaviour
 
     public void SetAttackPower(int bulletDamage)
     {
-        Debug.Log(bulletDamage);
         this.bulletDamage = bulletDamage;
     }
 
@@ -26,11 +24,12 @@ public class Bullet : MonoBehaviour
         {
             HpManager.Instance.TakeDamage(unit, bulletDamage);
             UpdateSystem.Instance.RemoveFixedUpdateAction(Move);
+            Destroy(gameObject);
         }
     }
 
     protected virtual void Move()
     {
-        transform.Translate(Vector2.right * Time.deltaTime);
+        transform.Translate(bulletSpeed * Time.deltaTime * Vector2.right);
     }
 }

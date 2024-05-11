@@ -15,7 +15,6 @@ public class MeleeAttackAI : MonsterAI
                 {
                     HpManager.Instance.TakeDamage(player, monster.GetUnitData().GetUnitStat().attackPower);
                 }
-
             }
         }
     }

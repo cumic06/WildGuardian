@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 38679335}
   - component: {fileID: 38679336}
   - component: {fileID: 38679337}
+  - component: {fileID: 38679338}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -197,6 +198,18 @@ MonoBehaviour:
   dragDetectTime: 0.15
   holdingTime: 1.25
   holdDistance: 0.25
+--- !u!114 &38679338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38679333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762b953ed284e4444a71147e632b9ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113486394
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 113486395}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestMonsterBulletPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +255,7 @@ GameObject:
   - component: {fileID: 298517699}
   - component: {fileID: 298517701}
   - component: {fileID: 298517697}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NFarAttackMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,13 +525,13 @@ GameObject:
   - component: {fileID: 342935071}
   - component: {fileID: 342935070}
   - component: {fileID: 342935069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NMeleeMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &342935069
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -706,13 +719,13 @@ GameObject:
   - component: {fileID: 493788722}
   - component: {fileID: 493788721}
   - component: {fileID: 493788720}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SMeleeMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &493788720
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1005,7 +1018,7 @@ GameObject:
   - component: {fileID: 619651564}
   - component: {fileID: 619651563}
   - component: {fileID: 619651566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShotGunFarAttackMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,7 +1367,7 @@ GameObject:
   - component: {fileID: 1262748318}
   - component: {fileID: 1262748317}
   - component: {fileID: 1262748320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SniperFarAttackMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1769,7 +1782,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1687799488}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestMonsterBulletPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2049,7 +2062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0938e192c22840d43bc5dccdb947273a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 0
 --- !u!114 &1747037660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,13 +2090,13 @@ GameObject:
   - component: {fileID: 1773201154}
   - component: {fileID: 1773201157}
   - component: {fileID: 1773201156}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TMeleeMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1773201154
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2655,7 +2668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2132440497}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestMonsterBulletPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2686,12 +2699,12 @@ SceneRoots:
   - {fileID: 1773201155}
   - {fileID: 342935074}
   - {fileID: 493788725}
+  - {fileID: 1262748319}
+  - {fileID: 298517698}
+  - {fileID: 619651565}
   - {fileID: 1521248183}
   - {fileID: 1629189876}
   - {fileID: 1986559077}
   - {fileID: 1882769843}
   - {fileID: 1735769798}
   - {fileID: 38679334}
-  - {fileID: 298517698}
-  - {fileID: 619651565}
-  - {fileID: 1262748319}

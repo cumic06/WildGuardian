@@ -57,22 +57,6 @@ public struct UnitStat
     public int attackPower;
 }
 
-public struct HpStat
-{
-    public int maxHp;
-}
-
-public struct AttackStat
-{
-    public float attackRange;
-    public int attackPower;
-}
-
-public struct MoveStat
-{
-    public float moveSpeed;
-}
-
 public enum UnitType
 {
     Player,

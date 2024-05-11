@@ -7,6 +7,9 @@ public class HpManager : MonoSingleton<HpManager>
     public void TakeDamage(IDamageable damageUnit, int damage)
     {
         int resultDamage = ChangeHp(-damage, damageUnit.GetCurrentHp(), damageUnit.GetMaxHp());
+        //#if UNITY_EDITOR
+        //        Debug.Log(damageUnit);
+        //#endif
         damageUnit.TakeDamage(resultDamage);
     }
 

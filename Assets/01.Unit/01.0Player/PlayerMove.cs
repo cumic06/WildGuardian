@@ -12,12 +12,19 @@ public class PlayerMove : MonoBehaviour, IMoveable
         TouchInputManager.Instance.AddTouchingAction(Move);
     }
 
+    public void SetMoveSpeed(float value)
+    {
+        moveSpeed = value;
+    }
+
     public void Dash()
     {
         if (GestureInputManager.Instance.IsSwipe)
         {
             transform.position += (Vector3)TouchInputManager.Instance.TouchDirection * 5;
-            Debug.Log("Dash");
+//#if UNITY_EDITOR
+//            Debug.Log("Dash");
+//#endif
         }
     }
 

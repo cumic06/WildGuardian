@@ -6,5 +6,8 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private float attackPower;
 
-
+    public void SetAttackPower(float value)
+    {
+        attackPower = value;
+    }
 }

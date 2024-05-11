@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -2385245804968839112}
   - component: {fileID: 2395104129185095113}
   - component: {fileID: 7494662968749082432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestMonsterBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142a77a95d8b074419a3305b065e2779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: 1
+  bulletSpeed: 6
+  bulletDamage: 0
 --- !u!58 &2395104129185095113
 CircleCollider2D:
   m_ObjectHideFlags: 0

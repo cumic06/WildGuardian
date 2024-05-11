@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMove))]
+[RequireComponent(typeof(PlayerMove), typeof(PlayerAttack))]
 public class Player : Unit
 {
+    #region veriable
     public static Player Instance;
     private PlayerMove playerMove;
-
+    private PlayerAttack playerAttack;
+    #endregion
 
     protected override void Awake()
     {
         base.Awake();
         Instance = this;
         playerMove = GetComponent<PlayerMove>();
+        playerAttack = GetComponent<PlayerAttack>();
+        playerMove.SetMoveSpeed(currentMoveSpeed);
+        playerAttack.SetAttackPower(currentAttackPower);
     }
 
     protected override void Start()
@@ -35,6 +40,6 @@ public class Player : Unit
 
     public override void OnDead()
     {
-
+        Debug.Log("PlayerDead");
     }
 }

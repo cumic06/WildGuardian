@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class Unit : MonoBehaviour, IHpable
+public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 {
     #region variable
     [SerializeField] protected UnitData unitData;
@@ -16,6 +16,9 @@ public abstract class Unit : MonoBehaviour, IHpable
 
     [SerializeField] protected float currentDefensePower = 0;
     public float CurrentDefensePower => currentDefensePower;
+
+    [SerializeField] protected float currentAttackPower = 0;
+    public float CurrentAttackPower => currentAttackPower;
 
     [SerializeField] protected float attackCoolTime = 0;
     public float AttackCoolTime => attackCoolTime;
@@ -43,6 +46,7 @@ public abstract class Unit : MonoBehaviour, IHpable
         ResetHp();
         ResetMoveSpeed();
         ResetDefesePower();
+        ResetAttackPower();
     }
 
     protected void ResetHp()
@@ -56,6 +60,10 @@ public abstract class Unit : MonoBehaviour, IHpable
     protected void ResetDefesePower()
     {
         currentDefensePower = unitData.unitInfo.GetUnitStat().defensePower;
+    }
+    protected void ResetAttackPower()
+    {
+        currentAttackPower = unitData.unitInfo.GetUnitStat().attackPower;
     }
     #endregion
 
@@ -77,7 +85,12 @@ public abstract class Unit : MonoBehaviour, IHpable
     #region Hp
     public virtual void TakeDamage(int damage)
     {
+        currentHp = damage;
 
+        if (currentHp < 0)
+        {
+            OnDead();
+        }
     }
 
     public abstract void ChangeHp(int value);
@@ -94,5 +107,4 @@ public abstract class Unit : MonoBehaviour, IHpable
 
     public abstract void OnDead();
     #endregion
-
 }
