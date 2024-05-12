@@ -1567,7 +1567,7 @@ GameObject:
   - component: {fileID: 1400149254}
   - component: {fileID: 1400149257}
   - component: {fileID: 1400149258}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1658,7 +1658,7 @@ MonoBehaviour:
   currentMoveSpeed: 0
   currentDefensePower: 0
   currentAttackPower: 0
-  attackCoolTime: 0
+  attackCoolTime: 5
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1747,6 +1747,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8932a2bf6c92449b288287c0f5804a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: -2385245804968839112, guid: 8154010d13a06c34a8c0d2e244f80f91, type: 3}
+  bulletPos: {fileID: 0}
 --- !u!1 &1521248181
 GameObject:
   m_ObjectHideFlags: 0
