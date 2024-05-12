@@ -10,19 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8bc9778961c2748822f30e5a9e6007, type: 3}
-  m_Name: PlayerStat
+  m_Name: UnitData_Player
   m_EditorClassIdentifier: 
   unitInfo:
+    unitName: Player
     unitStat:
-<<<<<<< Updated upstream:Assets/01.Unit/01.0Player/PlayerStat.asset
-      maxHp: 100
-      moveSpeed: 3
-      defensePower: 0
-=======
       maxHp: 0
       moveSpeed: 0
       defensePower: 0
       attackRange: 0
-      attackPower: 0
->>>>>>> Stashed changes:Assets/01.Unit/01.0Player/Data/UnitData_Player.asset
+      attackPower: 10
     unitType: 0

@@ -10,7 +10,6 @@ public class Inventory : EquipmentUI
 {
     [SerializeField] private Image slot;
     public static ObseverManager Inventory_obsever = new ObseverManager();
-    private List<Image> equipments = new();
     private ObseverFunc mouting_obseverFunc = new();
 
 
@@ -42,4 +41,6 @@ public class Inventory : EquipmentUI
             equipments.Last().transform.parent = transform.GetChild(0);
         }
     }
+
+   
 }

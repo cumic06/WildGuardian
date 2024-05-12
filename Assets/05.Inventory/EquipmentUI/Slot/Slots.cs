@@ -29,7 +29,6 @@ public class Slots : EquipmentUI
         {
             optionPanel = panel.ConvertTo<OptionPanel>();
             PlayerText(optionPanel);
-            Debug.Log("d");
         };
         OptionPanel.StartSet_obsever.AddObsever(StartSet_obseverFunc);
         Inventory_obseverFunc.Obsever = (a) => equipmentInfo = a.ConvertTo<EquipmentInfo>();

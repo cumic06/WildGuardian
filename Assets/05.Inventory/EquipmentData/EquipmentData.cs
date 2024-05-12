@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +29,6 @@ public class EquipmentInfo
     [SerializeField] private EquipmentRank equipmentRank;
     [SerializeField] private Sprite equipmentImage;
     [SerializeField] private UnitStat unitStat;
-    /*[HideInInspector] */public bool Check = true;
-
 
     public UnitStat GetUnitStat() => unitStat;
 
@@ -58,4 +57,10 @@ public enum EquipmentRank
     SSR,
     UR,
     LR
+}
+
+public enum WeaponType
+{
+    MeleeEquipment,
+    RangedEquipment
 }

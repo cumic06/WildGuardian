@@ -13,6 +13,7 @@ public class EquipmentUI : MonoBehaviour, I_Click
     public EquipmentData equipmentData;
     protected Image equipmentSlot;
     protected static List<GameObject> disappearImage = new();
+    protected static List<Image> equipments = new();
     protected Action<Image> clickFunc = (image) => { };
 
     public virtual void OnClick(PointerEventData eventData)
@@ -24,7 +25,7 @@ public class EquipmentUI : MonoBehaviour, I_Click
         }
     }
 
-    protected void OptionUISet(Sprite sprite,ButtonType type)
+    protected void OptionUISet(Sprite sprite, ButtonType type)
     {
         optionPanel.transform.parent.gameObject.SetActive(true);
         optionPanel.gameObject.TryGetComponent(out OptionPanel optionUI);
@@ -32,7 +33,7 @@ public class EquipmentUI : MonoBehaviour, I_Click
         optionUI.EquipmentImage.sprite = equipmentData.EquipmentInfoData[sprite].GetUnitType();
         optionUI.EquipmentExplain.text = $"{equipmentData.EquipmentInfoData[sprite].GetExplain()}";
         optionUI.EquipmentRank.text = $"µî±Þ : {equipmentData.EquipmentInfoData[sprite].GetEquipmentRank()}";
-        if(type.Equals(ButtonType.Mounting))
+        if (type.Equals(ButtonType.Mounting))
             optionUI.clearBtn.gameObject.SetActive(false);
         else
             optionUI.clearBtn.gameObject.SetActive(true);
@@ -47,7 +48,16 @@ public class EquipmentUI : MonoBehaviour, I_Click
         }
         else if (num.Equals(2))
         {
-            disappearImage.ForEach(x => { if (x.transform.GetChild(0).gameObject.GetComponent<Image>().sprite.Equals(image.sprite)) { x.gameObject.SetActive(true); image.sprite = null; } });
+            for (int i = 0; i < disappearImage.Count; i++)
+            {
+                if (disappearImage[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite.Equals(image.sprite))
+                {
+                    disappearImage[i].gameObject.SetActive(true); 
+                    image.sprite = null;
+                    disappearImage.Remove(disappearImage[i]);
+                    break;
+                }
+            }
         }
     }
 }
