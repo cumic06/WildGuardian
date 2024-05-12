@@ -27,7 +27,6 @@ public class Monster : Unit
         UpdateSystem.Instance.AddFixedUpdateAction(() => monsterAI.AI());
     }
 
-
     public override void ChangeHp(int value)
     {
 
@@ -45,5 +44,4 @@ public class Monster : Unit
             HpManager.Instance.TakeDamage(unit, GetUnitData().GetUnitStat().attackPower);
         }
     }
-
 }

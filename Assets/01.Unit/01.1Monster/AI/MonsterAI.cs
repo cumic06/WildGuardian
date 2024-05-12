@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MonsterAI : MonoBehaviour
+public abstract class MonsterAI : MonoBehaviour, IAttackable
 {
     protected Monster monster;
 
@@ -57,11 +57,11 @@ public abstract class MonsterAI : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, monster.AttackRange);
         }
     }
+    public abstract void Attack();
 
-    protected bool IsCanAttack()
+    public bool IsCanAttack()
     {
         return monster.currentAttackCoolTime >= monster.AttackCoolTime;
     }
 
-    public abstract void Attack();
 }
