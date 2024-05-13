@@ -8,6 +8,8 @@ public class SpawnMonsterSystem : MonoSingleton<SpawnMonsterSystem>
     [SerializeField] private float spawnTime;
     private float currentSpawnTime;
 
+    [SerializeField] private float spawnRange;
+
     private void Start()
     {
         UpdateSystem.Instance.AddFixedUpdateAction(SpawnSystem);
@@ -20,7 +22,8 @@ public class SpawnMonsterSystem : MonoSingleton<SpawnMonsterSystem>
         if (IsCanSpawn())
         {
             currentSpawnTime = 0;
-            Vector2 spawnPos = (Vector2)Player.Instance.transform.position;
+
+            Vector2 spawnPos = (Vector2)Player.Instance.transform.position + Random.insideUnitCircle * spawnRange;
             Debug.Log(spawnPos);
             SpawnMonster(spawnPos);
         }
@@ -36,5 +39,14 @@ public class SpawnMonsterSystem : MonoSingleton<SpawnMonsterSystem>
     private bool IsCanSpawn()
     {
         return currentSpawnTime >= spawnTime;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(Player.Instance.transform.position, spawnRange);
+        }
     }
 }

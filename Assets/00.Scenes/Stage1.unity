@@ -942,12 +942,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnMonsterData: {fileID: 11400000, guid: 18448f8569eb06843affa61bef08335b, type: 2}
-  spawnPos:
-  - {fileID: 1115468040}
-  - {fileID: 1434941487}
-  - {fileID: 1098537736}
-  - {fileID: 1094284968}
   spawnTime: 5
+  spawnRange: 20
 --- !u!1 &1735769795
 GameObject:
   m_ObjectHideFlags: 0
