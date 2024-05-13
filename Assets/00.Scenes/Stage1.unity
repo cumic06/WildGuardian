@@ -909,7 +909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1688228565
 Transform:
   m_ObjectHideFlags: 0
@@ -1922,6 +1922,10 @@ PrefabInstance:
     - target: {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
       propertyPath: m_Name
       value: BossMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5213851117883785015, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
       propertyPath: m_LocalPosition.x

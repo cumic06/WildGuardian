@@ -49,7 +49,7 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
         return checkCircle.Length > 0;
     }
 
-    protected void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         if (Application.isPlaying)
         {

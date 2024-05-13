@@ -8,6 +8,7 @@ public class BossAI : MonsterAI
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform bulletPos;
     private readonly Coroutine[] patternCor = new Coroutine[4];
+    [SerializeField] private float buffRange;
     #endregion
 
     public override void Attack()
@@ -81,13 +82,22 @@ public class BossAI : MonsterAI
 
     private IEnumerator SpawnMonster()
     {
-        Vector2 randomSpawnRange = Random.insideUnitCircle * 1.5f;
+        Vector2 randomSpawnRange = (Vector2)transform.position + Random.insideUnitCircle * 1.5f;
         SpawnMonsterSystem.Instance.SpawnMonster(randomSpawnRange);
         yield return null;
     }
 
     private IEnumerator Buff()
     {
+
         yield return null;
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.color = Color.green;
+
+        Gizmos.DrawWireSphere(transform.position, buffRange);
     }
 }
