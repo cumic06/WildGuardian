@@ -9,6 +9,7 @@ public class BossAI : MonsterAI
     [SerializeField] private Transform bulletPos;
     private readonly Coroutine[] patternCor = new Coroutine[4];
     [SerializeField] private float buffRange;
+    [SerializeField] private GameObject buffImage;
     #endregion
 
     public override void Attack()
@@ -18,6 +19,7 @@ public class BossAI : MonsterAI
         if (patternCor[randomPattern] != null)
         {
             StopCoroutine(patternCor[randomPattern]);
+            buffImage.SetActive(false);
         }
 
         switch (randomPattern)
@@ -89,7 +91,7 @@ public class BossAI : MonsterAI
 
     private IEnumerator Buff()
     {
-
+        buffImage.SetActive(true);
         yield return null;
     }
 
