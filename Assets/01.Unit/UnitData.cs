@@ -12,16 +12,10 @@ public class UnitInfo
 {
     [SerializeField] private string unitName;
     [SerializeField] private UnitStat unitStat;
-    [SerializeField] private UnitType unitType;
 
     public UnitStat GetUnitStat()
     {
         return unitStat;
-    }
-
-    public UnitType GetUnitType()
-    {
-        return unitType;
     }
 
     public string GetName()
@@ -55,10 +49,4 @@ public struct UnitStat
     public float defensePower;
     public float attackRange;
     public int attackPower;
-}
-
-public enum UnitType
-{
-    Player,
-    Monster
 }

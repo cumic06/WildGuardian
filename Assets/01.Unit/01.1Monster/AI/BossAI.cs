@@ -7,9 +7,13 @@ public class BossAI : MonsterAI
     #region veriable
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform bulletPos;
+
     private readonly Coroutine[] patternCor = new Coroutine[4];
+
     [SerializeField] private float buffRange;
     [SerializeField] private GameObject buffImage;
+
+    [SerializeField] private LayerMask monsterLayer;
     #endregion
 
     public override void Attack()
@@ -92,6 +96,16 @@ public class BossAI : MonsterAI
     private IEnumerator Buff()
     {
         buffImage.SetActive(true);
+        Collider2D[] monsterCheckCircle = Physics2D.OverlapCircleAll(transform.position, buffRange, monsterLayer);
+
+        foreach (var buffMonster in monsterCheckCircle)
+        {
+            if (buffMonster.TryGetComponent(out Monster monster))
+            {
+                monster.
+            }
+        }
+
         yield return null;
     }
 

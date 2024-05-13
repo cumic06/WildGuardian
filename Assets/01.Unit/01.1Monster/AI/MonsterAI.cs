@@ -57,11 +57,11 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
             Gizmos.DrawWireSphere(transform.position, monster.AttackRange);
         }
     }
+
     public abstract void Attack();
 
     public bool IsCanAttack()
     {
         return monster.currentAttackCoolTime >= monster.AttackCoolTime;
     }
-
 }

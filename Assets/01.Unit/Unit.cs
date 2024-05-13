@@ -72,16 +72,6 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
         return unitData.unitInfo;
     }
 
-    public UnitType GetUnitType()
-    {
-        return unitData.unitInfo.GetUnitType();
-    }
-
-    public bool EqualsUnitType(UnitType unitType)
-    {
-        return unitType.Equals(unitData.unitInfo.GetUnitType());
-    }
-
     #region Hp
     public virtual void TakeDamage(int damage)
     {
