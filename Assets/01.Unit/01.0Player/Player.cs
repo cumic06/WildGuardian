@@ -9,6 +9,7 @@ public class Player : Unit
     public static Player Instance;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
+    [SerializeField] private int exp;
     #endregion
 
     protected override void Awake()
@@ -27,6 +28,7 @@ public class Player : Unit
         UpdateSystem.Instance.AddUpdateAction(playerMove.Dash);
     }
 
+    #region Hp
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
@@ -41,5 +43,12 @@ public class Player : Unit
     public override void OnDead()
     {
         Debug.Log("PlayerDead");
+    }
+    #endregion
+
+    public void AddExp(int value)
+    {
+        exp += value;
+
     }
 }
