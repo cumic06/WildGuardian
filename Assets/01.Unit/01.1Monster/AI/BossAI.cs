@@ -23,21 +23,23 @@ public class BossAI : MonsterAI
         if (patternCor[randomPattern] != null)
         {
             StopCoroutine(patternCor[randomPattern]);
-            buffImage.SetActive(false);
         }
 
         switch (randomPattern)
         {
             case 0:
                 patternCor[0] = StartCoroutine(NormalMeleeAttack());
+                buffImage.SetActive(false);
                 Debug.Log("NormalMeleeAttack");
                 break;
             case 1:
                 patternCor[1] = StartCoroutine(NormalFarAttack());
+                buffImage.SetActive(false);
                 Debug.Log("NormalFarAttack");
                 break;
             case 2:
                 patternCor[2] = StartCoroutine(SpawnMonster());
+                buffImage.SetActive(false);
                 Debug.Log("SpawnMonster");
                 break;
             case 3:
@@ -96,16 +98,6 @@ public class BossAI : MonsterAI
     private IEnumerator Buff()
     {
         buffImage.SetActive(true);
-        Collider2D[] monsterCheckCircle = Physics2D.OverlapCircleAll(transform.position, buffRange, monsterLayer);
-
-        foreach (var buffMonster in monsterCheckCircle)
-        {
-            if (buffMonster.TryGetComponent(out Monster monster))
-            {
-                monster.
-            }
-        }
-
         yield return null;
     }
 

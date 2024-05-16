@@ -36,12 +36,4 @@ public class Monster : Unit
     {
         UpdateSystem.Instance.RemoveFixedUpdateAction(() => monsterAI.AI());
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out IDamageable unit))
-        {
-            HpManager.Instance.TakeDamage(unit, GetUnitData().GetUnitStat().attackPower);
-        }
-    }
 }

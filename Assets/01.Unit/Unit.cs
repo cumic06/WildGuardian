@@ -53,14 +53,17 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     {
         currentHp = unitData.unitInfo.GetUnitStat().maxHp;
     }
-    protected void ResetMoveSpeed()
+
+    public void ResetMoveSpeed()
     {
         currentMoveSpeed = unitData.unitInfo.GetUnitStat().moveSpeed;
     }
+
     protected void ResetDefesePower()
     {
         currentDefensePower = unitData.unitInfo.GetUnitStat().defensePower;
     }
+
     protected void ResetAttackPower()
     {
         currentAttackPower = unitData.unitInfo.GetUnitStat().attackPower;
@@ -97,4 +100,21 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     public abstract void OnDead();
     #endregion
+
+    private Coroutine speedUpCor;
+    public void SpeedUp(float parcentValue)
+    {
+        if (speedUpCor != null)
+        {
+            StopCoroutine(speedUpCor);
+        }
+        speedUpCor = StartCoroutine(SpeedUpCor());
+
+        IEnumerator SpeedUpCor()
+        {
+            currentMoveSpeed *= parcentValue;
+            yield return new WaitForSeconds(4);
+            currentMoveSpeed /= parcentValue;
+        }
+    }
 }

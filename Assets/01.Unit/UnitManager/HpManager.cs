@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HpManager : MonoSingleton<HpManager>
@@ -7,9 +5,9 @@ public class HpManager : MonoSingleton<HpManager>
     public void TakeDamage(IDamageable damageUnit, int damage)
     {
         int resultDamage = ChangeHp(-damage, damageUnit.GetCurrentHp(), damageUnit.GetMaxHp());
-        //#if UNITY_EDITOR
-        //        Debug.Log(damageUnit);
-        //#endif
+#if UNITY_EDITOR
+        Debug.Log(damageUnit);
+#endif
         damageUnit.TakeDamage(resultDamage);
     }
 

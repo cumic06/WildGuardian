@@ -646,8 +646,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1255895384}
+  - component: {fileID: 1255895385}
   - component: {fileID: 1255895383}
-  m_Layer: 0
+  - component: {fileID: 1255895386}
+  m_Layer: 9
   m_Name: BuffImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,6 +723,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7567364663283100019}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255895385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255895382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89efa41430465b3449b36c1da96815c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1255895386
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255895382}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1434941486
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +2057,10 @@ PrefabInstance:
       value: BossMonster
       objectReference: {fileID: 0}
     - target: {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2058,6 +2111,10 @@ PrefabInstance:
     - target: {fileID: 8946312961617608009, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
       propertyPath: buffRange
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946312961617608009, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
+      propertyPath: monsterLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2126,7 +2183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6941182717535896250, guid: 9dd25769c41fc804aab0b368f0376fb6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
