@@ -10,6 +10,7 @@ public class Player : Unit
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
     [SerializeField] private int exp;
+    private int level;
     #endregion
 
     protected override void Awake()
@@ -49,6 +50,10 @@ public class Player : Unit
     public void AddExp(int value)
     {
         exp += value;
+    }
 
+    private void LevelUp(int value)
+    {
+        level += value;
     }
 }
