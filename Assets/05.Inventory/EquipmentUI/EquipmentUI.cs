@@ -27,7 +27,7 @@ public class EquipmentUI : MonoBehaviour, I_Click
 
     protected void OptionUISet(Sprite sprite, ButtonType type)
     {
-        optionPanel.transform.parent.gameObject.SetActive(true);
+        optionPanel.transform.parent.parent.gameObject.SetActive(true);
         optionPanel.gameObject.TryGetComponent(out OptionPanel optionUI);
         optionUI.EquipmentName.text = $"{equipmentData.EquipmentInfoData[sprite].GetName()}";
         optionUI.EquipmentImage.sprite = equipmentData.EquipmentInfoData[sprite].GetUnitType();

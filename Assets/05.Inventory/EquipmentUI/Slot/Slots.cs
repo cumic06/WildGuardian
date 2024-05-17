@@ -36,7 +36,7 @@ public class Slots : EquipmentUI
         Mouting_obseverFunc.Obsever = (panel) =>
         {
             optionPanel = panel.ConvertTo<OptionPanel>();
-            optionPanel.transform.parent.gameObject.SetActive(false);
+            optionPanel.transform.parent.parent.gameObject.SetActive(false);
             Mounting();
             PlayerText(optionPanel);
         };
@@ -44,7 +44,7 @@ public class Slots : EquipmentUI
         Clear_obseverFunc.Obsever = (panel) =>
         {
             optionPanel = panel.ConvertTo<OptionPanel>();
-            optionPanel.transform.parent.gameObject.SetActive(false);
+            optionPanel.transform.parent.parent.gameObject.SetActive(false);
             Clear();
             EquipmentActive(equipmentSlot, 2);
             PlayerText(optionPanel);
