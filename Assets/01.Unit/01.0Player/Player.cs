@@ -11,6 +11,8 @@ public class Player : Unit
     private PlayerAttack playerAttack;
     [SerializeField] private int exp;
     private int level;
+    private float mana;
+    private float coolTimeReduce;
     #endregion
 
     protected override void Awake()
