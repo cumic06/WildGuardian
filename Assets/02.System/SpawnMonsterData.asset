@@ -20,3 +20,5 @@ MonoBehaviour:
     - {fileID: 7713876028776284802, guid: 0bbef04eb2327fa43a17e88edd7d4349, type: 3}
     - {fileID: 6462642958880509731, guid: 6d8157a984548ee4dbf11f71d633a8bb, type: 3}
     - {fileID: 8175749067098836391, guid: 436a27463e383d54894c72772dff461d, type: 3}
+    bossList:
+    - {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}

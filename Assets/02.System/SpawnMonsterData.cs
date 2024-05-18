@@ -13,4 +13,5 @@ public class SpawnMonsterData : ScriptableObject
 public class SpawnMonsterInfo
 {
     public List<GameObject> monsterList;
+    public List<GameObject> bossList;
 }

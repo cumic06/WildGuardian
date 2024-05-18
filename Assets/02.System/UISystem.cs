@@ -6,9 +6,9 @@ public class UISystem : MonoBehaviour
 {
     protected virtual void PopUpUI(GameObject ui, float endTime)
     {
-        StartCoroutine(PopUp(ui, endTime));
+        StartCoroutine(PopUp());
 
-        IEnumerator PopUp(GameObject ui, float endTime)
+        IEnumerator PopUp()
         {
             WaitForSeconds endWait = new(endTime);
             ui.SetActive(true);
