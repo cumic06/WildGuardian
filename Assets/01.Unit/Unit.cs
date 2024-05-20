@@ -14,11 +14,11 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     [SerializeField] protected float currentMoveSpeed = 0;
     public float CurrentMoveSpeed => currentMoveSpeed;
 
-    [SerializeField] protected float currentDefensePower = 0;
-    public float CurrentDefensePower => currentDefensePower;
+    [SerializeField] protected int currentDefensePower = 0;
+    public int CurrentDefensePower => currentDefensePower;
 
-    [SerializeField] protected float currentAttackPower = 0;
-    public float CurrentAttackPower => currentAttackPower;
+    [SerializeField] protected int currentAttackPower = 0;
+    public int CurrentAttackPower => currentAttackPower;
 
     [SerializeField] protected float attackCoolTime = 0;
     public float AttackCoolTime => attackCoolTime;
@@ -78,9 +78,17 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     #region Hp
     public virtual void TakeDamage(int damage)
     {
-        currentHp = damage;
 
-        if (currentHp < 0)
+        int finalDamage = damage - currentDefensePower;
+
+        if (finalDamage <= 0)
+        {
+            finalDamage = 1;
+        }
+
+        currentHp = finalDamage;
+
+        if (currentHp <= 0)
         {
             OnDead();
         }

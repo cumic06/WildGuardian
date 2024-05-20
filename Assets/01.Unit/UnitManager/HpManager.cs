@@ -5,9 +5,6 @@ public class HpManager : MonoSingleton<HpManager>
     public void TakeDamage(IDamageable damageUnit, int damage)
     {
         int resultDamage = ChangeHp(-damage, damageUnit.GetCurrentHp(), damageUnit.GetMaxHp());
-#if UNITY_EDITOR
-        Debug.Log(damageUnit);
-#endif
         damageUnit.TakeDamage(resultDamage);
     }
 
@@ -19,12 +16,14 @@ public class HpManager : MonoSingleton<HpManager>
 
     private int ChangeHp(int value, int currentHp, int maxHp)
     {
-        if (currentHp + value > maxHp)
+        if (currentHp + value >= maxHp)
         {
+            Debug.Log("max");
             return maxHp;
         }
-        if (currentHp + value < 0)
+        if (currentHp + value <= 0)
         {
+            Debug.Log("zero");
             return 0;
         }
         return currentHp + value;

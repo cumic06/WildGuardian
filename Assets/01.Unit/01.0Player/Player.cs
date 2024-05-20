@@ -6,13 +6,17 @@ using UnityEngine;
 public class Player : Unit
 {
     #region veriable
+    private const float levelUpValue = 1.4f;
     public static Player Instance;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
-    [SerializeField] private int exp;
-    private int level;
+    [SerializeField] private float maxExp;
+    [SerializeField] private float currentExp;
+    [SerializeField] private int level;
     private float mana;
     private float coolTimeReduce;
+
+    public float AttackRange => GetUnitData().GetUnitStat().attackRange;
     #endregion
 
     protected override void Awake()
@@ -49,13 +53,30 @@ public class Player : Unit
     }
     #endregion
 
+    [ContextMenu("100Exp")]
+    private void HunExp()
+    {
+        AddExp(500);
+    }
+
     public void AddExp(int value)
     {
-        exp += value;
+        currentExp += value;
+
+        int levelUpCount = (int)(currentExp / maxExp);
+        for (int i = 0; i < levelUpCount; i++)
+        {
+            if (currentExp >= maxExp)
+            {
+                currentExp -= maxExp;
+                LevelUp(1);
+            }
+        }
     }
 
     private void LevelUp(int value)
     {
         level += value;
+        maxExp *= levelUpValue;
     }
 }

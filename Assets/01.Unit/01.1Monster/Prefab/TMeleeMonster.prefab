@@ -90,6 +90,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   currentAttackCoolTime: 0
+  exp: 200
 --- !u!114 &8838705879244544824
 MonoBehaviour:
   m_ObjectHideFlags: 0

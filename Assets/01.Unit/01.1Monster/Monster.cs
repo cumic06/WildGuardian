@@ -13,6 +13,8 @@ public class Monster : Unit
     public LayerMask PlayerLayer => playerLayer;
 
     public float currentAttackCoolTime;
+
+    [SerializeField] private int exp;
     #endregion
 
     protected override void Awake()
@@ -34,6 +36,9 @@ public class Monster : Unit
 
     public override void OnDead()
     {
-        UpdateSystem.Instance.RemoveFixedUpdateAction(() => monsterAI.AI());
+        Debug.Log("Dead");
+        UpdateSystem.Instance.RemoveFixedUpdateAction(monsterAI.AI);
+        Player.Instance.AddExp(exp);
+        Destroy(gameObject);
     }
 }
