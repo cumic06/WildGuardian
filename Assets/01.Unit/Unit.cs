@@ -14,6 +14,7 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     [SerializeField] protected float currentMoveSpeed = 0;
     public float CurrentMoveSpeed => currentMoveSpeed;
 
+
     [SerializeField] protected int currentDefensePower = 0;
     public int CurrentDefensePower => currentDefensePower;
 
