@@ -29,6 +29,12 @@ public class Monster : Unit
         UpdateSystem.Instance.AddFixedUpdateAction(() => monsterAI.AI());
     }
 
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        StartCoroutine(ChangeColor(Color.white));
+    }
+
     public override void ChangeHp(int value)
     {
 
@@ -38,7 +44,14 @@ public class Monster : Unit
     {
         Debug.Log("Dead");
         UpdateSystem.Instance.RemoveFixedUpdateAction(monsterAI.AI);
-        Player.Instance.AddExp(exp);
+
+        int randomExp = Random.Range(0, 3);
+        if (randomExp == 3)
+        {
+            int randomType = Random.Range(0, 3);
+            LevelSystem.Instance.SpawnExp(transform.position, (ExpType)randomType);
+        }
+
         Destroy(gameObject);
     }
 }

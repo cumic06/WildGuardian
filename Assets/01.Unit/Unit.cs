@@ -28,12 +28,16 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     public Rigidbody2D Rigid => rigid;
 
     protected SpriteRenderer sprite;
+
+    protected Color originColor;
     #endregion
 
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         ResetAll();
+        originColor = sprite.color;
     }
 
     protected virtual void Start()
@@ -79,16 +83,7 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     #region Hp
     public virtual void TakeDamage(int damage)
     {
-
-        int finalDamage = damage - currentDefensePower;
-
-        if (finalDamage <= 0)
-        {
-            finalDamage = 1;
-        }
-
-        currentHp = finalDamage;
-
+        currentHp = damage;
         if (currentHp <= 0)
         {
             OnDead();
@@ -96,6 +91,14 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     }
 
     public abstract void ChangeHp(int value);
+
+    protected virtual IEnumerator ChangeColor(Color color)
+    {
+        WaitForSeconds changeWait = new(1f);
+        sprite.color = color;
+        yield return changeWait;
+        sprite.color = originColor;
+    }
 
     public int GetMaxHp()
     {
@@ -105,6 +108,11 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     public int GetCurrentHp()
     {
         return currentHp;
+    }
+
+    public int GetCurrentDefensePower()
+    {
+        return currentDefensePower;
     }
 
     public abstract void OnDead();

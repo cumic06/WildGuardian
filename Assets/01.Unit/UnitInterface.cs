@@ -16,6 +16,8 @@ public interface IHpable
     public int GetMaxHp();
     public int GetCurrentHp();
 
+    public int GetCurrentDefensePower();
+
     public void OnDead();
 }
 
