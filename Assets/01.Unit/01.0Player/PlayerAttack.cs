@@ -21,20 +21,19 @@ public class PlayerAttack : MonoBehaviour, IAttackable
     public bool IsCanAttack()
     {
         Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer);
-
         return checkCircle.Length > 0;
     }
 
     public void Attack()
     {
-        //if (IsCanAttack())
-        //{
-        Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer).FirstOrDefault();
-        if (checkCircle.TryGetComponent(out Monster monster))
+        if (IsCanAttack())
         {
-            HpManager.Instance.TakeDamage(monster, attackPower);
+            Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer).FirstOrDefault();
+            if (checkCircle.TryGetComponent(out Monster monster))
+            {
+                HpManager.Instance.TakeDamage(monster, attackPower);
+            }
         }
-        //}
     }
     protected virtual void OnDrawGizmos()
     {
