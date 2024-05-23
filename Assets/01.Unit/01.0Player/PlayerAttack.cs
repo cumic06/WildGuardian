@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour, IAttackable
 
     public bool IsCanAttack()
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange);
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer);
 
         return checkCircle.Length > 0;
     }
