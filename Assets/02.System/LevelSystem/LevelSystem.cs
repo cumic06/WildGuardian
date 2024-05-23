@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum ExpType
@@ -17,12 +16,13 @@ public class LevelSystem : MonoSingleton<LevelSystem>
     [SerializeField] private float currentExp;
     [SerializeField] private int level;
     [SerializeField] private GameObject[] expPrefab;
+    public Action<float, float> OnChangeExp;
     #endregion
 
     public void AddExp(int value)
     {
         currentExp += value;
-
+        OnChangeExp?.Invoke(GetCurrentExp(), GetMaxExp());
         int levelUpCount = (int)(currentExp / maxExp);
         for (int i = 0; i < levelUpCount; i++)
         {
@@ -38,11 +38,22 @@ public class LevelSystem : MonoSingleton<LevelSystem>
     {
         level += value;
         maxExp *= levelUpValue;
+        OnChangeExp?.Invoke(GetCurrentExp(), GetMaxExp());
+    }
+
+    public float GetCurrentExp()
+    {
+        return currentExp;
+    }
+
+    public float GetMaxExp()
+    {
+        return maxExp;
     }
 
     public void SpawnExp(Vector2 pos, ExpType expType)
     {
-        Vector2 spawnPos = pos * Random.insideUnitCircle;
+        Vector2 spawnPos = pos * UnityEngine.Random.insideUnitCircle;
 #if UNITY_EDITOR
         Debug.Log("SpawnExp");
 #endif

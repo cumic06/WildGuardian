@@ -1,7 +1,10 @@
 using UnityEngine;
+using System;
 
 public class HpManager : MonoSingleton<HpManager>
 {
+    public Action<int, int> OnChangeHp;
+
     public void TakeDamage(IDamageable damageUnit, int damage)
     {
         int resultDamage = damage - damageUnit.GetCurrentDefensePower();

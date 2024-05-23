@@ -110,55 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ExpSlider
+      name: Slider
       rect:
         serializedVersion: 2
         x: 3
-        y: 43
-        width: 113
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5f35325028243048ad1e3a36d79bb25
-      internalID: 2146097673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HpSlider
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 32
-        width: 44
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d3a2d48d348300488cfd2e449812ef6
-      internalID: -1352271798
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ManaSlider
-      rect:
-        serializedVersion: 2
-        x: 6
         y: 26
-        width: 44
-        height: 6
+        width: 113
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f988ad47da47df4e9360e4c57e12232
-      internalID: 27439987
+      spriteID: a4e65cf344ecb5d4987928bd0f9d9553
+      internalID: 438757867
       vertices: []
       indices: 
       edges: []
@@ -176,8 +134,8 @@ TextureImporter:
       name: ExpImage
       rect:
         serializedVersion: 2
-        x: 54
-        y: 34
+        x: 111
+        y: 11
         width: 103
         height: 6
       alignment: 0
@@ -187,18 +145,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d57da03bc6794b45bbf4dd6157e212d
-      internalID: -62636610
+      spriteID: cef8edabe6c7974479f931b2fef70b2c
+      internalID: 864144054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HpImage
+      name: HpSlider
       rect:
         serializedVersion: 2
-        x: 55
-        y: 28
+        x: 112
+        y: 5
         width: 38
         height: 3
       alignment: 0
@@ -208,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1376165fcd200024a8e32ffe0d2bdb0f
-      internalID: -856050389
+      spriteID: 3582532da45fb56409af349082e05e94
+      internalID: 857774237
       vertices: []
       indices: 
       edges: []
@@ -218,8 +176,8 @@ TextureImporter:
       name: ManaImage
       rect:
         serializedVersion: 2
-        x: 55
-        y: 24
+        x: 112
+        y: 1
         width: 38
         height: 3
       alignment: 0
@@ -229,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 549d8d5e3223ed44289af85b55d7a781
-      internalID: -720556915
+      spriteID: a518dc9658e69d540b0b3101389bc1ec
+      internalID: -706461860
       vertices: []
       indices: 
       edges: []
@@ -246,12 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ExpImage: -62636610
-      ExpSlider: 2146097673
-      HpImage: -856050389
-      HpSlider: -1352271798
-      ManaImage: -720556915
-      ManaSlider: 27439987
+      ExpImage: 864144054
+      HpSlider: 857774237
+      ManaImage: -706461860
+      Slider: 438757867
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -33,6 +33,15 @@ public class Monster : Unit
     {
         base.TakeDamage(damage);
         StartCoroutine(ChangeColor(Color.white));
+        StartCoroutine(ChangeSize());
+    }
+
+    IEnumerator ChangeSize()
+    {
+        WaitForSeconds changeWait = new(0.25f);
+        transform.localScale = new Vector2(1.15f, 1.15f);
+        yield return changeWait;
+        transform.localScale = new Vector2(1, 1);
     }
 
     public override void ChangeHp(int value)

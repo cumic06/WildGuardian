@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,7 @@ public class Player : Unit
     {
         base.TakeDamage(damage);
         EffectUI.Instance.FlickrImage(new Color(1, 0, 0, 0.5f));
+        HpManager.Instance.OnChangeHp?.Invoke(GetCurrentHp(), GetMaxHp());
     }
 
     public override void ChangeHp(int value)
