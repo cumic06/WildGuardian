@@ -26,7 +26,7 @@ public class Monster : Unit
     protected override void Start()
     {
         base.Start();
-        UpdateSystem.Instance.AddFixedUpdateAction(() => monsterAI.AI());
+        UpdateSystem.Instance.AddFixedUpdateAction(monsterAI.AI);
     }
 
     public override void TakeDamage(int damage)
@@ -42,15 +42,17 @@ public class Monster : Unit
 
     public override void OnDead()
     {
-        Debug.Log("Dead");
+#if UNITY_EDITOR
+        Debug.Log("MonsterDead");
+#endif
         UpdateSystem.Instance.RemoveFixedUpdateAction(monsterAI.AI);
 
-        int randomExp = Random.Range(0, 3);
-        if (randomExp == 3)
-        {
-            int randomType = Random.Range(0, 3);
-            LevelSystem.Instance.SpawnExp(transform.position, (ExpType)randomType);
-        }
+        //int randomExp = Random.Range(0, 3);
+        //if (randomExp == 3)
+        //{
+        int randomType = Random.Range(0, 3);
+        LevelSystem.Instance.SpawnExp(transform.position, (ExpType)randomType);
+        //}
 
         Destroy(gameObject);
     }

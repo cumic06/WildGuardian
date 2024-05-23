@@ -43,6 +43,9 @@ public class LevelSystem : MonoSingleton<LevelSystem>
     public void SpawnExp(Vector2 pos, ExpType expType)
     {
         Vector2 spawnPos = pos * Random.insideUnitCircle;
+#if UNITY_EDITOR
+        Debug.Log("SpawnExp");
+#endif
         switch (expType)
         {
             case ExpType.LowExp:

@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnMonsterData: {fileID: 11400000, guid: 18448f8569eb06843affa61bef08335b, type: 2}
   spawnTime: 1
-  noSpawnMonster: 0
+  noSpawnMonster: 1
 --- !u!1 &1735769795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,11 +2102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2191795352431839880, guid: a6705b20f1a0adc4a9ef6f77e0504470, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9183048063593755315, guid: a6705b20f1a0adc4a9ef6f77e0504470, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.733255
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9183048063593755315, guid: a6705b20f1a0adc4a9ef6f77e0504470, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2342,7 +2342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2907852305044789431, guid: 9dd25769c41fc804aab0b368f0376fb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2907852305044789431, guid: 9dd25769c41fc804aab0b368f0376fb6, type: 3}
       propertyPath: m_LocalPosition.y

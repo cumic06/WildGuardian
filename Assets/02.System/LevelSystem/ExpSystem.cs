@@ -39,7 +39,6 @@ public class ExpSystem : MonoBehaviour
     private bool CheckPlayer()
     {
         Collider2D[] playerCol = Physics2D.OverlapCircleAll(transform.position, expRange, playerLayer);
-        Debug.Log(playerCol.Length);
         return playerCol.Length > 0;
     }
 

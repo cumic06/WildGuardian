@@ -6,6 +6,7 @@ using System.Linq;
 public class PlayerAttack : MonoBehaviour, IAttackable
 {
     [SerializeField] private int attackPower;
+    private const int monsterLayer = 1 << 7;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class PlayerAttack : MonoBehaviour, IAttackable
     {
         //if (IsCanAttack())
         //{
-        Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange).FirstOrDefault();
+        Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer).FirstOrDefault();
         if (checkCircle.TryGetComponent(out Monster monster))
         {
             HpManager.Instance.TakeDamage(monster, attackPower);
