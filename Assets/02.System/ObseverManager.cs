@@ -17,6 +17,7 @@ public class ObseverManager : I_Publisher
     }
     public void Notify<T>(T t)
     {
+        Debug.Log(t);
         obseverList.ForEach(x => x.Func(t));
     }
 }

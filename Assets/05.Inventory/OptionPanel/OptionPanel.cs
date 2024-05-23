@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class OptionPanel : MonoBehaviour
+public class OptionPanel : MonoBehaviour,I
 {
+
     public Button mountingBtn;
     public Button clearBtn;
     public Image Panel;
@@ -42,4 +43,12 @@ public class OptionPanel : MonoBehaviour
 public enum ButtonType
 {
     Mounting, Clear
+}
+
+public interface  I
+{
+    public void A()
+    {
+
+    }
 }

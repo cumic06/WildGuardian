@@ -11,7 +11,8 @@ public interface I_Click
 }
 public interface I_Obsever
 {
-    public void Func <T> (T t);
+    //delegate void Func<T>(T t);
+    //public void Func<U>(U t);
 }
 
 public interface I_Publisher

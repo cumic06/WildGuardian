@@ -10,7 +10,7 @@ public class Inventory : EquipmentUI
 {
     [SerializeField] private Image slot;
     public static ObseverManager Inventory_obsever = new ObseverManager();
-    private ObseverFunc mouting_obseverFunc = new();
+    private ObseverFunc<Panel> mouting_obseverFunc = new();
 
 
     private void Awake()
@@ -22,11 +22,11 @@ public class Inventory : EquipmentUI
 
     private void StartSet()
     {
-        mouting_obseverFunc.Obsever = (panel) => { EquipmentActive(equipmentSlot,1); };
+        mouting_obseverFunc.Obsevers = (panel) => { EquipmentActive(equipmentSlot, 1); };
         OptionPanel.Mouting_obsever.obseverList.Add(mouting_obseverFunc);
         clickFunc = (image) =>
         {
-            OptionUISet(image.sprite,ButtonType.Mounting);
+            OptionUISet(image.sprite, ButtonType.Mounting);
             Inventory_obsever.Notify(equipmentData.EquipmentInfoData[image.sprite]);
         };
     }
@@ -42,5 +42,5 @@ public class Inventory : EquipmentUI
         }
     }
 
-   
+
 }

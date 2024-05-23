@@ -11,10 +11,10 @@ public class Slots : EquipmentUI
     [SerializeField] private Equipment[] equipments = new Equipment[4];
     [SerializeField] private UnitData playerData;
     private EquipmentInfo equipmentInfo;
-    private ObseverFunc Inventory_obseverFunc = new();
-    private ObseverFunc Mouting_obseverFunc = new();
-    private ObseverFunc Clear_obseverFunc = new();
-    private ObseverFunc StartSet_obseverFunc = new();
+    private ObseverFunc<EquipmentInfo> Inventory_obseverFunc = new();
+    private ObseverFunc<OptionPanel> Mouting_obseverFunc = new();
+    private ObseverFunc<OptionPanel> Clear_obseverFunc = new();
+    private ObseverFunc<OptionPanel> StartSet_obseverFunc = new();
     public void Awake()
     {
         ObseverSet();
@@ -25,25 +25,25 @@ public class Slots : EquipmentUI
     private void ObseverSet()
     {
         OptionPanel optionPanel;
-        StartSet_obseverFunc.Obsever = (panel) =>
+        StartSet_obseverFunc.Obsevers = (panel) =>
         {
-            optionPanel = panel.ConvertTo<OptionPanel>();
+            optionPanel = panel;
             PlayerText(optionPanel);
         };
         OptionPanel.StartSet_obsever.AddObsever(StartSet_obseverFunc);
-        Inventory_obseverFunc.Obsever = (a) => equipmentInfo = a.ConvertTo<EquipmentInfo>();
+        Inventory_obseverFunc.Obsevers = (t) => equipmentInfo = t;
         Inventory.Inventory_obsever.obseverList.Add(Inventory_obseverFunc);
-        Mouting_obseverFunc.Obsever = (panel) =>
+        Mouting_obseverFunc.Obsevers = (panel) =>
         {
-            optionPanel = panel.ConvertTo<OptionPanel>();
+            optionPanel = panel;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);
             Mounting();
             PlayerText(optionPanel);
         };
         OptionPanel.Mouting_obsever.obseverList.Add(Mouting_obseverFunc);
-        Clear_obseverFunc.Obsever = (panel) =>
+        Clear_obseverFunc.Obsevers = (panel) =>
         {
-            optionPanel = panel.ConvertTo<OptionPanel>();
+            optionPanel = panel;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);
             Clear();
             EquipmentActive(equipmentSlot, 2);

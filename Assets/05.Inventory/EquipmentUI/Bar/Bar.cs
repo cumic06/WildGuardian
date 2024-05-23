@@ -13,6 +13,7 @@ public class Bar : EquipmentUI
     }
     private void EquipmentsOrderby()
     {
+        Debug.Log("Á¤·Ä");
         for (int i = 0; i < equipments.Count; i++)
         {
             equipments[i].transform.GetChild(0).TryGetComponent(out Image equipmentImageI);
