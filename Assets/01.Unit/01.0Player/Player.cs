@@ -10,8 +10,8 @@ public class Player : Unit
     public static Player Instance;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
-    private float mana;
-    private float coolTimeReduce;
+    [SerializeField] private float mana;
+    [SerializeField] private float coolTimeReduce;
     public float AttackRange => GetUnitData().GetUnitStat().attackRange;
     #endregion
 

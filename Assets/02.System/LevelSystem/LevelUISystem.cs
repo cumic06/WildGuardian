@@ -9,11 +9,15 @@ public class LevelUISystem : MonoBehaviour
 
     private void Start()
     {
-        LevelSystem.Instance.OnChangeLevel += LevelUpImage;
+        LevelSystem.Instance.OnChangeLevel += (a) => LevelUpImage(a);
     }
 
-    private void LevelUpImage()
+    private void LevelUpImage(LevelUpStatData levelUpStatData)
     {
         levelUpPanel.SetActive(true);
+        for (int i = 0; i < levelUpPanel.GetComponentsInChildren<Image>().Length; i++)
+        {
+            //levelUpPanel.GetComponentsInChildren<Image>()[i].sprite = 
+        }
     }
 }

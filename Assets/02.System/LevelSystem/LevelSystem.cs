@@ -17,7 +17,9 @@ public class LevelSystem : MonoSingleton<LevelSystem>
     [SerializeField] private int level;
     [SerializeField] private GameObject[] expPrefab;
     public Action<float, float> OnChangeExp;
-    public Action OnChangeLevel;
+    public Action<LevelUpStatData> OnChangeLevel;
+
+    [SerializeField] private LevelUpStatData levelUpStatData;
     #endregion
 
     public void AddExp(int value)
@@ -40,7 +42,7 @@ public class LevelSystem : MonoSingleton<LevelSystem>
         level += value;
         maxExp *= levelUpValue;
         OnChangeExp?.Invoke(GetCurrentExp(), GetMaxExp());
-        OnChangeLevel?.Invoke();
+        OnChangeLevel?.Invoke(levelUpStatData);
     }
 
     public float GetCurrentExp()
