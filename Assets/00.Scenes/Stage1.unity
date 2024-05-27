@@ -3102,9 +3102,9 @@ MonoBehaviour:
   - {fileID: 2144106631}
   - {fileID: 374913034}
   levelUpExplanText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1940114575}
+  - {fileID: 1658601128}
+  - {fileID: 2061373250}
 --- !u!1 &1989496777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,7 +3255,7 @@ GameObject:
   - component: {fileID: 2061373249}
   - component: {fileID: 2061373248}
   m_Layer: 5
-  m_Name: LevelUpExplanText (1)
+  m_Name: LevelUpExplanText (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
