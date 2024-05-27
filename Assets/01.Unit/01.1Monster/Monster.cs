@@ -60,6 +60,7 @@ public class Monster : Unit
         //if (randomExp == 3)
         //{
         int randomType = Random.Range(0, 3);
+        Debug.Log(randomType);
         LevelSystem.Instance.SpawnExp(transform.position, (ExpType)randomType);
         //}
 

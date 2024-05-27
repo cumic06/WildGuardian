@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expRange: 2
-  expValue: 10
+  expValue: 30
 --- !u!58 &4349207063400647475
 CircleCollider2D:
   m_ObjectHideFlags: 0

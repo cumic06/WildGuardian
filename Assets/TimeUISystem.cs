@@ -14,6 +14,6 @@ public class TimeUISystem : MonoBehaviour
 
     private void TimeText()
     {
-        timeText.text = $"PlayTime : {TimeManager.Instance.GetInGameTimeMin()}:{TimeManager.Instance.GetInGameTime():N2}";
+        timeText.text = $"PlayTime : {TimeManager.Instance.GetInGameTimeMin()}:{TimeManager.Instance.GetInGameTime():N0}";
     }
 }

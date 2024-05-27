@@ -14,16 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelUpStatInfo:
   - LevelUpStat: 0
-    StatValue: 0
+    StatValue: 1.4
+    sprite: {fileID: 0}
   - LevelUpStat: 1
-    StatValue: 0
+    StatValue: 1.4
+    sprite: {fileID: 0}
   - LevelUpStat: 2
-    StatValue: 0
+    StatValue: 1.2
+    sprite: {fileID: 0}
   - LevelUpStat: 3
-    StatValue: 0
+    StatValue: 1.2
+    sprite: {fileID: 0}
   - LevelUpStat: 4
-    StatValue: 0
+    StatValue: 1.2
+    sprite: {fileID: 0}
   - LevelUpStat: 5
-    StatValue: 0
+    StatValue: 1.1
+    sprite: {fileID: 0}
   - LevelUpStat: 6
-    StatValue: 0
+    StatValue: 1.1
+    sprite: {fileID: 0}

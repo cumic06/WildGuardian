@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LevelUISystem : MonoBehaviour
 {
     [SerializeField] private GameObject levelUpPanel;
+    [SerializeField] private Text[] levelUpNameText;
+    [SerializeField] private Text[] levelUpExplanText;
 
     private void Start()
     {
