@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slider
+      name: StatSlider
       rect:
         serializedVersion: 2
         x: 3
-        y: 26
+        y: 25
         width: 113
-        height: 31
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,18 +124,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4e65cf344ecb5d4987928bd0f9d9553
-      internalID: 438757867
+      spriteID: 537249a8010e7ac47aae89ef97f10a11
+      internalID: -109384837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExpImage
+      name: ExpSlider
       rect:
         serializedVersion: 2
-        x: 111
-        y: 11
+        x: 4
+        y: 13
         width: 103
         height: 6
       alignment: 0
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cef8edabe6c7974479f931b2fef70b2c
-      internalID: 864144054
+      spriteID: 5429d4855101cbc4e995629b826e1c64
+      internalID: -1676347910
       vertices: []
       indices: 
       edges: []
@@ -155,8 +155,8 @@ TextureImporter:
       name: HpSlider
       rect:
         serializedVersion: 2
-        x: 112
-        y: 5
+        x: 5
+        y: 7
         width: 38
         height: 3
       alignment: 0
@@ -166,18 +166,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3582532da45fb56409af349082e05e94
-      internalID: 857774237
+      spriteID: ef608e51f8b2ab6448100f09b8797474
+      internalID: 488126230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ManaImage
+      name: ManaSlider
       rect:
         serializedVersion: 2
-        x: 112
-        y: 1
+        x: 5
+        y: 3
         width: 38
         height: 3
       alignment: 0
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a518dc9658e69d540b0b3101389bc1ec
-      internalID: -706461860
+      spriteID: 4b9a0d263b81b0b43a1ca0b1af8202eb
+      internalID: 2061925650
       vertices: []
       indices: 
       edges: []
@@ -204,11 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ExpImage: 864144054
-      HpSlider: 857774237
-      ManaImage: -706461860
-      Slider: 438757867
-      SliderOutLine: -15012516
+      ExpSlider: -1676347910
+      HpSlider: 488126230
+      ManaSlider: 2061925650
+      StatSlider: -109384837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

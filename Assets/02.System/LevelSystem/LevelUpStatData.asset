@@ -13,24 +13,38 @@ MonoBehaviour:
   m_Name: LevelUpStatData
   m_EditorClassIdentifier: 
   LevelUpStatInfo:
-  - LevelUpStat: 0
+  - name: "\uCCB4\uB825\uC5C5!"
+    LevelUpStat: 0
+    explan: "\uCCB4\uB825\uC774 1.4\uBC30 \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
     StatValue: 1.4
     sprite: {fileID: 0}
-  - LevelUpStat: 1
+  - name: "\uB9C8\uB098\uC5C5!"
+    LevelUpStat: 1
+    explan: "\uB9C8\uB098\uAC00 1.4\uBC30 \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
     StatValue: 1.4
     sprite: {fileID: 0}
-  - LevelUpStat: 2
+  - name: "\uACF5\uACA9\uB825\uC5C5!"
+    LevelUpStat: 2
+    explan: "\uACF5\uACA9\uB825\uC774 1.2\uBC30 \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
     StatValue: 1.2
     sprite: {fileID: 0}
-  - LevelUpStat: 3
+  - name: "\uCFE8\uD0C0\uC784\uAC10\uC18C"
+    LevelUpStat: 3
+    explan: "\uCFE8\uD0C0\uC784\uC774 1.2\uBC30 \uAC10\uC18C\uD569\uB2C8\uB2E4."
     StatValue: 1.2
     sprite: {fileID: 0}
-  - LevelUpStat: 4
+  - name: "\uBC29\uC5B4\uB825\uC5C5!"
+    LevelUpStat: 4
+    explan: "\uBC29\uC5B4\uB825\uC774 1.2\uBC30 \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
     StatValue: 1.2
     sprite: {fileID: 0}
-  - LevelUpStat: 5
+  - name: "\uCCB4\uB825\uD68C\uBCF5\uC2DC\uAC04 \uAC10\uC18C"
+    LevelUpStat: 5
+    explan: "\uCCB4\uB825\uD68C\uBCF5\uC2DC\uAC04\uC774 1.1\uBC30 \uAC10\uC18C\uD569\uB2C8\uB2E4."
     StatValue: 1.1
     sprite: {fileID: 0}
-  - LevelUpStat: 6
+  - name: "\uB9C8\uB098\uD68C\uBCF5\uC2DC\uAC04\uAC10\uC18C"
+    LevelUpStat: 6
+    explan: "\uB9C8\uB098\uD68C\uBCF5\uC2DC\uAC04\uC774 1.1\uBC30 \uAC10\uC18C\uD569\uB2C8\uB2E4."
     StatValue: 1.1
     sprite: {fileID: 0}

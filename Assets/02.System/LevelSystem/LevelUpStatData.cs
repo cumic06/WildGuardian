@@ -18,7 +18,11 @@ public class LevelUpStatData : ScriptableObject
 [Serializable]
 public class LevelUpStatInfo
 {
+    public string name;
+
     public LevelUpStat LevelUpStat;
+
+    public string explan;
 
     public float StatValue;
 
