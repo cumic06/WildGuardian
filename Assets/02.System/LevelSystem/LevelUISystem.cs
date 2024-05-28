@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelUISystem : MonoBehaviour
+public class LevelUISystem : MonoSingleton<LevelUISystem>
 {
     [SerializeField] private GameObject levelUpPanel;
-    [SerializeField] private Text[] levelUpNameText;
-    [SerializeField] private Text[] levelUpExplanText;
 
     private void Start()
     {
-        LevelSystem.Instance.OnChangeLevel += (a) => LevelUpImage(a);
+        LevelSystem.Instance.OnChangeLevel += LevelUpImage;
     }
 
-    private void LevelUpImage(LevelUpStatInfo[] levelUpStatInfo)
+    private void LevelUpImage()
     {
         levelUpPanel.SetActive(true);
-        for (int i = 0; i < 3; i++)
-        {
-            levelUpNameText[i].text = levelUpStatInfo[i].name;
-            levelUpExplanText[i].text = levelUpStatInfo[i].explan;
-        }
+    }
+
+    public void LevelUpEnd()
+    {
+        levelUpPanel.SetActive(false);
     }
 }

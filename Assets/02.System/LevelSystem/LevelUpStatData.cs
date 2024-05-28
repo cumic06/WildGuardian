@@ -1,17 +1,17 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
+
 
 [CreateAssetMenu(fileName = "LevelUpStatData", menuName = "LevelUpStatData")]
 public class LevelUpStatData : ScriptableObject
 {
     public List<LevelUpStatInfo> LevelUpStatInfo = new();
-
-    public float GetRandomLevelUpStat(out Sprite sprite)
+    public LevelUpStatInfo GetRandomLevelUpStat()
     {
-        int randomValue = UnityEngine.Random.Range(0, Enum.GetValues(typeof(LevelUpStat)).Length);
-        sprite = LevelUpStatInfo[randomValue].sprite;
-        return LevelUpStatInfo[randomValue].StatValue;
+        int randomValue = Random.Range(0, LevelUpStatInfo.Count);
+        return LevelUpStatInfo[randomValue];
     }
 }
 
@@ -20,14 +20,31 @@ public class LevelUpStatInfo
 {
     public string name;
 
-    public LevelUpStat LevelUpStat;
+    public LevelUpStat LevelUpStatType;
 
     public string explan;
 
     public float StatValue;
 
+    public UnitStat LevelUpStats;
+
     public Sprite sprite;
 }
+
+//public class PlayerStats
+//{
+//    public int Damage;
+//    public float Speed;
+//    public float AttackSpeed;
+
+//    public void AddStats(PlayerStats playerStats)
+//    {
+//        Damage += playerStats.Damage;
+//        Speed += playerStats.Speed;
+//        AttackSpeed += playerStats.AttackSpeed;
+//    }
+//}
+
 
 public enum LevelUpStat
 {

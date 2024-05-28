@@ -8,6 +8,12 @@ public enum ExpType
     HighExp
 }
 
+public class LevelStat
+{
+
+}
+
+
 public class LevelSystem : MonoSingleton<LevelSystem>
 {
     #region veriable
@@ -17,9 +23,10 @@ public class LevelSystem : MonoSingleton<LevelSystem>
     [SerializeField] private int level;
     [SerializeField] private GameObject[] expPrefab;
     public Action<float, float> OnChangeExp;
-    public Action<LevelUpStatInfo[]> OnChangeLevel;
+    public Action OnChangeLevel;
 
     [SerializeField] private LevelUpStatData levelUpStatData;
+    public LevelUpStatData UmJunSik => levelUpStatData;
     #endregion
 
     public void AddExp(int value)
@@ -42,13 +49,7 @@ public class LevelSystem : MonoSingleton<LevelSystem>
         level += value;
         maxExp *= levelUpValue;
         OnChangeExp?.Invoke(GetCurrentExp(), GetMaxExp());
-        LevelUpStatInfo[] levelUpStat = new LevelUpStatInfo[3];
-        for (int i = 0; i < 3; i++)
-        {
-            int randomValue = UnityEngine.Random.Range(0, levelUpStatData.LevelUpStatInfo.Count);
-            levelUpStat[i] = levelUpStatData.LevelUpStatInfo[randomValue];
-        }
-        OnChangeLevel?.Invoke(levelUpStat);
+        OnChangeLevel?.Invoke();
     }
 
     public float GetCurrentExp()
