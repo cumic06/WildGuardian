@@ -13,6 +13,12 @@ public class UnitInfo
     [SerializeField] private string unitName;
     [SerializeField] private UnitStat unitStat;
 
+    public UnitInfo(string unitName, UnitStat unitStat)
+    {
+        this.unitName = unitName;
+        this.unitStat = unitStat;
+    }
+
     public UnitStat GetUnitStat()
     {
         return unitStat;
@@ -31,6 +37,7 @@ public class UnitInfo
         unitStat.defensePower += stat.defensePower;
         unitStat.attackRange += stat.attackRange;
         unitStat.attackPower += stat.attackPower;
+        unitStat.attackCoolTime += stat.attackCoolTime;
     }
     public void MinusUnitData(UnitStat stat)
     {
@@ -40,6 +47,7 @@ public class UnitInfo
         unitStat.defensePower -= stat.defensePower;
         unitStat.attackRange -= stat.attackRange;
         unitStat.attackPower -= stat.attackPower;
+        unitStat.attackCoolTime -= stat.attackCoolTime;
     }
 }
 
@@ -52,4 +60,5 @@ public class UnitStat
     public int defensePower;
     public float attackRange;
     public int attackPower;
+    public float attackCoolTime;
 }

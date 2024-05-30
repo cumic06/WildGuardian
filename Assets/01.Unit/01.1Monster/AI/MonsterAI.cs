@@ -62,6 +62,6 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
 
     public bool IsCanAttack()
     {
-        return monster.currentAttackCoolTime >= monster.;
+        return monster.currentAttackCoolTime >= monster.GetUnitData().GetUnitStat().attackCoolTime;
     }
 }

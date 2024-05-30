@@ -13,8 +13,6 @@ public class Monster : Unit
     public LayerMask PlayerLayer => playerLayer;
 
     public float currentAttackCoolTime;
-
-    [SerializeField] private int exp;
     #endregion
 
     protected override void Awake()

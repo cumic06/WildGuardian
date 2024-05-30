@@ -16,8 +16,9 @@ MonoBehaviour:
     unitName: NMeleeMonster
     unitStat:
       maxHp: 100
+      hp: 100
       moveSpeed: 2
       defensePower: 0
       attackRange: 1
       attackPower: 5
-    unitType: 1
+      attackCoolTime: 2
