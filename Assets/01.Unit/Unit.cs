@@ -8,22 +8,6 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     #region variable
     [SerializeField] protected UnitData unitData;
 
-    [SerializeField] protected int currentHp = 0;
-    public int CurrentHp => currentHp;
-
-    [SerializeField] protected float currentMoveSpeed = 0;
-    public float CurrentMoveSpeed => currentMoveSpeed;
-
-
-    [SerializeField] protected int currentDefensePower = 0;
-    public int CurrentDefensePower => currentDefensePower;
-
-    [SerializeField] protected int currentAttackPower = 0;
-    public int CurrentAttackPower => currentAttackPower;
-
-    [SerializeField] protected float attackCoolTime = 0;
-    public float AttackCoolTime => attackCoolTime;
-
     protected Rigidbody2D rigid;
     public Rigidbody2D Rigid => rigid;
 
@@ -36,7 +20,6 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     {
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        ResetAll();
         originColor = sprite.color;
     }
 
@@ -44,36 +27,6 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     {
 
     }
-
-    #region Reset
-    protected void ResetAll()
-    {
-        ResetHp();
-        ResetMoveSpeed();
-        ResetDefesePower();
-        ResetAttackPower();
-    }
-
-    protected void ResetHp()
-    {
-        currentHp = unitData.unitInfo.GetUnitStat().maxHp;
-    }
-
-    public void ResetMoveSpeed()
-    {
-        currentMoveSpeed = unitData.unitInfo.GetUnitStat().moveSpeed;
-    }
-
-    protected void ResetDefesePower()
-    {
-        currentDefensePower = unitData.unitInfo.GetUnitStat().defensePower;
-    }
-
-    protected void ResetAttackPower()
-    {
-        currentAttackPower = unitData.unitInfo.GetUnitStat().attackPower;
-    }
-    #endregion
 
     public UnitInfo GetUnitData()
     {
@@ -83,8 +36,8 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     #region Hp
     public virtual void TakeDamage(int damage)
     {
-        currentHp = damage;
-        if (currentHp <= 0)
+        unitData.unitInfo.GetUnitStat().hp = damage;
+        if (unitData.unitInfo.GetUnitStat().hp <= 0)
         {
             OnDead();
         }
@@ -107,12 +60,17 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     public int GetCurrentHp()
     {
-        return currentHp;
+        return unitData.unitInfo.GetUnitStat().hp;
     }
 
     public int GetCurrentDefensePower()
     {
-        return currentDefensePower;
+        return unitData.unitInfo.GetUnitStat().defensePower;
+    }
+
+    public float GetCurrentMoveSpeed()
+    {
+        return unitData.unitInfo.GetUnitStat().moveSpeed;
     }
 
     public abstract void OnDead();
@@ -129,9 +87,9 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
         IEnumerator SpeedUpCor()
         {
-            currentMoveSpeed *= parcentValue;
+            unitData.unitInfo.GetUnitStat().moveSpeed *= parcentValue;
             yield return new WaitForSeconds(4);
-            currentMoveSpeed /= parcentValue;
+            unitData.unitInfo.GetUnitStat().moveSpeed /= parcentValue;
         }
     }
 }

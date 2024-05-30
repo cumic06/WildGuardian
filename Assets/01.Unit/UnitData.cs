@@ -26,6 +26,7 @@ public class UnitInfo
     public void SumUnitData(UnitStat stat)
     {
         unitStat.maxHp += stat.maxHp;
+        unitStat.hp += stat.maxHp;
         unitStat.moveSpeed += stat.moveSpeed;
         unitStat.defensePower += stat.defensePower;
         unitStat.attackRange += stat.attackRange;
@@ -34,6 +35,7 @@ public class UnitInfo
     public void MinusUnitData(UnitStat stat)
     {
         unitStat.maxHp -= stat.maxHp;
+        unitStat.hp -= stat.hp;
         unitStat.moveSpeed -= stat.moveSpeed;
         unitStat.defensePower -= stat.defensePower;
         unitStat.attackRange -= stat.attackRange;
@@ -42,9 +44,10 @@ public class UnitInfo
 }
 
 [Serializable]
-public struct UnitStat
+public class UnitStat
 {
     public int maxHp;
+    public int hp;
     public float moveSpeed;
     public int defensePower;
     public float attackRange;

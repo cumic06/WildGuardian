@@ -9,12 +9,4 @@ public class Buff : MonoBehaviour
             monster.SpeedUp(3);
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Monster monster))
-        {
-            monster.ResetMoveSpeed();
-        }
-    }
 }
