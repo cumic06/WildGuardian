@@ -15,9 +15,8 @@ public class ObseverManager : I_Publisher
     {
         obseverList.Remove(obsever);
     }
-    public void Notify<T>(T t)
+    public void Notify()
     {
-        Debug.Log(t);
-        obseverList.ForEach(x => x.Func(t));
+        obseverList.ForEach(x => x.Func);
     }
 }

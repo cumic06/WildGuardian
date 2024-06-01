@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using System;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -10,9 +10,7 @@ public class Inventory : EquipmentUI
 {
     [SerializeField] private Image slot;
     public static ObseverManager Inventory_obsever = new ObseverManager();
-    private ObseverFunc<Panel> mouting_obseverFunc = new();
-
-
+    private ObseverFunc mouting_obseverFunc = new();
     private void Awake()
     {
         InventorySet();
@@ -22,7 +20,7 @@ public class Inventory : EquipmentUI
 
     private void StartSet()
     {
-        mouting_obseverFunc.Obsevers = (panel) => { EquipmentActive(equipmentSlot, 1); };
+        mouting_obseverFunc.SumDele(mouting_obseverFunc.Panel = (panel) => { EquipmentActive(equipmentSlot, 1); });
         OptionPanel.Mouting_obsever.obseverList.Add(mouting_obseverFunc);
         clickFunc = (image) =>
         {
