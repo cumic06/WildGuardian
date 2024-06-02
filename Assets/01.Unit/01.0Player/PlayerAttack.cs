@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour, IAttackable
 
     private void Start()
     {
-        TouchInputManager.Instance.AddTouchBeganAction(Attack);
+        UpdateSystem.Instance.AddUpdateAction(Attack);
     }
 
     public void SetAttackPower(int value)
@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour, IAttackable
 
     public void Attack()
     {
-        if (IsCanAttack())
+        if (IsCanAttack() && TouchInputManager.Instance.IsTap)
         {
             Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer).FirstOrDefault();
             if (checkCircle.TryGetComponent(out Monster monster))
