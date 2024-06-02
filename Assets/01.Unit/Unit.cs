@@ -7,7 +7,7 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 {
     #region variable
     [SerializeField] protected UnitData unitData;
-    [SerializeField] protected UnitInfo unitInfo;
+    [SerializeField] protected UnitStat unitStat;
 
     protected Rigidbody2D rigid;
     public Rigidbody2D Rigid => rigid;
@@ -19,8 +19,7 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     protected virtual void Awake()
     {
-        unitInfo = new UnitInfo(unitData.unitInfo.GetName(), unitData.unitInfo.GetUnitStat());
-
+        unitStat = unitData.unitInfo.GetUnitStat();
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         originColor = sprite.color;
@@ -39,7 +38,7 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     public void ResetHp()
     {
-        unitInfo.GetUnitStat().hp = unitInfo.GetUnitStat().maxHp;
+        unitStat.hp = unitStat.maxHp;
     }
     #endregion
 
@@ -47,14 +46,14 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     public UnitInfo GetUnitData()
     {
-        return unitInfo;
+        return unitData.unitInfo;
     }
 
     #region Hp
     public virtual void TakeDamage(int damage)
     {
-        unitInfo.GetUnitStat().hp = damage;
-        if (unitInfo.GetUnitStat().hp <= 0)
+        unitStat.hp = damage;
+        if (unitStat.hp <= 0)
         {
             OnDead();
         }
@@ -72,22 +71,22 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     public int GetMaxHp()
     {
-        return unitData.unitInfo.GetUnitStat().maxHp;
+        return unitStat.maxHp;
     }
 
     public int GetCurrentHp()
     {
-        return unitData.unitInfo.GetUnitStat().hp;
+        return unitStat.hp;
     }
 
     public int GetCurrentDefensePower()
     {
-        return unitData.unitInfo.GetUnitStat().defensePower;
+        return unitStat.defensePower;
     }
 
     public float GetCurrentMoveSpeed()
     {
-        return unitData.unitInfo.GetUnitStat().moveSpeed;
+        return unitStat.moveSpeed;
     }
 
     public abstract void OnDead();
@@ -104,9 +103,9 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
         IEnumerator SpeedUpCor()
         {
-            unitInfo.GetUnitStat().moveSpeed *= parcentValue;
+            unitStat.moveSpeed *= parcentValue;
             yield return new WaitForSeconds(4);
-            unitInfo.GetUnitStat().moveSpeed /= parcentValue;
+            unitStat.moveSpeed /= parcentValue;
         }
     }
 }

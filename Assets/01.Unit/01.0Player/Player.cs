@@ -21,8 +21,8 @@ public class Player : Unit
         Instance = this;
         playerMove = GetComponent<PlayerMove>();
         playerAttack = GetComponent<PlayerAttack>();
-        playerMove.SetMoveSpeed(unitData.unitInfo.GetUnitStat().moveSpeed);
-        playerAttack.SetAttackPower(unitData.unitInfo.GetUnitStat().attackPower);
+        playerMove.SetMoveSpeed(unitStat.moveSpeed);
+        playerAttack.SetAttackPower(unitStat.attackPower);
     }
 
     protected override void Start()

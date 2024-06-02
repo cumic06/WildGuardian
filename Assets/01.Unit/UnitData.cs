@@ -11,13 +11,7 @@ public class UnitData : Data
 public class UnitInfo
 {
     [SerializeField] private string unitName;
-    [SerializeField] private UnitStat unitStat;
-
-    public UnitInfo(string unitName, UnitStat unitStat)
-    {
-        this.unitName = unitName;
-        this.unitStat = unitStat;
-    }
+    public UnitStat unitStat;
 
     public UnitStat GetUnitStat()
     {
@@ -39,6 +33,7 @@ public class UnitInfo
         unitStat.attackPower += stat.attackPower;
         unitStat.attackCoolTime += stat.attackCoolTime;
     }
+
     public void MinusUnitData(UnitStat stat)
     {
         unitStat.maxHp -= stat.maxHp;
@@ -52,7 +47,7 @@ public class UnitInfo
 }
 
 [Serializable]
-public class UnitStat
+public struct UnitStat
 {
     public int maxHp;
     public int hp;
