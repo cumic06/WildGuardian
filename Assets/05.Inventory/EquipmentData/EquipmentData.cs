@@ -59,3 +59,9 @@ public enum EquipmentRank
     UR,
     LR
 }
+
+public enum WeaponType
+{
+    MeleeEquipment,
+    RangedEquipment
+}

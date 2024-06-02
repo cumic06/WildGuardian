@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 public class PlayerAttack : MonoBehaviour, IAttackable
 {
     [SerializeField] private int attackPower;
+    [SerializeField] private WeaponType weaponType;
+    [SerializeField] private Bullet bullet;
+    [SerializeField] private Transform bulletPos;
+
     private const int monsterLayer = 1 << 7;
 
     private void Start()
@@ -28,10 +30,32 @@ public class PlayerAttack : MonoBehaviour, IAttackable
     {
         if (IsCanAttack())
         {
-            Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer).FirstOrDefault();
-            if (checkCircle.TryGetComponent(out Monster monster))
+            switch (weaponType)
             {
-                HpManager.Instance.TakeDamage(monster, attackPower);
+                case WeaponType.MeleeEquipment:
+                    Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer).FirstOrDefault();
+                    if (checkCircle.TryGetComponent(out Monster monster))
+                    {
+                        HpManager.Instance.TakeDamage(monster, attackPower);
+                    }
+                    break;
+
+                case WeaponType.RangedEquipment:
+                    GameObject spawnBullet = Instantiate(bullet.gameObject);
+                    spawnBullet.GetComponent<Bullet>().SetAttackPower(attackPower);
+
+                    if (bulletPos != null)
+                    {
+                        //#if UNITY_EDITOR
+                        //                Debug.Log("BulletPos");
+                        //#endif
+                        spawnBullet.transform.position = bulletPos.position;
+                    }
+                    spawnBullet.transform.position = transform.position;
+                    //#if UNITY_EDITOR
+                    //            Debug.Log("BulletPosNull");
+                    //#endif
+                    break;
             }
         }
     }
