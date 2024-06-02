@@ -23,7 +23,7 @@ public class UnitInfo
         return unitName;
     }
 
-    public void SumUnitData(UnitStat stat)
+    public void SumUnitStat(UnitStat stat)
     {
         unitStat.maxHp += stat.maxHp;
         unitStat.hp += stat.maxHp;
@@ -34,7 +34,7 @@ public class UnitInfo
         unitStat.attackCoolTime += stat.attackCoolTime;
     }
 
-    public void MinusUnitData(UnitStat stat)
+    public void MinusUnitStat(UnitStat stat)
     {
         unitStat.maxHp -= stat.maxHp;
         unitStat.hp -= stat.hp;

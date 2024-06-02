@@ -47,7 +47,7 @@ public class Slots : EquipmentUI
                 equipment.TryGetComponent(out Image image);
                 image.transform.GetChild(0).TryGetComponent(out Image equipmentImage);
                 equipmentImage.sprite = equipmentInfo.GetUnitType();
-                playerData.unitInfo.SumUnitData(equipmentInfo.GetUnitStat());
+                playerData.unitInfo.SumUnitStat(equipmentInfo.GetUnitStat());
                 break;
             }
         }
@@ -55,6 +55,6 @@ public class Slots : EquipmentUI
 
     private void Clear()
     {
-        playerData.unitInfo.MinusUnitData(equipmentData.EquipmentInfoData[equipmentSlot.sprite].GetUnitStat());
+        playerData.unitInfo.MinusUnitStat(equipmentData.EquipmentInfoData[equipmentSlot.sprite].GetUnitStat());
     }
 }
