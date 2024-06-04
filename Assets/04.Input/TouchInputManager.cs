@@ -59,7 +59,7 @@ public class TouchInputManager : MonoSingleton<TouchInputManager>
     public float TouchDistance => Vector3.Distance(FirstTouchPoint, LastTouchPoint);
 
     public float TouchOfViewDistance => Vector3.Distance(FirstTouchPointOfView, LastTouchPointOfView);
-    public bool IsTap => IsTouchUp && tapTime <= touchTime;
+    public bool IsTap => IsTouchUp && tapTime >= touchTime;
 
     public bool IsTouchDown
     {

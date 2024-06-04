@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d3791ab985a784c9bfa3f615c02038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tapTime: 0.5
 --- !u!114 &38679337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2646,6 +2647,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitData: {fileID: 11400000, guid: 2b8c71603e6014147b2c1162fdfeb7ce, type: 2}
+  unitStat:
+    maxHp: 0
+    hp: 0
+    moveSpeed: 0
+    defensePower: 0
+    attackRange: 0
+    attackPower: 0
+    attackCoolTime: 0
   mana: 1
   coolTimeReduce: 0
 --- !u!114 &1747037659
