@@ -9,15 +9,15 @@ public class LevelUISystem : MonoSingleton<LevelUISystem>
 
     private void Start()
     {
-        LevelSystem.Instance.OnChangeLevel += LevelUpImage;
+        LevelSystem.Instance.OnChangeLevel += LevelUpImageActive;
     }
 
-    private void LevelUpImage()
+    private void LevelUpImageActive()
     {
         levelUpPanel.SetActive(true);
     }
 
-    public void LevelUpEnd()
+    public void LevelUpImageDisable()
     {
         levelUpPanel.SetActive(false);
     }

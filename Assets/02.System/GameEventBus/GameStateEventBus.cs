@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using System;
 
 public enum GameState
@@ -14,25 +12,21 @@ public enum GameState
 
 public class GameStateEventBus : MonoBehaviour
 {
-    private static Dictionary<GameState, UnityEvent> gameStates = new();
+    private static Dictionary<GameState, Action> gameStates = new();
 
-    public static void Subscribe(GameState state, UnityAction action)
+    public static void Subscribe(GameState state, Action action)
     {
-        UnityEvent thisEvent;
-
-        if (!gameStates.TryGetValue(state, out thisEvent))
+        if (!gameStates.ContainsValue(action))
         {
-            thisEvent.AddListener(action);
+            gameStates.Add(state, action);
         }
     }
 
-    public static void UnSubscribe(GameState state, UnityAction action)
+    public static void UnSubscribe(GameState state, Action action)
     {
-        UnityEvent thisEvent;
-
-        if (gameStates.TryGetValue(state, out thisEvent))
+        if (gameStates.ContainsValue(action))
         {
-            thisEvent.RemoveListener(action);
+            gameStates[state] -= action;
         }
     }
 

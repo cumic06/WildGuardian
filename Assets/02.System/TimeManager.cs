@@ -12,6 +12,9 @@ public class TimeManager : MonoSingleton<TimeManager>
     private void Start()
     {
         UpdateSystem.Instance.AddFixedUpdateAction(AddTime);
+        GameStateEventBus.Subscribe(GameState.Pause, GameTimeStop);
+        GameStateEventBus.Subscribe(GameState.Play, GameTimePlay);
+        LevelSystem.Instance.OnChangeLevel += () => GameStateEventBus.Publish(GameState.Pause);
     }
 
     private void AddTime()
@@ -35,5 +38,15 @@ public class TimeManager : MonoSingleton<TimeManager>
     public int GetInGameTimeMin()
     {
         return inGameMin;
+    }
+
+    public void GameTimeStop()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void GameTimePlay()
+    {
+        Time.timeScale = 1;
     }
 }

@@ -22,7 +22,8 @@ public class StatsSelector : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Player.Instance.GetUnitData().SumUnitStat(levelUpStatInfo.LevelUpStats);
-        LevelUISystem.Instance.LevelUpEnd();
+        LevelUISystem.Instance.LevelUpImageDisable();
+        GameStateEventBus.Publish(GameState.Play);
     }
 
     public void SetStatsSelectorUI()
