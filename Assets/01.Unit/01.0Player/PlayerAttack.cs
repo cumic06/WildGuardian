@@ -8,8 +8,6 @@ public class PlayerAttack : MonoBehaviour, IAttackable
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform bulletPos;
 
-    private const int monsterLayer = 1 << 7;
-
     private void Start()
     {
         UpdateSystem.Instance.AddUpdateAction(Attack);
@@ -20,21 +18,21 @@ public class PlayerAttack : MonoBehaviour, IAttackable
         attackPower = value;
     }
 
-    public bool IsCanAttack()
+    public bool IsCanAttackRange(out Collider2D[] monsters)
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer);
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, LayerMaskManager.monsterLayer);
+        monsters = checkCircle;
         return checkCircle.Length > 0;
     }
 
     public void Attack()
     {
-        if (IsCanAttack() && TouchInputManager.Instance.IsTap)
+        if (IsCanAttackRange(out Collider2D[] monsters) && TouchInputManager.Instance.IsTap)
         {
             switch (weaponType)
             {
                 case WeaponType.MeleeEquipment:
-                    Collider2D checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, monsterLayer).FirstOrDefault();
-                    if (checkCircle.TryGetComponent(out Monster monster))
+                    if (monsters.FirstOrDefault().TryGetComponent(out Monster monster))
                     {
                         HpManager.Instance.TakeDamage(monster, attackPower);
                     }

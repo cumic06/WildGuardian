@@ -13,7 +13,7 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
 
     public void AI()
     {
-        if (CheckPlayer())
+        if (IsCanAttackRange(out Collider2D[] players))
         {
             monster.currentAttackCoolTime += Time.deltaTime;
             if (IsCanAttack())
@@ -42,10 +42,10 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
         transform.Translate(moveVec * Time.deltaTime);
     }
 
-    protected bool CheckPlayer()
+    public virtual bool IsCanAttackRange(out Collider2D[] player)
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, monster.AttackRange, monster.PlayerLayer);
-
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, monster.AttackRange, LayerMaskManager.playerLayer);
+        player = checkCircle;
         return checkCircle.Length > 0;
     }
 
@@ -60,7 +60,7 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
 
     public abstract void Attack();
 
-    public bool IsCanAttack()
+    protected bool IsCanAttack()
     {
         return monster.currentAttackCoolTime >= monster.GetUnitData().GetUnitStat().attackCoolTime;
     }

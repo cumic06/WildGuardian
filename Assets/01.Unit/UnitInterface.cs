@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public interface IDamageable : IHpable
 {
@@ -23,7 +24,7 @@ public interface IHpable
 
 public interface IAttackable
 {
-    public bool IsCanAttack();
+    public bool IsCanAttackRange(out Collider2D[] attackUnit);
     public void Attack();
 }
 

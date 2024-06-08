@@ -9,9 +9,6 @@ public class Monster : Unit
 
     public float AttackRange => GetUnitData().GetUnitStat().attackRange;
 
-    [SerializeField] protected LayerMask playerLayer;
-    public LayerMask PlayerLayer => playerLayer;
-
     public float currentAttackCoolTime;
     #endregion
 

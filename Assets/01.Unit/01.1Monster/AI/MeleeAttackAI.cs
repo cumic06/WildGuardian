@@ -6,11 +6,9 @@ public class MeleeAttackAI : MonsterAI
 {
     public override void Attack()
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, monster.AttackRange, monster.PlayerLayer);
-
-        if (checkCircle.Length > 0)
+        if (IsCanAttackRange(out Collider2D[] players))
         {
-            foreach (var check in checkCircle)
+            foreach (var check in players)
             {
                 if (check.TryGetComponent(out IDamageable player))
                 {
