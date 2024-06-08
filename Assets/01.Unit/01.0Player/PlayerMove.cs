@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour, IMoveable
 {
-    private float dashPower = 5;
+    private float dashPower;
     private float moveSpeed;
 
     private void Start()

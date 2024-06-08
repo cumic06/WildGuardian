@@ -118,29 +118,50 @@ public class TouchInputManager : MonoSingleton<TouchInputManager>
     private Action touchingAction;
     private Action touchEndAction;
 
+    private bool isPause;
+
+    private void Start()
+    {
+        GameStateEventBus.Subscribe(GameState.Pause, PauseTrue);
+        GameStateEventBus.Subscribe(GameState.Play, PauseFalse);
+    }
+
+    private void PauseTrue()
+    {
+        isPause = true;
+    }
+
+    private void PauseFalse()
+    {
+        isPause = false;
+    }
+
     private void Update()
     {
-        if (IsTouchDown)
+        if (!isPause)
         {
+            if (IsTouchDown)
+            {
 #if UNITY_EDITOR
-            clickRawPosition = Input.mousePosition;
+                clickRawPosition = Input.mousePosition;
 #endif
-            touchTime = 0.0f;
-            touchBegannAction?.Invoke();
-        }
-        if (IsTouching)
-        {
+                touchTime = 0.0f;
+                touchBegannAction?.Invoke();
+            }
+            if (IsTouching)
+            {
 #if UNITY_EDITOR
-            clickLastPosition = Input.mousePosition;
+                clickLastPosition = Input.mousePosition;
 #endif
-            touchingAction?.Invoke();
-        }
-        if (IsTouchUp)
-        {
-            touchEndAction?.Invoke();
-        }
+                touchingAction?.Invoke();
+            }
+            if (IsTouchUp)
+            {
+                touchEndAction?.Invoke();
+            }
 
-        touchTime += Time.deltaTime;
+            touchTime += Time.deltaTime;
+        }
     }
 
     public void AddTouchBeganAction(Action action)
@@ -156,5 +177,11 @@ public class TouchInputManager : MonoSingleton<TouchInputManager>
     public void AddTouchEndAction(Action action)
     {
         touchEndAction += action;
+    }
+
+    private void OnDestroy()
+    {
+        GameStateEventBus.UnSubscribe(GameState.Pause, PauseTrue);
+        GameStateEventBus.UnSubscribe(GameState.Play, PauseFalse);
     }
 }
