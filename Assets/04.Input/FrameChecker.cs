@@ -5,7 +5,7 @@ using UnityEngine;
 public class FrameChecker : MonoBehaviour
 {
     private float deltaTime;
-    [SerializeField] private bool isCheck;
+    public bool isCheck;
 
     private void Awake()
     {
@@ -14,10 +14,12 @@ public class FrameChecker : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (isCheck)
         {
             deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         }
+#endif
     }
 
     private void OnGUI()
