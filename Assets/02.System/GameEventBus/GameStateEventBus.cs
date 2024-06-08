@@ -16,13 +16,13 @@ public class GameStateEventBus : MonoBehaviour
 
     public static void Subscribe(GameState state, Action action)
     {
-        if (gameStates.ContainsKey(state))
+        if (!gameStates.ContainsKey(state))
         {
             gameStates.Add(state, action);
         }
         else
         {
-
+            gameStates[state] += action;
         }
     }
 
