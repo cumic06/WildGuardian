@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4316576506016561065}
-  - component: {fileID: 4930676492819061432}
+  - component: {fileID: 889622114591623270}
   - component: {fileID: 9170163278144279060}
   - component: {fileID: 6349319641594318259}
   - component: {fileID: 161711407300062794}
@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4316576506016561065
 Transform:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ Transform:
   - {fileID: 6088453953836337930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4930676492819061432
+--- !u!114 &889622114591623270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,20 +77,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7713876028776284802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3dc9ba8a02fbc44a9f0506865f73974, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a1e3ca3cffbc5c448cd353cd3aa500b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitData: {fileID: 11400000, guid: 09d908bc3f025f04bb8425add995be26, type: 2}
-  currentHp: 0
-  currentMoveSpeed: 0
-  currentDefensePower: 0
-  currentAttackPower: 0
-  attackCoolTime: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  unitStat:
+    maxHp: 0
+    hp: 0
+    moveSpeed: 0
+    defensePower: 0
+    attackRange: 0
+    attackPower: 0
+    attackCoolTime: 0
   currentAttackCoolTime: 0
-  exp: 100
 --- !u!114 &9170163278144279060
 MonoBehaviour:
   m_ObjectHideFlags: 0

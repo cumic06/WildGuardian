@@ -14,10 +14,10 @@ public interface IHpable
 {
     public void ChangeHp(int value);
 
-    public int GetMaxHp();
-    public int GetCurrentHp();
+    public int GetMaxHpStat();
+    public int GetCurrentHpStat();
 
-    public int GetCurrentDefensePower();
+    public int GetCurrentDefensePowerStat();
 
     public void OnDead();
 }

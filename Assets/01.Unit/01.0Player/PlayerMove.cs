@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour, IMoveable
 {
-    [SerializeField] private float moveSpeed;
+    private float dashPower = 5;
+    private float moveSpeed;
 
     private void Start()
     {
@@ -17,14 +18,19 @@ public class PlayerMove : MonoBehaviour, IMoveable
         moveSpeed = value;
     }
 
+    public void SetDashPower(float value)
+    {
+        dashPower = value;
+    }
+
     public void Dash()
     {
         if (GestureInputManager.Instance.IsSwipe)
         {
-            transform.position += (Vector3)TouchInputManager.Instance.TouchDirection * 5;
-//#if UNITY_EDITOR
-//            Debug.Log("Dash");
-//#endif
+            transform.position += (Vector3)TouchInputManager.Instance.TouchDirection * dashPower;
+            //#if UNITY_EDITOR
+            //            Debug.Log("Dash");
+            //#endif
         }
     }
 

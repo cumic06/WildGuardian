@@ -7,17 +7,17 @@ public class HpManager : MonoSingleton<HpManager>
 
     public void TakeDamage(IDamageable damageUnit, int damage)
     {
-        int resultDamage = damage - damageUnit.GetCurrentDefensePower();
+        int resultDamage = damage - damageUnit.GetCurrentDefensePowerStat();
         if (resultDamage <= 0)
         {
             resultDamage = 1;
         }
-        damageUnit.TakeDamage(ChangeHp(-resultDamage, damageUnit.GetCurrentHp(), damageUnit.GetMaxHp()));
+        damageUnit.TakeDamage(ChangeHp(-resultDamage, damageUnit.GetCurrentHpStat(), damageUnit.GetMaxHpStat()));
     }
 
     public void TakeHeal(IHealable healUnit, int heal)
     {
-        int resultHeal = ChangeHp(heal, healUnit.GetCurrentHp(), healUnit.GetMaxHp());
+        int resultHeal = ChangeHp(heal, healUnit.GetCurrentHpStat(), healUnit.GetMaxHpStat());
         healUnit.TakeHeal(resultHeal);
     }
 

@@ -15,6 +15,8 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     protected SpriteRenderer sprite;
 
     protected Color originColor;
+
+    private const float speedCorrection = 0.025f;
     #endregion
 
     protected virtual void Awake()
@@ -69,24 +71,24 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
         sprite.color = originColor;
     }
 
-    public int GetMaxHp()
+    public int GetMaxHpStat()
     {
         return unitStat.maxHp;
     }
 
-    public int GetCurrentHp()
+    public int GetCurrentHpStat()
     {
         return unitStat.hp;
     }
 
-    public int GetCurrentDefensePower()
+    public int GetCurrentDefensePowerStat()
     {
         return unitStat.defensePower;
     }
 
-    public float GetCurrentMoveSpeed()
+    public float GetCurrentMoveSpeedStat()
     {
-        return unitStat.moveSpeed;
+        return unitStat.moveSpeed * speedCorrection;
     }
 
     public abstract void OnDead();

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitData", menuName = "Data/UnitData", order = 0)]
+[CreateAssetMenu(fileName = "UnitData", menuName = "Data/UnitData/UnitData", order = 0)]
 public class UnitData : Data
 {
     public UnitInfo unitInfo;

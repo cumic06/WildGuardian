@@ -38,7 +38,8 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
     protected void FollowPlayer()
     {
         Vector3 dir = Player.Instance.transform.position - transform.position;
-        Vector3 moveVec = monster.GetCurrentMoveSpeed() * dir.normalized;
+        float speed = monster.GetCurrentMoveSpeedStat();
+        Vector3 moveVec = speed * dir.normalized;
         transform.Translate(moveVec * Time.deltaTime);
     }
 

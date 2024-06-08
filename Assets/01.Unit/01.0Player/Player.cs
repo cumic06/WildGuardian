@@ -10,8 +10,10 @@ public class Player : Unit
     public static Player Instance;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
-    [SerializeField] private float mana;
-    [SerializeField] private float coolTimeReduce;
+    [Space]
+    public PlayerData playerData;
+    public PlayerStat playerStat;
+
     public float AttackRange => GetUnitData().GetUnitStat().attackRange;
     #endregion
 
@@ -21,14 +23,16 @@ public class Player : Unit
         Instance = this;
         playerMove = GetComponent<PlayerMove>();
         playerAttack = GetComponent<PlayerAttack>();
-        playerMove.SetMoveSpeed(unitStat.moveSpeed);
-        playerAttack.SetAttackPower(unitStat.attackPower);
+        playerStat = playerData.playerStat;
     }
 
     protected override void Start()
     {
         base.Start();
         UpdateSystem.Instance.AddUpdateAction(playerMove.Dash);
+        playerMove.SetMoveSpeed(GetCurrentMoveSpeedStat());
+        playerMove.SetDashPower(playerStat.dashPower);
+        playerAttack.SetAttackPower(unitStat.attackPower);
     }
 
     #region Hp
@@ -36,7 +40,7 @@ public class Player : Unit
     {
         base.TakeDamage(damage);
         EffectUI.Instance.FlickrImage(new Color(1, 0, 0, 0.5f));
-        HpManager.Instance.OnChangeHp?.Invoke(GetCurrentHp(), GetMaxHp());
+        HpManager.Instance.OnChangeHp?.Invoke(GetCurrentHpStat(), GetMaxHpStat());
     }
 
     public override void ChangeHp(int value)
