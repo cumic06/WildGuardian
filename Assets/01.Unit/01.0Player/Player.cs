@@ -33,6 +33,18 @@ public class Player : Unit
         playerMove.SetMoveSpeed(GetCurrentMoveSpeedStat());
         playerMove.SetDashPower(playerStat.dashPower);
         playerAttack.SetAttackPower(unitStat.attackPower);
+        playerAttack.SetAttackDelayTime(unitStat.attackDelayTime);
+    }
+
+    private void OnValidate()
+    {
+        if (Application.isPlaying)
+        {
+            playerMove.SetMoveSpeed(GetCurrentMoveSpeedStat());
+            playerMove.SetDashPower(playerStat.dashPower);
+            playerAttack.SetAttackPower(unitStat.attackPower);
+            playerAttack.SetAttackDelayTime(unitStat.attackDelayTime);
+        }
     }
 
     #region Hp
@@ -50,7 +62,14 @@ public class Player : Unit
 
     public override void OnDead()
     {
+        Destroy(gameObject);
+        GameStateEventBus.Publish(GameState.GameOver);
         Debug.Log("PlayerDead");
     }
     #endregion
+
+    private void OnDestroy()
+    {
+        UpdateSystem.Instance.RemoveUpdateAction(playerMove.Dash);
+    }
 }

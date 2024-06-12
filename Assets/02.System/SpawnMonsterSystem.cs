@@ -70,6 +70,7 @@ public class SpawnMonsterSystem : MonoSingleton<SpawnMonsterSystem>
     {
         if (Application.isPlaying)
         {
+            if (Player.Instance == null) return;
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(Player.Instance.transform.position, spawnRange);
         }

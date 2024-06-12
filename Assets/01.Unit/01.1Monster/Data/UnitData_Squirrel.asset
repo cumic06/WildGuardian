@@ -21,4 +21,4 @@ MonoBehaviour:
       defensePower: 0
       attackRange: 1
       attackPower: 15
-      attackCoolTime: 0.5
+      attackDelayTime: 1

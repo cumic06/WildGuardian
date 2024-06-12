@@ -37,6 +37,7 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
 
     protected void FollowPlayer()
     {
+        if (Player.Instance == null) return;
         Vector3 dir = Player.Instance.transform.position - transform.position;
         float speed = monster.GetCurrentMoveSpeedStat();
         Vector3 moveVec = speed * dir.normalized;
@@ -63,6 +64,6 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
 
     protected bool IsCanAttack()
     {
-        return monster.currentAttackCoolTime >= monster.GetUnitData().GetUnitStat().attackCoolTime;
+        return monster.currentAttackCoolTime >= monster.GetUnitData().GetUnitStat().attackDelayTime;
     }
 }

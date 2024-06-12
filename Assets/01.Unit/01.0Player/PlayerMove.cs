@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
     private void Start()
     {
         TouchInputManager.Instance.AddTouchingAction(Move);
+        UpdateSystem.Instance.AddFixedUpdateAction(Flip);
     }
 
     public void SetMoveSpeed(float value)
@@ -21,6 +22,11 @@ public class PlayerMove : MonoBehaviour, IMoveable
     public void SetDashPower(float value)
     {
         dashPower = value;
+    }
+
+    private void Flip()
+    {
+        transform.localScale = TouchInputManager.Instance.TouchDirection.x >= 0 ? Vector3.one : new Vector3(-1, 1, 1);
     }
 
     public void Dash()
@@ -37,5 +43,11 @@ public class PlayerMove : MonoBehaviour, IMoveable
     public void Move()
     {
         transform.Translate(moveSpeed * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * (Vector3)TouchInputManager.Instance.TouchDirection);
+    }
+
+    private void OnDestroy()
+    {
+        TouchInputManager.Instance.RemoveTouchingAction(Move);
+        UpdateSystem.Instance.RemoveFixedUpdateAction(Flip);
     }
 }

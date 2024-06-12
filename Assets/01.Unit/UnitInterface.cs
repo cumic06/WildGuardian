@@ -24,7 +24,6 @@ public interface IHpable
 
 public interface IAttackable
 {
-    public bool IsCanAttackRange(out Collider2D[] attackUnit);
     public void Attack();
 }
 

@@ -174,6 +174,11 @@ public class TouchInputManager : MonoSingleton<TouchInputManager>
         touchingAction += action;
     }
 
+    public void RemoveTouchingAction(Action action)
+    {
+        touchingAction -= action;
+    }
+
     public void AddTouchEndAction(Action action)
     {
         touchEndAction += action;

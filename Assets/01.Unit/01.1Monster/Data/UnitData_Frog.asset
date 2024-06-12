@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8bc9778961c2748822f30e5a9e6007, type: 3}
-  m_Name: UnitData
+  m_Name: UnitData_Frog
   m_EditorClassIdentifier: 
   unitInfo:
-    unitName: Player
+    unitName: 
     unitStat:
-      maxHp: 100
+      maxHp: 10
       hp: 0
-      moveSpeed: 100
+      moveSpeed: 40
       defensePower: 0
-      attackRange: 2
-      attackPower: 5
-      attackCoolTime: 1
+      attackRange: 1200
+      attackPower: 20
+      attackDelayTime: 1

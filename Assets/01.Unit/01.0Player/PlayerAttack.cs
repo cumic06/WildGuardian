@@ -4,12 +4,13 @@ using System.Linq;
 public class PlayerAttack : MonoBehaviour, IAttackable
 {
     [SerializeField] private int attackPower;
-    [SerializeField] private WeaponType weaponType;
-    [SerializeField] private Bullet bullet;
-    [SerializeField] private Transform bulletPos;
+    [SerializeField] private float attackDelayTime;
+    [SerializeField] private float currentAttackDelayTime;
+    public Weapon currentWeapon;
 
     private void Start()
     {
+        currentWeapon.SetAttackPower(attackPower);
         UpdateSystem.Instance.AddUpdateAction(Attack);
     }
 
@@ -18,51 +19,27 @@ public class PlayerAttack : MonoBehaviour, IAttackable
         attackPower = value;
     }
 
-    public bool IsCanAttackRange(out Collider2D[] monsters)
+    public void SetAttackDelayTime(float value)
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, Player.Instance.AttackRange, LayerMaskManager.monsterLayer);
-        monsters = checkCircle;
-        return checkCircle.Length > 0;
+        attackDelayTime = currentWeapon.ManualAttackTime / value;
     }
 
     public void Attack()
     {
-        if (IsCanAttackRange(out Collider2D[] monsters) && TouchInputManager.Instance.IsTap)
+        currentAttackDelayTime += Time.deltaTime;
+
+        if (TouchInputManager.Instance.IsTap)
         {
-            switch (weaponType)
+            if (currentAttackDelayTime >= attackDelayTime)
             {
-                case WeaponType.MeleeEquipment:
-                    if (monsters.FirstOrDefault().TryGetComponent(out Monster monster))
-                    {
-                        HpManager.Instance.TakeDamage(monster, attackPower);
-                    }
-                    break;
-
-                case WeaponType.RangedEquipment:
-                    GameObject spawnBullet = Instantiate(bullet.gameObject);
-                    spawnBullet.GetComponent<Bullet>().SetAttackPower(attackPower);
-
-                    if (bulletPos != null)
-                    {
-                        //#if UNITY_EDITOR
-                        //                Debug.Log("BulletPos");
-                        //#endif
-                        spawnBullet.transform.position = bulletPos.position;
-                    }
-                    spawnBullet.transform.position = transform.position;
-                    //#if UNITY_EDITOR
-                    //            Debug.Log("BulletPosNull");
-                    //#endif
-                    break;
+                currentWeapon.Attack();
+                currentAttackDelayTime = 0;
             }
         }
     }
-    protected virtual void OnDrawGizmos()
+
+    private void OnDestroy()
     {
-        if (Application.isPlaying)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, Player.Instance.AttackRange);
-        }
+        UpdateSystem.Instance.RemoveUpdateAction(Attack);
     }
 }

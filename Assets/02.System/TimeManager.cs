@@ -14,6 +14,7 @@ public class TimeManager : MonoSingleton<TimeManager>
         UpdateSystem.Instance.AddFixedUpdateAction(AddTime);
         GameStateEventBus.Subscribe(GameState.Pause, GameTimeStop);
         GameStateEventBus.Subscribe(GameState.Play, GameTimePlay);
+        GameStateEventBus.Subscribe(GameState.GameOver, GameTimeStop);
         LevelSystem.Instance.OnChangeLevel += () => GameStateEventBus.Publish(GameState.Pause);
     }
 
@@ -48,5 +49,12 @@ public class TimeManager : MonoSingleton<TimeManager>
     public void GameTimePlay()
     {
         Time.timeScale = 1;
+    }
+
+    private void OnDestroy()
+    {
+        GameStateEventBus.UnSubscribe(GameState.Pause, GameTimeStop);
+        GameStateEventBus.UnSubscribe(GameState.Play, GameTimePlay);
+        GameStateEventBus.UnSubscribe(GameState.GameOver, GameTimeStop);
     }
 }

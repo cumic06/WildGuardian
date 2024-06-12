@@ -1472,6 +1472,108 @@ MonoBehaviour:
   - {fileID: 5732437743825699657, guid: e94f64fcd244ee242aa723b178dc2ab5, type: 3}
   - {fileID: 5347175227970002341, guid: 6bd6d1caa5a9da046934f9f40533b9da, type: 3}
   levelUpStatData: {fileID: 11400000, guid: 182ba4d2723f066478cb9dee9649b84a, type: 2}
+--- !u!1 &946191775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946191777}
+  - component: {fileID: 946191776}
+  - component: {fileID: 946191778}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &946191776
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946191775}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &946191777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946191775}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.65, y: 1.03, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1747037653}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946191778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946191775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5529b6cc4d880ff459aed8a6754dca9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 0
+  ManualAttackTime: 0.8
+  AutomaticAttackTime: 2
+  halfCircleCenter: {fileID: 946191777}
+  radius: 5
 --- !u!1 &977659872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,7 +2646,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 946191777}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1747037654
@@ -2639,7 +2742,7 @@ MonoBehaviour:
     defensePower: 0
     attackRange: 0
     attackPower: 0
-    attackCoolTime: 0
+    attackDelayTime: 0
   playerData: {fileID: 11400000, guid: 379533906e9f6f14199b1b01415ceea7, type: 2}
   playerStat:
     mana: 0
@@ -2670,9 +2773,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 0
-  weaponType: 0
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 0}
+  attackDelayTime: 0
+  currentAttackDelayTime: 0
+  currentWeapon: {fileID: 946191778}
 --- !u!1 &1757861047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,6 +4013,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5214369738462922375, guid: 7654cc8f0d5785d43be5e609d4429c80, type: 3}
+      propertyPath: unitData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c5b7bde183485f479ec4d9a628e6bb6, type: 2}
     - target: {fileID: 7847175267931079052, guid: 7654cc8f0d5785d43be5e609d4429c80, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -3956,7 +4063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852297909823247964, guid: 7654cc8f0d5785d43be5e609d4429c80, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4011,13 +4118,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3212174012264333496, guid: 6d8157a984548ee4dbf11f71d633a8bb, type: 3}
+      propertyPath: unitData
+      value: 
+      objectReference: {fileID: 11400000, guid: eb3bfbbe292c49d46b0ef48f4f755826, type: 2}
     - target: {fileID: 6462642958880509731, guid: 6d8157a984548ee4dbf11f71d633a8bb, type: 3}
       propertyPath: m_Name
-      value: SniperFarAttackMonster
+      value: Frog
       objectReference: {fileID: 0}
     - target: {fileID: 6462642958880509731, guid: 6d8157a984548ee4dbf11f71d633a8bb, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151418064243198519, guid: 6d8157a984548ee4dbf11f71d633a8bb, type: 3}
+      propertyPath: bulletCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4032,9 +4147,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 558670766969186876, guid: 3596be46f28ac484da425800f15b9d22, type: 3}
+      propertyPath: unitData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3368d87fd0a764041839682c3c7a3395, type: 2}
+    - target: {fileID: 1351756424866824789, guid: 3596be46f28ac484da425800f15b9d22, type: 3}
+      propertyPath: bulletAngle
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351756424866824789, guid: 3596be46f28ac484da425800f15b9d22, type: 3}
+      propertyPath: bulletCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2730014927106966153, guid: 3596be46f28ac484da425800f15b9d22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.733255
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2730014927106966153, guid: 3596be46f28ac484da425800f15b9d22, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4074,7 +4201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683920974643657980, guid: 3596be46f28ac484da425800f15b9d22, type: 3}
       propertyPath: m_Name
-      value: ShotGunFarAttackMonster
+      value: Hedgehog
       objectReference: {fileID: 0}
     - target: {fileID: 3683920974643657980, guid: 3596be46f28ac484da425800f15b9d22, type: 3}
       propertyPath: m_IsActive
@@ -4096,6 +4223,10 @@ PrefabInstance:
     - target: {fileID: 592858190467275832, guid: 95d0c308422b7f74780d3444d16992ff, type: 3}
       propertyPath: m_Name
       value: Rabbit
+      objectReference: {fileID: 0}
+    - target: {fileID: 592858190467275832, guid: 95d0c308422b7f74780d3444d16992ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761061036706751353, guid: 95d0c308422b7f74780d3444d16992ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4150,6 +4281,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5129944198535824866, guid: 5b39fba9f95b21c49991346b2286b7aa, type: 3}
+      propertyPath: bulletCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5759909708150051053, guid: 5b39fba9f95b21c49991346b2286b7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2
@@ -4250,6 +4385,10 @@ PrefabInstance:
     - target: {fileID: 8409887421272596487, guid: 25ccf4798ac20dc478ce8a6af1bae983, type: 3}
       propertyPath: m_Name
       value: Bear
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409887421272596487, guid: 25ccf4798ac20dc478ce8a6af1bae983, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

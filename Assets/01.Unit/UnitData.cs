@@ -31,7 +31,7 @@ public class UnitInfo
         unitStat.defensePower += stat.defensePower;
         unitStat.attackRange += stat.attackRange;
         unitStat.attackPower += stat.attackPower;
-        unitStat.attackCoolTime += stat.attackCoolTime;
+        unitStat.attackDelayTime += stat.attackDelayTime;
     }
 
     public void MinusUnitStat(UnitStat stat)
@@ -42,7 +42,7 @@ public class UnitInfo
         unitStat.defensePower -= stat.defensePower;
         unitStat.attackRange -= stat.attackRange;
         unitStat.attackPower -= stat.attackPower;
-        unitStat.attackCoolTime -= stat.attackCoolTime;
+        unitStat.attackDelayTime -= stat.attackDelayTime;
     }
 }
 
@@ -55,5 +55,5 @@ public struct UnitStat
     public int defensePower;
     public float attackRange;
     public int attackPower;
-    public float attackCoolTime;
+    public float attackDelayTime;
 }

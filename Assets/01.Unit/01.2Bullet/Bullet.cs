@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        transform.LookAt2D(Player.Instance.transform.position);
         UpdateSystem.Instance.AddFixedUpdateAction(Move);
     }
 
@@ -23,7 +22,6 @@ public class Bullet : MonoBehaviour
         if (collision.TryGetComponent(out IDamageable unit))
         {
             HpManager.Instance.TakeDamage(unit, bulletDamage);
-            UpdateSystem.Instance.RemoveFixedUpdateAction(Move);
             Destroy(gameObject);
         }
     }
@@ -31,5 +29,10 @@ public class Bullet : MonoBehaviour
     protected virtual void Move()
     {
         transform.Translate(bulletSpeed * Time.deltaTime * Vector2.right);
+    }
+
+    private void OnDestroy()
+    {
+        UpdateSystem.Instance.RemoveFixedUpdateAction(Move);
     }
 }
