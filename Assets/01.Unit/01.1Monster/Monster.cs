@@ -37,6 +37,7 @@ public class Monster : Unit
         transform.localScale = new Vector2(1.15f, 1.15f);
         yield return changeWait;
         transform.localScale = new Vector2(1, 1);
+        yield return changeWait;
     }
 
     public override void ChangeHp(int value)

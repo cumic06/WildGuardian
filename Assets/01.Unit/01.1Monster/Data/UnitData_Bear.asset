@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UnitData_Bear
   m_EditorClassIdentifier: 
   unitInfo:
-    unitName: TestBear
+    unitName: Bear
     unitStat:
       maxHp: 50
       hp: 0

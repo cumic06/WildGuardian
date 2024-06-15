@@ -17,6 +17,8 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     protected Color originColor;
 
     private const float speedCorrection = 0.025f;
+
+    private const float hitChangeTime = 0.25f;
     #endregion
 
     protected virtual void Awake()
@@ -65,10 +67,11 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     protected virtual IEnumerator ChangeColor(Color color)
     {
-        WaitForSeconds changeWait = new(1f);
+        WaitForSeconds changeWait = new(hitChangeTime);
         sprite.color = color;
         yield return changeWait;
         sprite.color = originColor;
+        yield return changeWait;
     }
 
     public int GetMaxHpStat()

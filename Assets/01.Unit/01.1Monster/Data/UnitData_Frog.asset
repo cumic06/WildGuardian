@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UnitData_Frog
   m_EditorClassIdentifier: 
   unitInfo:
-    unitName: 
+    unitName: Frog
     unitStat:
       maxHp: 10
       hp: 0
