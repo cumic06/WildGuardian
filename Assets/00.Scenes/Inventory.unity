@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 118325810}
   - component: {fileID: 118325809}
   m_Layer: 5
-  m_Name: Explain
+  m_Name: Cbtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1138,6 +1138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b946d9267361ab64c96594dca03bd1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionPanel: {fileID: 2092548270}
+  equipmentData: {fileID: 11400000, guid: f90982e441b28a04faa4d09522a76421, type: 2}
+  slot: {fileID: 5529399120632966131, guid: b2f0c4da42d9e7e4ba05702d345d253e, type: 3}
+  Image: {fileID: 0}
 --- !u!114 &286458360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,7 +1168,7 @@ GameObject:
   - component: {fileID: 326187243}
   - component: {fileID: 326187242}
   m_Layer: 5
-  m_Name: Explain
+  m_Name: Ebtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1863,6 +1867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb8a078c3ab4404794967346b90f9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipmentType: 0
 --- !u!1 &662546895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 662546896}
   - component: {fileID: 662546897}
+  - component: {fileID: 662546898}
   m_Layer: 5
   m_Name: MenuBar
   m_TagString: Untagged
@@ -1928,6 +1934,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &662546898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662546895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eeb57842beb29e43b36b5031f1c21d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &692918130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,6 +2445,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352c7bd9733b42b4595edbcf0ba8b856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mountingBtn: {fileID: 4311264}
+  clearBtn: {fileID: 63946555}
+  Panel: {fileID: 2092548274}
+  EquipmentName: {fileID: 1731817432}
+  EquipmentImage: {fileID: 1859887460}
+  EquipmentRank: {fileID: 102103508}
+  EquipmentLv: {fileID: 16330682}
+  EquipmentExplain: {fileID: 817833986}
+  PlayerAttackText: {fileID: 1104815354}
+  PlayerHpText: {fileID: 902136888}
 --- !u!1 &889355865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,7 +2894,7 @@ GameObject:
   - component: {fileID: 1135816924}
   - component: {fileID: 1135816923}
   m_Layer: 5
-  m_Name: Explain
+  m_Name: Mbtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3174,6 +3202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1dad465003dae4d9986340298295bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionPanel: {fileID: 0}
+  equipmentData: {fileID: 0}
 --- !u!114 &1178991075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3262,6 +3292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9288999ac93cf54883c0168ea22528d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTransform: {fileID: 1204375668}
 --- !u!1 &1238817884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3569,6 +3600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9829a2d8ec4d34aaceb9ec2ee468ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveIndex: 0
 --- !u!1001 &1427850154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3691,6 +3723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb8a078c3ab4404794967346b90f9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipmentType: 0
 --- !u!1 &1477593171
 GameObject:
   m_ObjectHideFlags: 0
@@ -4096,6 +4129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb8a078c3ab4404794967346b90f9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipmentType: 0
 --- !u!1 &1538843564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4438,6 +4472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9829a2d8ec4d34aaceb9ec2ee468ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveIndex: 0
 --- !u!1 &1591379093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,6 +5170,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795085079}
   m_CullTransparentMesh: 1
+--- !u!114 &1859887460 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5529399120632966131, guid: b2f0c4da42d9e7e4ba05702d345d253e, type: 3}
+  m_PrefabInstance: {fileID: 224070936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1976589838
 GameObject:
   m_ObjectHideFlags: 0
@@ -5333,6 +5379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb8a078c3ab4404794967346b90f9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipmentType: 0
 --- !u!1 &2091287433
 GameObject:
   m_ObjectHideFlags: 0
@@ -5688,6 +5735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9829a2d8ec4d34aaceb9ec2ee468ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveIndex: 0
 --- !u!1 &2145420005
 GameObject:
   m_ObjectHideFlags: 0
@@ -5737,6 +5785,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2902fcb7f887daf42b3741c3fc58864c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionPanel: {fileID: 2092548270}
+  equipmentData: {fileID: 11400000, guid: f90982e441b28a04faa4d09522a76421, type: 2}
+  equipments:
+  - {fileID: 579668279}
+  - {fileID: 1427850157}
+  - {fileID: 1531816690}
+  - {fileID: 2030419845}
+  playerData: {fileID: 11400000, guid: 2b8c71603e6014147b2c1162fdfeb7ce, type: 2}
 --- !u!114 &2145420008
 MonoBehaviour:
   m_ObjectHideFlags: 0

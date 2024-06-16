@@ -11,10 +11,10 @@ public class Slots : EquipmentUI
     [SerializeField] private Equipment[] equipments = new Equipment[4];
     [SerializeField] private UnitData playerData;
     private EquipmentInfo equipmentInfo;
-    private ObseverFunc<EquipmentInfo> Inventory_obseverFunc = new();
-    private ObseverFunc<OptionPanel> Mouting_obseverFunc = new();
-    private ObseverFunc<OptionPanel> Clear_obseverFunc = new();
-    private ObseverFunc<OptionPanel> StartSet_obseverFunc = new();
+    private ObseverFunc Inventory_obseverFunc = new();
+    private ObseverFunc Mouting_obseverFunc = new();
+    private ObseverFunc Clear_obseverFunc = new();
+    private ObseverFunc StartSet_obseverFunc = new();
     public void Awake()
     {
         ObseverSet();
@@ -25,15 +25,15 @@ public class Slots : EquipmentUI
     private void ObseverSet()
     {
         OptionPanel optionPanel;
-        StartSet_obseverFunc.Obsevers = (panel) =>
+        StartSet_obseverFunc.OptionPanel = (panel) =>
         {
             optionPanel = panel;
             PlayerText(optionPanel);
         };
         OptionPanel.StartSet_obsever.AddObsever(StartSet_obseverFunc);
-        Inventory_obseverFunc.Obsevers = (t) => equipmentInfo = t;
+        Inventory_obseverFunc.Inventory = (t) => equipmentInfo = t.equipmentData.EquipmentInfoData[t.Image.sprite];
         Inventory.Inventory_obsever.obseverList.Add(Inventory_obseverFunc);
-        Mouting_obseverFunc.Obsevers = (panel) =>
+        Mouting_obseverFunc.OptionPanel = (panel) =>
         {
             optionPanel = panel;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);
@@ -41,7 +41,7 @@ public class Slots : EquipmentUI
             PlayerText(optionPanel);
         };
         OptionPanel.Mouting_obsever.obseverList.Add(Mouting_obseverFunc);
-        Clear_obseverFunc.Obsevers = (panel) =>
+        Clear_obseverFunc.OptionPanel = (panel) =>
         {
             optionPanel = panel;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);

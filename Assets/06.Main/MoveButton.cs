@@ -9,7 +9,7 @@ public class MoveButton : MonoBehaviour, IPointerClickHandler
     public static ObseverManager MovePanel_Obsever = new();
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-        MovePanel_Obsever.Notify(MoveIndex);
+        MovePanel_Obsever.Notify(this);
         Debug.Log("ÅÍÄ¡");
     }
 }

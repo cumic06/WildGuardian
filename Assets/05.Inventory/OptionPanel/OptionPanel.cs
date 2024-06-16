@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class OptionPanel : MonoBehaviour,I
+public class OptionPanel : MonoBehaviour
 {
 
     public Button mountingBtn;
@@ -26,18 +26,19 @@ public class OptionPanel : MonoBehaviour,I
     {
         mountingBtn.onClick.AddListener(() => Mounting());
         clearBtn.onClick.AddListener(() => Clear());
-        StartSet_obsever.Notify(gameObject);
+        StartSet_obsever.Notify(this);
+        //gameObject
         transform.parent.parent.gameObject.SetActive(false);
     }
 
     private void Mounting()
     {
-        Mouting_obsever.Notify(gameObject);
+        Mouting_obsever.Notify(this);
     }
 
     private void Clear()
     {
-        Clear_obsever.Notify(gameObject);
+        Clear_obsever.Notify(this);
     }
 }
 public enum ButtonType
@@ -45,10 +46,3 @@ public enum ButtonType
     Mounting, Clear
 }
 
-public interface  I
-{
-    public void A()
-    {
-
-    }
-}
