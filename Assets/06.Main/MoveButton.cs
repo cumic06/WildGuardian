@@ -10,6 +10,5 @@ public class MoveButton : MonoBehaviour, IPointerClickHandler
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
         MovePanel_Obsever.Notify(this);
-        Debug.Log("ÅÍÄ¡");
     }
 }

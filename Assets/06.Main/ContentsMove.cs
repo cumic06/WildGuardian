@@ -7,13 +7,13 @@ using UnityEngine;
 public class ContentsMove : MonoBehaviour
 {
     [SerializeField] private RectTransform myTransform;
-    private float[] pivots = new float[3] { -11.5f, -0.7f, 10.09f };
+    private float[] pivots = new float[3] { -11f, -0.18f, 10.6f };
     private ObseverFunc contents_ObseverFunc = new();
     private int index;
     private bool b = false;
     private void Start()
     {
-        contents_ObseverFunc.MoveButton = (moveButton) => { this.index = moveButton.MoveIndex; b = true; Debug.Log("ss"); };
+        contents_ObseverFunc.MoveButton = (moveButton) => { this.index = moveButton.MoveIndex; b = true; };
         MoveButton.MovePanel_Obsever.AddObsever(contents_ObseverFunc);
         StartCoroutine(Move());
     }
