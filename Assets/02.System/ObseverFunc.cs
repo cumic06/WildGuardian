@@ -27,9 +27,9 @@ public class ObseverFunc : I_Obsever
     //public Action<JangBeSlot> JangBeSlot { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     //public Action<OptionPanel> OptionPanel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     //public Action<MoveButton> MoveButton { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public Action<Inventory> Inventory { get; set; }
-    public Action<JangBeSlot> JangBeSlot { get; set; }
-    public Action<OptionPanel> OptionPanel { get; set; }
-    public Action<MoveButton> MoveButton { get; set; }
+    public Action<Inventory> OnInventory { get; set; }
+    public Action<JangBeSlot> OnJangBeSlot { get; set; }
+    public Action<OptionPanel> OnOptionPanel { get; set; }
+    public Action<MoveButton> OnMoveButton { get; set; }
 }
 

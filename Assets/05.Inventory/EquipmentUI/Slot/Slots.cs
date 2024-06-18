@@ -5,8 +5,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class Slots : EquipmentUI
+
 {
     [SerializeField] private Equipment[] equipments = new Equipment[4];
     [SerializeField] private UnitData playerData;
@@ -25,15 +27,15 @@ public class Slots : EquipmentUI
     private void ObseverSet()
     {
         OptionPanel optionPanel;
-        StartSet_obseverFunc.OptionPanel = (panel) =>
+        StartSet_obseverFunc.OnOptionPanel = (panel) =>
         {
             optionPanel = panel;
             PlayerText(optionPanel);
         };
         OptionPanel.StartSet_obsever.AddObsever(StartSet_obseverFunc);
-        Inventory_obseverFunc.Inventory = (t) => equipmentInfo = t.equipmentData.EquipmentInfoData[t.Image.sprite];
+        Inventory_obseverFunc.OnInventory = (t) => equipmentInfo = t.equipmentData.EquipmentInfoData[t.Image.sprite];
         Inventory.Inventory_obsever.obseverList.Add(Inventory_obseverFunc);
-        Mouting_obseverFunc.OptionPanel = (panel) =>
+        Mouting_obseverFunc.OnOptionPanel = (panel) =>
         {
             optionPanel = panel;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);
@@ -41,7 +43,7 @@ public class Slots : EquipmentUI
             PlayerText(optionPanel);
         };
         OptionPanel.Mouting_obsever.obseverList.Add(Mouting_obseverFunc);
-        Clear_obseverFunc.OptionPanel = (panel) =>
+        Clear_obseverFunc.OnOptionPanel = (panel) =>
         {
             optionPanel = panel;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);

@@ -13,7 +13,7 @@ public class ContentsMove : MonoBehaviour
     private bool b = false;
     private void Start()
     {
-        contents_ObseverFunc.MoveButton = (moveButton) => { this.index = moveButton.MoveIndex; b = true; };
+        contents_ObseverFunc.OnMoveButton = (moveButton) => { this.index = moveButton.MoveIndex; b = true; };
         MoveButton.MovePanel_Obsever.AddObsever(contents_ObseverFunc);
         StartCoroutine(Move());
     }

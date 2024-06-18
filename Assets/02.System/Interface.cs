@@ -13,10 +13,10 @@ public interface I_Click
 }
 public interface I_Obsever
 {
-    public Action<Inventory> Inventory { get; set; }
-    public Action<JangBeSlot> JangBeSlot { get; set; }
-    public Action<OptionPanel> OptionPanel { get; set; }
-    public Action<MoveButton> MoveButton { get; set; }
+    public Action<Inventory> OnInventory { get; set; }
+    public Action<JangBeSlot> OnJangBeSlot { get; set; }
+    public Action<OptionPanel> OnOptionPanel { get; set; }
+    public Action<MoveButton> OnMoveButton { get; set; }
 }
 
 public interface I_Publisher

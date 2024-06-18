@@ -18,22 +18,22 @@ public class ObseverManager : I_Publisher
 
     public void Notify(Inventory inventory)
     {
-        obseverList?.ForEach(obsever => { obsever.Inventory(inventory); });
+        obseverList?.ForEach(obsever => { obsever.OnInventory(inventory); });
     }
 
     public void Notify(JangBeSlot jangBeSlot)
     {
-        obseverList?.ForEach(obsever => { obsever.JangBeSlot(jangBeSlot); });
+        obseverList?.ForEach(obsever => { obsever.OnJangBeSlot(jangBeSlot); });
         //throw new System.NotImplementedException();
     }
 
     public void Notify(OptionPanel optionPanel)
     {
-        obseverList?.ForEach(obsever => { obsever.OptionPanel(optionPanel); });
+        obseverList?.ForEach(obsever => { obsever.OnOptionPanel(optionPanel); });
     }
 
     public void Notify(MoveButton moveButton)
     {
-        obseverList?.ForEach(obsever => { obsever.MoveButton(moveButton); });
+        obseverList?.ForEach(obsever => { obsever.OnMoveButton(moveButton); });
     }
 }

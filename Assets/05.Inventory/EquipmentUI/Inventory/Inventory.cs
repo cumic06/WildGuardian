@@ -21,7 +21,7 @@ public class Inventory : EquipmentUI
 
     private void StartSet()
     {
-        mouting_obseverFunc.OptionPanel = (panel) => { EquipmentActive(equipmentSlot, 1); };
+        mouting_obseverFunc.OnOptionPanel = (panel) => { EquipmentActive(equipmentSlot, 1); };
         OptionPanel.Mouting_obsever.obseverList.Add(mouting_obseverFunc);
         clickFunc = (image) =>
         {

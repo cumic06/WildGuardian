@@ -56,7 +56,7 @@ MonoBehaviour:
       & \uACF5\uACA9\uB825 10\uC99D\uAC00\n\n\uB2E4\uC74C \uB808\uBCA8 \uBC29\uC5B4\uB825
       & \uACF5\uACA9\uB825 10 + 1 \uC99D\uAC00"
     equipmentType: 3
-    equipmentRank: 1
+    equipmentRank: 0
     equipmentImage: {fileID: 297833630275095935, guid: efd8e151d044ab54d91c647ba1db56b6, type: 3}
     unitStat:
       maxHp: 0
