@@ -48,7 +48,7 @@ public class FarAttackAI : MonsterAI
         Vector2 dir = Player.Instance.transform.position - transform.position;
         dir.Normalize();
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        float resultAngle = bulletCount * bulletAngle * 0.5f + angle - 10;
+        float resultAngle = bulletCount * bulletAngle * 0.5f + angle;
         return resultAngle;
     }
 }

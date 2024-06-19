@@ -10,7 +10,7 @@ public class StatsSelector : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Text levelUpExplanText;
     [SerializeField] private Image selectorImage;
 
-    private LevelUpStatInfo levelUpStatInfo;
+    public LevelUpStatInfo levelUpStatInfo;
 
 
     public void OnEnable()
@@ -21,7 +21,8 @@ public class StatsSelector : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Player.Instance.GetUnitData().SumUnitStat(levelUpStatInfo.LevelUpStats);
+        //Player.Instance.GetUnitData().SumUnitStat();
+        //플레이서 스탯 증가
         LevelUISystem.Instance.LevelUpImageDisable();
         GameStateEventBus.Publish(GameState.Play);
     }

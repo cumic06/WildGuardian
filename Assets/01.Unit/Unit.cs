@@ -46,8 +46,6 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     }
     #endregion
 
-
-
     public UnitInfo GetUnitData()
     {
         return unitData.unitInfo;

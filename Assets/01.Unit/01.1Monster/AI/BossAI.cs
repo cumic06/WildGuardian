@@ -12,8 +12,7 @@ public class BossAI : MonsterAI
 
     [SerializeField] private float buffRange;
     [SerializeField] private GameObject buffImage;
-
-    [SerializeField] private LayerMask monsterLayer;
+    public BossPatternData bossPatternData;
     #endregion
 
     public override void Attack()
