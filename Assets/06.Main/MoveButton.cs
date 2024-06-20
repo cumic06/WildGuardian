@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MoveButton : MonoBehaviour, IPointerClickHandler
+public class MoveButton : MonoSingleton<MoveButton>, IPointerClickHandler
 {
     public int MoveIndex;
     public static ObseverManager MovePanel_Obsever = new();

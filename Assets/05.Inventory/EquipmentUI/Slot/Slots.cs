@@ -8,17 +8,18 @@ using UnityEngine.EventSystems;
 using System;
 
 public class Slots : EquipmentUI
-
 {
+    public static Slots Instance;
     [SerializeField] private Equipment[] equipments = new Equipment[4];
     [SerializeField] private UnitData playerData;
     private EquipmentInfo equipmentInfo;
-    private ObseverFunc Inventory_obseverFunc = new();
-    private ObseverFunc Mouting_obseverFunc = new();
-    private ObseverFunc Clear_obseverFunc = new();
-    private ObseverFunc StartSet_obseverFunc = new();
+    private I_Obsever Inventory_obseverFunc = new ObseverFunc();
+    private I_Obsever Mouting_obseverFunc = new ObseverFunc();
+    private I_Obsever Clear_obseverFunc = new ObseverFunc();
+    private I_Obsever StartSet_obseverFunc = new ObseverFunc();
     public void Awake()
     {
+        Instance = this;
         ObseverSet();
         StartSet();
         //PlayerText();
@@ -27,25 +28,25 @@ public class Slots : EquipmentUI
     private void ObseverSet()
     {
         OptionPanel optionPanel;
-        StartSet_obseverFunc.OnOptionPanel = (panel) =>
+        StartSet_obseverFunc.Func = () =>
         {
-            optionPanel = panel;
+            optionPanel = OptionPanel.Instance;
             PlayerText(optionPanel);
         };
         OptionPanel.StartSet_obsever.AddObsever(StartSet_obseverFunc);
-        Inventory_obseverFunc.OnInventory = (t) => equipmentInfo = t.equipmentData.EquipmentInfoData[t.Image.sprite];
+        Inventory_obseverFunc.Func = () => equipmentInfo = Inventory.Instance.equipmentData.EquipmentInfoData[Inventory.Instance.Image.sprite];
         Inventory.Inventory_obsever.obseverList.Add(Inventory_obseverFunc);
-        Mouting_obseverFunc.OnOptionPanel = (panel) =>
+        Mouting_obseverFunc.Func = () =>
         {
-            optionPanel = panel;
+            optionPanel = OptionPanel.Instance;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);
             Mounting();
             PlayerText(optionPanel);
         };
         OptionPanel.Mouting_obsever.obseverList.Add(Mouting_obseverFunc);
-        Clear_obseverFunc.OnOptionPanel = (panel) =>
+        Clear_obseverFunc.Func = () =>
         {
-            optionPanel = panel;
+            optionPanel = OptionPanel.Instance;
             optionPanel.transform.parent.parent.gameObject.SetActive(false);
             Clear();
             EquipmentActive(equipmentSlot, 2);

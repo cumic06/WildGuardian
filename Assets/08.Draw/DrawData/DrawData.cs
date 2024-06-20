@@ -11,12 +11,19 @@ public class DrawData : Data
 
 }
 
+
+[CreateAssetMenu(fileName = "DrawChild", menuName = "Data/DrawChildData")]
+
+public class DrawChildData : Data
+{
+    public DrawEquipmentInfo[] DrawEquipmentInfos;
+
+}
 [Serializable]
 public class DrawInfo
 {
     public EquipmentRank equipmentType;
     public float Prob;
-    public DrawEquipmentInfo[] DrawEquipmentInfos;
 }
 [Serializable]
 public class DrawEquipmentInfo

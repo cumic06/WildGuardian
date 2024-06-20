@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class OptionPanel : MonoBehaviour
+public class OptionPanel : MonoSingleton<OptionPanel>
 {
 
     public Button mountingBtn;
@@ -22,23 +22,24 @@ public class OptionPanel : MonoBehaviour
     public Text PlayerAttackText;
     public Text PlayerHpText;
 
-    private void Awake()
+    override protected void Awake()
     {
+        base.Awake();
         mountingBtn.onClick.AddListener(() => Mounting());
         clearBtn.onClick.AddListener(() => Clear());
-        StartSet_obsever.Notify(this);
+        StartSet_obsever.Notify();
         //gameObject
         transform.parent.parent.gameObject.SetActive(false);
     }
 
     private void Mounting()
     {
-        Mouting_obsever.Notify(this);
+        Mouting_obsever.Notify();
     }
 
     private void Clear()
     {
-        Clear_obsever.Notify(this);
+        Clear_obsever.Notify();
     }
 }
 public enum ButtonType

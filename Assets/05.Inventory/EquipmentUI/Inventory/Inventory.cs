@@ -8,12 +8,14 @@ using UnityEngine.UI;
 
 public class Inventory : EquipmentUI
 {
+    public static Inventory Instance;
     [SerializeField] private Image slot;
     public static ObseverManager Inventory_obsever = new ObseverManager();
     [HideInInspector] public Image Image;
-    private ObseverFunc mouting_obseverFunc = new();
+    private I_Obsever mouting_obseverFunc = new ObseverFunc();
     private void Awake()
     {
+        Instance = this;
         InventorySet();
         equipmentData.EquipmentInfoDataSet();
         StartSet();
@@ -21,13 +23,13 @@ public class Inventory : EquipmentUI
 
     private void StartSet()
     {
-        mouting_obseverFunc.OnOptionPanel = (panel) => { EquipmentActive(equipmentSlot, 1); };
+        mouting_obseverFunc.Func = () => { EquipmentActive(equipmentSlot, 1); };
         OptionPanel.Mouting_obsever.obseverList.Add(mouting_obseverFunc);
         clickFunc = (image) =>
         {
             Image = image;
             OptionUISet(image.sprite, ButtonType.Mounting);
-            Inventory_obsever.Notify(this);
+            Inventory_obsever.Notify();
             //equipmentData.EquipmentInfoData[image.sprite]
         };
     }

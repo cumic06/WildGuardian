@@ -15,25 +15,40 @@ public class ObseverManager : I_Publisher
     {
         obseverList.Remove(obsever);
     }
-
-    public void Notify(Inventory inventory)
+    public void Notify()
     {
-        obseverList?.ForEach(obsever => { obsever.OnInventory(inventory); });
+        obseverList?.ForEach(obsever => { obsever.Func(); });
     }
-
-    public void Notify(JangBeSlot jangBeSlot)
-    {
-        obseverList?.ForEach(obsever => { obsever.OnJangBeSlot(jangBeSlot); });
-        //throw new System.NotImplementedException();
-    }
-
-    public void Notify(OptionPanel optionPanel)
-    {
-        obseverList?.ForEach(obsever => { obsever.OnOptionPanel(optionPanel); });
-    }
-
     public void Notify(MoveButton moveButton)
     {
         obseverList?.ForEach(obsever => { obsever.OnMoveButton(moveButton); });
     }
+
+
+
+
+
+
+
+
+
+
+
+    //public void Notify(Inventory inventory)
+    //{
+    //    obseverList?.ForEach(obsever => { obsever.OnInventory(inventory); });
+    //}
+
+    //public void Notify(JangBeSlot jangBeSlot)
+    //{
+    //    obseverList?.ForEach(obsever => { obsever.OnJangBeSlot(jangBeSlot); });
+    //    //throw new System.NotImplementedException();
+    //}
+
+    //public void Notify(OptionPanel optionPanel)
+    //{
+    //    obseverList?.ForEach(obsever => { obsever.OnOptionPanel(optionPanel); });
+    //}
+
+
 }

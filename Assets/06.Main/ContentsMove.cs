@@ -8,12 +8,12 @@ public class ContentsMove : MonoBehaviour
 {
     [SerializeField] private RectTransform myTransform;
     private float[] pivots = new float[3] { -11f, -0.18f, 10.6f };
-    private ObseverFunc contents_ObseverFunc = new();
+    private I_Obsever contents_ObseverFunc = new ObseverFunc();
     private int index;
     private bool b = false;
     private void Start()
     {
-        contents_ObseverFunc.OnMoveButton = (moveButton) => { this.index = moveButton.MoveIndex; b = true; };
+        contents_ObseverFunc.OnMoveButton = (button) => { this.index = button.MoveIndex; b = true; };
         MoveButton.MovePanel_Obsever.AddObsever(contents_ObseverFunc);
         StartCoroutine(Move());
     }

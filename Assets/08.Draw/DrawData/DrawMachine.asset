@@ -13,26 +13,26 @@ MonoBehaviour:
   m_Name: DrawMachine
   m_EditorClassIdentifier: 
   DrawInfos:
-  - equipmentType: 2
-    Prob: 20
-    DrawEquipmentInfos: []
-  - equipmentType: 3
-    Prob: 15
-    DrawEquipmentInfos: []
-  - equipmentType: 4
-    Prob: 10
-    DrawEquipmentInfos: []
   - equipmentType: 0
-    Prob: 30
+    Prob: 0.45
     DrawEquipmentInfos:
     - Equipment_Img: {fileID: -6349452183749028354, guid: 95b67be0553fd1842a0f27c801804b23, type: 3}
-      Prob: 0.6
-    - Equipment_Img: {fileID: 1679885386818509278, guid: 95b67be0553fd1842a0f27c801804b23, type: 3}
-      Prob: 0.4
-  - equipmentType: 1
-    Prob: 25
-    DrawEquipmentInfos:
-    - Equipment_Img: {fileID: 8021352679842167380, guid: 95b67be0553fd1842a0f27c801804b23, type: 3}
-      Prob: 40
-    - Equipment_Img: {fileID: -4429052928042933624, guid: 95b67be0553fd1842a0f27c801804b23, type: 3}
       Prob: 60
+    - Equipment_Img: {fileID: 1679885386818509278, guid: 95b67be0553fd1842a0f27c801804b23, type: 3}
+      Prob: 40
+  - equipmentType: 1
+    Prob: 0.25
+    DrawEquipmentInfos:
+    - Equipment_Img: {fileID: -4429052928042933624, guid: 95b67be0553fd1842a0f27c801804b23, type: 3}
+      Prob: 0.6
+    - Equipment_Img: {fileID: 8021352679842167380, guid: 95b67be0553fd1842a0f27c801804b23, type: 3}
+      Prob: 0.4
+  - equipmentType: 2
+    Prob: 0.15
+    DrawEquipmentInfos: []
+  - equipmentType: 3
+    Prob: 0.1
+    DrawEquipmentInfos: []
+  - equipmentType: 4
+    Prob: 0.05
+    DrawEquipmentInfos: []
