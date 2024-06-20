@@ -30,22 +30,6 @@ public class LevelUpStatInfo
 
     public Sprite sprite;
 }
-
-//public class PlayerStats
-//{
-//    public int Damage;
-//    public float Speed;
-//    public float AttackSpeed;
-
-//    public void AddStats(PlayerStats playerStats)
-//    {
-//        Damage += playerStats.Damage;
-//        Speed += playerStats.Speed;
-//        AttackSpeed += playerStats.AttackSpeed;
-//    }
-//}
-
-
 public enum LevelUpStat
 {
     HpStat,

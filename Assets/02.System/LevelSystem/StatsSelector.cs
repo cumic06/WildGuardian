@@ -21,8 +21,8 @@ public class StatsSelector : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Player.Instance.GetUnitData().SumUnitStat();
-        //플레이서 스탯 증가
+        Player.Instance.UpGradeStat(levelUpStatInfo.LevelUpStatType, levelUpStatInfo.StatValue);
+        Debug.Log(levelUpStatInfo.LevelUpStatType);
         LevelUISystem.Instance.LevelUpImageDisable();
         GameStateEventBus.Publish(GameState.Play);
     }

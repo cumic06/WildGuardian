@@ -4380,9 +4380,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1469201788306763569, guid: afd843824bffb38418fff11f97d755be, type: 3}
+      propertyPath: bulletAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469201788306763569, guid: afd843824bffb38418fff11f97d755be, type: 3}
+      propertyPath: bulletCount
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2960217378347401670, guid: afd843824bffb38418fff11f97d755be, type: 3}
       propertyPath: m_Name
       value: Hedgehog
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960217378347401670, guid: afd843824bffb38418fff11f97d755be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4397303102540408333, guid: afd843824bffb38418fff11f97d755be, type: 3}
       propertyPath: m_LocalPosition.x

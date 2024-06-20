@@ -68,6 +68,37 @@ public class Player : Unit
     }
     #endregion
 
+    public void UpGradeStat(LevelUpStat levelUpStat, float value)
+    {
+        switch (levelUpStat)
+        {
+            case LevelUpStat.HpStat:
+                unitData.unitInfo.unitStat.hp *= (int)value;
+                Debug.Log(unitData.unitInfo.unitStat.hp * (int)value);
+                break;
+            case LevelUpStat.ManaStat:
+                playerData.playerStat.mana *= (int)value;
+                Debug.Log(playerData.playerStat.mana * value);
+                break;
+            case LevelUpStat.AttackPowerStat:
+                unitData.unitInfo.unitStat.attackPower *= (int)value;
+                Debug.Log(unitData.unitInfo.unitStat.attackPower * value);
+                break;
+            case LevelUpStat.AttackCoolTimeStat:
+                unitData.unitInfo.unitStat.attackDelayTime /= (int)value;
+                Debug.Log(unitData.unitInfo.unitStat.attackDelayTime / value);
+                break;
+            case LevelUpStat.DefensePowerStat:
+                unitData.unitInfo.unitStat.defensePower *= (int)value;
+                Debug.Log(unitData.unitInfo.unitStat.defensePower * value);
+                break;
+            case LevelUpStat.HealHpStat:
+                break;
+            case LevelUpStat.HealManaStat:
+                break;
+        }
+    }
+
     private void OnDestroy()
     {
         UpdateSystem.Instance.RemoveUpdateAction(playerMove.Dash);
