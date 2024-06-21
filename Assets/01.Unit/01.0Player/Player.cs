@@ -73,24 +73,20 @@ public class Player : Unit
         switch (levelUpStat)
         {
             case LevelUpStat.HpStat:
-                unitData.unitInfo.unitStat.hp *= (int)value;
-                Debug.Log(unitData.unitInfo.unitStat.hp * (int)value);
+                unitStat.maxHp = Mathf.RoundToInt(unitStat.maxHp * value);
+                ResetHp();
                 break;
             case LevelUpStat.ManaStat:
-                playerData.playerStat.mana *= (int)value;
-                Debug.Log(playerData.playerStat.mana * value);
+                playerStat.mana = Mathf.RoundToInt(playerStat.mana * value);
                 break;
             case LevelUpStat.AttackPowerStat:
-                unitData.unitInfo.unitStat.attackPower *= (int)value;
-                Debug.Log(unitData.unitInfo.unitStat.attackPower * value);
+                unitStat.attackPower = Mathf.RoundToInt(unitStat.attackPower * value);
                 break;
             case LevelUpStat.AttackCoolTimeStat:
-                unitData.unitInfo.unitStat.attackDelayTime /= (int)value;
-                Debug.Log(unitData.unitInfo.unitStat.attackDelayTime / value);
+                unitStat.attackDelayTime /= value;
                 break;
             case LevelUpStat.DefensePowerStat:
-                unitData.unitInfo.unitStat.defensePower *= (int)value;
-                Debug.Log(unitData.unitInfo.unitStat.defensePower * value);
+                unitStat.defensePower = Mathf.RoundToInt(unitStat.defensePower * value);
                 break;
             case LevelUpStat.HealHpStat:
                 break;

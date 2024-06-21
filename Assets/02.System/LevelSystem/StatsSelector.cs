@@ -22,7 +22,6 @@ public class StatsSelector : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Player.Instance.UpGradeStat(levelUpStatInfo.LevelUpStatType, levelUpStatInfo.StatValue);
-        Debug.Log(levelUpStatInfo.LevelUpStatType);
         LevelUISystem.Instance.LevelUpImageDisable();
         GameStateEventBus.Publish(GameState.Play);
     }
