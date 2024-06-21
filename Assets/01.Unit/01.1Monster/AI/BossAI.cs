@@ -17,13 +17,9 @@ public class BossAI : MonsterAI
 
     public override void Attack()
     {
-        int randomPattern = Random.Range(0, patternCor.Length);
 
-        if (patternCor[randomPattern] != null)
-        {
-            StopCoroutine(patternCor[randomPattern]);
-        }
     }
+
 
     protected override void OnDrawGizmos()
     {
