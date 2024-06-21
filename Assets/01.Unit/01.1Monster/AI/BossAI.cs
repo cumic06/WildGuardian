@@ -10,22 +10,11 @@ public class BossAI : MonsterAI
 
     private readonly Coroutine[] patternCor = new Coroutine[4];
 
-    [SerializeField] private float buffRange;
-    [SerializeField] private GameObject buffImage;
     public BossPatternData bossPatternData;
     #endregion
 
     public override void Attack()
     {
 
-    }
-
-
-    protected override void OnDrawGizmos()
-    {
-        base.OnDrawGizmos();
-        Gizmos.color = Color.green;
-
-        Gizmos.DrawWireSphere(transform.position, buffRange);
     }
 }
