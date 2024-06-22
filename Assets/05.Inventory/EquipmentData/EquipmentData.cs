@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,7 @@ public class EquipmentData : Data
 {
     public EquipmentInfo[] EquipmentInfo;
     public Dictionary<Sprite, EquipmentInfoInternal> EquipmentInfoData = new Dictionary<Sprite, EquipmentInfoInternal>();
+#if UNITY_EDITOR
     public void OnValidate()
     {
         foreach (var equip in EquipmentInfo)
@@ -18,6 +18,7 @@ public class EquipmentData : Data
             equip.OnValidate();
         }
     }
+#endif
     public void EquipmentInfoDataSet()
     {
         foreach (EquipmentInfo info in EquipmentInfo)

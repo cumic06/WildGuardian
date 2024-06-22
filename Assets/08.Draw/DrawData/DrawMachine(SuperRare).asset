@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9d9aff56864b94da95467b3ae17190, type: 3}
+  m_Name: DrawMachine(SuperRare)
+  m_EditorClassIdentifier: 
+  DrawInfos:
+  - EquipmentRank: 2
+    Prob: 0.26
+  - EquipmentRank: 1
+    Prob: 0.25
+  - EquipmentRank: 0
+    Prob: 0.2
+  - EquipmentRank: 3
+    Prob: 0.17
+  - EquipmentRank: 4
+    Prob: 0.12
+  SumProb: 1
