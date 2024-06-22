@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,37 +10,67 @@ using UnityEngine.UI;
 public class EquipmentData : Data
 {
     public EquipmentInfo[] EquipmentInfo;
-    public Dictionary<Sprite, EquipmentInfo> EquipmentInfoData = new Dictionary<Sprite, EquipmentInfo>();
+    public Dictionary<Sprite, EquipmentInfoInternal> EquipmentInfoData = new Dictionary<Sprite, EquipmentInfoInternal>();
+    public void OnValidate()
+    {
+        foreach (var equip in EquipmentInfo)
+        {
+            equip.OnValidate();
+        }
+    }
     public void EquipmentInfoDataSet()
     {
         foreach (EquipmentInfo info in EquipmentInfo)
         {
-            EquipmentInfoData.Add(info.GetUnitType(), info);
+            foreach (EquipmentInfoInternal equipinternal in info.EquipmentInfoInternal)
+            {
+                EquipmentInfoData.Add(equipinternal.EquipmentImage, equipinternal);
+            }
         }
     }
-
-   
 }
 [Serializable]
 public class EquipmentInfo
 {
-    [SerializeField] private string equipmentName;
-    [SerializeField][TextArea] private string equipmentExplain;
-    [SerializeField] private EquipmentType equipmentType;
-    [SerializeField] private EquipmentRank equipmentRank;
-    [SerializeField] private Sprite equipmentImage;
-    [SerializeField] private UnitStat unitStat;
+    public EquipmentRank EquipmentRank;
+    public EquipmentInfoInternal[] EquipmentInfoInternal;
+#if UNITY_EDITOR
+    public float SumProb;
+    public void OnValidate()
+    {
+        if (EquipmentInfoInternal == null)
+        {
+            return;
+        }
+        EquipmentInfoInternal = EquipmentInfoInternal.OrderByDescending(prob => prob.Prob).ToArray();
 
-    public UnitStat GetUnitStat() => unitStat;
+        SumProb = 0;
+        foreach (var grade in EquipmentInfoInternal)
+        {
+            SumProb += grade.Prob;
+        }
+        if (SumProb > 1)
+        {
+            Debug.LogError("over Range");
+        }
+    }
+#endif
+}
 
-    public EquipmentType GetEquipmentType() => equipmentType;
+[Serializable]
+public class EquipmentInfoInternal : DrawProb
+{
+    public string EquipmentName;
+    [TextArea] public string EquipmentExplain;
+    public EquipmentType EquipmentType;
+    public Sprite EquipmentImage;
+    public UnitStat UnitStat;
+    public float Prob;
 
-    public EquipmentRank GetEquipmentRank() => equipmentRank;
-
-    public Sprite GetUnitType() => equipmentImage;
-
-    public string GetName() => equipmentName;
-    public string GetExplain() => equipmentExplain;
+    public float ReProb()
+    {
+        return Prob;
+    }
 }
 
 public enum EquipmentType

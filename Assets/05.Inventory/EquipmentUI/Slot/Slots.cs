@@ -10,9 +10,9 @@ using System;
 public class Slots : EquipmentUI
 {
     public static Slots Instance;
-    [SerializeField] private Equipment[] equipments = new Equipment[4];
-    [SerializeField] private UnitData playerData;
-    private EquipmentInfo equipmentInfo;
+    public Equipment[] EquipmentsPart = new Equipment[4];
+    public UnitData PlayerData;
+    private EquipmentInfoInternal equipmentInfo;
     private I_Obsever Inventory_obseverFunc = new ObseverFunc();
     private I_Obsever Mouting_obseverFunc = new ObseverFunc();
     private I_Obsever Clear_obseverFunc = new ObseverFunc();
@@ -65,14 +65,14 @@ public class Slots : EquipmentUI
 
     private void Mounting()
     {
-        foreach (var equipment in equipments)
+        foreach (var equipment in EquipmentsPart)
         {
-            if (equipmentInfo.GetEquipmentType().Equals(equipment.equipmentType))
+            if (equipmentInfo.EquipmentType.Equals(equipment.equipmentType))
             {
                 equipment.TryGetComponent(out Image image);
                 image.transform.GetChild(0).TryGetComponent(out Image equipmentImage);
-                equipmentImage.sprite = equipmentInfo.GetUnitType();
-                playerData.unitInfo.SumUnitData(equipmentInfo.GetUnitStat());
+                equipmentImage.sprite = equipmentInfo.EquipmentImage;
+                PlayerData.unitInfo.SumUnitData(equipmentInfo.UnitStat);
                 break;
             }
         }
@@ -80,12 +80,12 @@ public class Slots : EquipmentUI
 
     private void Clear()
     {
-        playerData.unitInfo.MinusUnitData(equipmentData.EquipmentInfoData[equipmentSlot.sprite].GetUnitStat());
+        PlayerData.unitInfo.MinusUnitData(equipmentData.EquipmentInfoData[equipmentSlot.sprite].UnitStat);
     }
 
     private void PlayerText(OptionPanel optionPanel)
     {
-        UnitStat playerState = playerData.unitInfo.GetUnitStat();
+        UnitStat playerState = PlayerData.unitInfo.GetUnitStat();
         optionPanel.PlayerAttackText.text = $"공격력 : {playerState.attackPower}";
         optionPanel.PlayerHpText.text = $"생명력 : {playerState.maxHp}";
     }

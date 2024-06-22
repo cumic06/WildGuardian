@@ -29,10 +29,10 @@ public class EquipmentUI : MonoBehaviour, I_Click
     {
         optionPanel.transform.parent.parent.gameObject.SetActive(true);
         optionPanel.gameObject.TryGetComponent(out OptionPanel optionUI);
-        optionUI.EquipmentName.text = $"{equipmentData.EquipmentInfoData[sprite].GetName()}";
-        optionUI.EquipmentImage.sprite = equipmentData.EquipmentInfoData[sprite].GetUnitType();
-        optionUI.EquipmentExplain.text = $"{equipmentData.EquipmentInfoData[sprite].GetExplain()}";
-        optionUI.EquipmentRank.text = $"등급 : {equipmentData.EquipmentInfoData[sprite].GetEquipmentRank()}";
+        optionUI.EquipmentName.text = $"{equipmentData.EquipmentInfoData[sprite].EquipmentName}";
+        optionUI.EquipmentImage.sprite = equipmentData.EquipmentInfoData[sprite].EquipmentImage;
+        optionUI.EquipmentExplain.text = $"{equipmentData.EquipmentInfoData[sprite].EquipmentExplain}";
+        optionUI.EquipmentRank.text = $"등급 : {equipmentData.EquipmentInfoData[sprite].EquipmentType}";
         if (type.Equals(ButtonType.Mounting))
             optionUI.clearBtn.gameObject.SetActive(false);
         else

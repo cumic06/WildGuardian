@@ -6,17 +6,17 @@ using System;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Inventory : EquipmentUI
+public class Inventory : EquipmentUI, IVisitElement
 {
-    public static Inventory Instance;
     [SerializeField] private Image slot;
-    public static ObseverManager Inventory_obsever = new ObseverManager();
     [HideInInspector] public Image Image;
+    public static Inventory Instance;
+    public static ObseverManager Inventory_obsever = new ObseverManager();
     private I_Obsever mouting_obseverFunc = new ObseverFunc();
     private void Awake()
     {
         Instance = this;
-        InventorySet();
+        //InventorySet();
         equipmentData.EquipmentInfoDataSet();
         StartSet();
     }
@@ -34,16 +34,16 @@ public class Inventory : EquipmentUI
         };
     }
 
-    private void InventorySet()
+    public void InventoryAdd(Sprite newEquipment)
     {
-        for (int i = 0; i < equipmentData.EquipmentInfo.Length; i++)
-        {
-            equipments.Add(Instantiate(slot));
-            equipments.Last().transform.GetChild(0).TryGetComponent(out Image equipmentImage);
-            equipmentImage.sprite = equipmentData.EquipmentInfo[i].GetUnitType();
-            equipments.Last().transform.parent = transform.GetChild(0);
-        }
+        equipments.Add(Instantiate(slot));
+        equipments.Last().transform.GetChild(0).TryGetComponent(out Image equipmentImage);
+        equipmentImage.sprite = newEquipment;
+        equipments.Last().transform.parent = transform.GetChild(0);
     }
 
-
+    public void Accept(IVisit visitor)
+    {
+        visitor.Visit(this);
+    }
 }

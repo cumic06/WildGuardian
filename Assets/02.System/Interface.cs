@@ -43,3 +43,8 @@ public interface IVisitElement//넘겨주는 놈
     public void Accept(IVisit visitor);
 }
 
+public interface DrawProb
+{
+    public float ReProb();
+    //public float Prob { get; set; }
+}

@@ -20,12 +20,12 @@ public class Bar : EquipmentUI
             for (int j = i; j < equipments.Count; j++)
             {
                 equipments[j].transform.GetChild(0).TryGetComponent(out Image equipmentImageJ);
-                if (equipmentData.EquipmentInfoData[equipmentImageI.sprite].GetEquipmentRank() < equipmentData.EquipmentInfoData[equipmentImageJ.sprite].GetEquipmentRank())
+                if (equipmentData.EquipmentInfoData[equipmentImageI.sprite].EquipmentType < equipmentData.EquipmentInfoData[equipmentImageJ.sprite].EquipmentType)
                 {
                     (equipments[i].transform.position, equipments[j].transform.position) = (equipments[j].transform.position, equipments[i].transform.position);
                 }
             }
         }
-        equipments = equipments.OrderByDescending(x => equipmentData.EquipmentInfoData[x.transform.GetChild(0).GetComponent<Image>().sprite].GetEquipmentRank()).ToList<Image>();
+        equipments = equipments.OrderByDescending(x => equipmentData.EquipmentInfoData[x.transform.GetChild(0).GetComponent<Image>().sprite].EquipmentType).ToList<Image>();
     }
 }
