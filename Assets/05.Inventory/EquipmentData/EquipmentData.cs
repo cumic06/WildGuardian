@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class EquipmentData : Data
 {
     public EquipmentInfo[] EquipmentInfo;
-    public Dictionary<Sprite, EquipmentInfoInternal> EquipmentInfoData = new Dictionary<Sprite, EquipmentInfoInternal>();
+    //public Dictionary<Sprite, EquipmentInfoInternal> EquipmentInfoData = new Dictionary<Sprite, EquipmentInfoInternal>();
+    public Dictionary<Sprite, (EquipmentRank, EquipmentInfoInternal)> EquipmentInfoData = new Dictionary<Sprite, (EquipmentRank, EquipmentInfoInternal)>();
 #if UNITY_EDITOR
     public void OnValidate()
     {
@@ -25,7 +26,7 @@ public class EquipmentData : Data
         {
             foreach (EquipmentInfoInternal equipinternal in info.EquipmentInfoInternal)
             {
-                EquipmentInfoData.Add(equipinternal.EquipmentImage, equipinternal);
+                EquipmentInfoData.Add(equipinternal.EquipmentImage, (info.EquipmentRank, equipinternal));
             }
         }
     }

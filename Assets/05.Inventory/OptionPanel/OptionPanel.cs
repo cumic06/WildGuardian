@@ -10,7 +10,6 @@ public class OptionPanel : MonoSingleton<OptionPanel>
 
     public Button mountingBtn;
     public Button clearBtn;
-    public Image Panel;
     public static ObseverManager Mouting_obsever = new ObseverManager();
     public static ObseverManager Clear_obsever = new ObseverManager();
     public static ObseverManager StartSet_obsever = new ObseverManager();

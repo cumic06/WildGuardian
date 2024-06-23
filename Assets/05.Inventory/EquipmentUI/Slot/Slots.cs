@@ -34,7 +34,7 @@ public class Slots : EquipmentUI
             PlayerText(optionPanel);
         };
         OptionPanel.StartSet_obsever.AddObsever(StartSet_obseverFunc);
-        Inventory_obseverFunc.Func = () => equipmentInfo = Inventory.Instance.equipmentData.EquipmentInfoData[Inventory.Instance.Image.sprite];
+        Inventory_obseverFunc.Func = () => equipmentInfo = Inventory.Instance.equipmentData.EquipmentInfoData[Inventory.Instance.Image.sprite].Item2;
         Inventory.Inventory_obsever.obseverList.Add(Inventory_obseverFunc);
         Mouting_obseverFunc.Func = () =>
         {
@@ -80,7 +80,7 @@ public class Slots : EquipmentUI
 
     private void Clear()
     {
-        PlayerData.unitInfo.MinusUnitData(equipmentData.EquipmentInfoData[equipmentSlot.sprite].UnitStat);
+        PlayerData.unitInfo.MinusUnitData(equipmentData.EquipmentInfoData[equipmentSlot.sprite].Item2.UnitStat);
     }
 
     private void PlayerText(OptionPanel optionPanel)
