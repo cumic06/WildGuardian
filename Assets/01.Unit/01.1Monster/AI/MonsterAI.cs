@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class MonsterAI : MonoBehaviour, IAttackable
 {
     protected Monster monster;
+    protected MonsterAttack monsterAttack;
+    protected MonsterMove monsterMove;
 
     protected void Awake()
     {
