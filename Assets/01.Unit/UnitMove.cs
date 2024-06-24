@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAttack : UnitAttack
+public class UnitMove : MonoBehaviour, IMoveable
 {
-    public override void Attack()
+    public void Move()
     {
-        
+
     }
 }

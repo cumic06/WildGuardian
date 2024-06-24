@@ -1,22 +1,13 @@
 using UnityEngine;
 using System.Linq;
 
-public class PlayerAttack : MonoBehaviour, IAttackable
+public class PlayerAttack : UnitAttack, IAttackable
 {
-    [SerializeField] private int attackPower;
-    [SerializeField] private float attackDelayTime;
-    [SerializeField] private float currentAttackDelayTime;
     public Weapon currentWeapon;
 
     private void Start()
     {
         currentWeapon.SetAttackPower(attackPower);
-        UpdateSystem.Instance.AddUpdateAction(Attack);
-    }
-
-    public void SetAttackPower(int value)
-    {
-        attackPower = value;
     }
 
     public void SetAttackDelayTime(float value)
@@ -24,13 +15,12 @@ public class PlayerAttack : MonoBehaviour, IAttackable
         attackDelayTime = currentWeapon.ManualAttackTime / value;
     }
 
-    public void Attack()
+    public override void Attack()
     {
         currentAttackDelayTime += Time.deltaTime;
-
         if (TouchInputManager.Instance.IsTap)
         {
-            if (currentAttackDelayTime >= attackDelayTime)
+            if (IsCanAttack())
             {
                 currentWeapon.Attack();
                 currentAttackDelayTime = 0;

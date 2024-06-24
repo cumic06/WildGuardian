@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MonsterAI : MonoBehaviour, IAttackable
+public abstract class MonsterAI : MonoBehaviour
 {
     protected Monster monster;
     protected MonsterAttack monsterAttack;
@@ -17,11 +17,9 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
     {
         if (IsCanAttackRange(out Collider2D[] players))
         {
-            monster.currentAttackCoolTime += Time.deltaTime;
-            if (IsCanAttack())
+            if (monsterAttack.IsCanAttack())
             {
-                monster.currentAttackCoolTime = 0;
-                Attack();
+                monsterAttack.Attack();
                 //#if UNITY_EDITOR
                 //                Debug.Log("Attack");
                 //#endif
@@ -33,7 +31,6 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
             //            Debug.Log("FollowPlayer");
             //#endif
             FollowPlayer();
-            monster.currentAttackCoolTime = 0;
         }
     }
 
@@ -60,12 +57,5 @@ public abstract class MonsterAI : MonoBehaviour, IAttackable
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, monster.AttackRange);
         }
-    }
-
-    public abstract void Attack();
-
-    protected bool IsCanAttack()
-    {
-        return monster.currentAttackCoolTime >= monster.GetUnitData().GetUnitStat().attackDelayTime;
     }
 }

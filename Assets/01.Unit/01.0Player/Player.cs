@@ -30,6 +30,7 @@ public class Player : Unit
     {
         base.Start();
         UpdateSystem.Instance.AddUpdateAction(playerMove.Dash);
+        UpdateSystem.Instance.AddUpdateAction(playerAttack.Attack);
         playerMove.SetMoveSpeed(GetCurrentMoveSpeedStat());
         playerMove.SetDashPower(playerStat.dashPower);
         playerAttack.SetAttackPower(unitStat.attackPower);
@@ -98,5 +99,6 @@ public class Player : Unit
     private void OnDestroy()
     {
         UpdateSystem.Instance.RemoveUpdateAction(playerMove.Dash);
+        UpdateSystem.Instance.RemoveUpdateAction(playerAttack.Attack);
     }
 }

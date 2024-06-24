@@ -25,6 +25,7 @@ public interface IHpable
 public interface IAttackable
 {
     public void Attack();
+    public bool IsCanAttack();
 }
 
 public interface IMoveable
