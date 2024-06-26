@@ -41,7 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 126916397771996112}
   - component: {fileID: 5643424792106701735}
-  - component: {fileID: 6079105902939497084}
+  - component: {fileID: 1221400938557005757}
+  - component: {fileID: 9213031670568028388}
   - component: {fileID: 9071124242432759104}
   - component: {fileID: 4167217900463904862}
   - component: {fileID: 7426853518281276379}
@@ -51,7 +52,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &126916397771996112
 Transform:
   m_ObjectHideFlags: 0
@@ -88,9 +89,9 @@ MonoBehaviour:
     defensePower: 0
     attackRange: 0
     attackPower: 0
-    attackCoolTime: 0
+    attackDelayTime: 0
   currentAttackCoolTime: 0
---- !u!114 &6079105902939497084
+--- !u!114 &1221400938557005757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,9 +100,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8409887421272596487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d21f5a557126134b96486c394c29239, type: 3}
+  m_Script: {fileID: 11500000, guid: 235901ed6b2c705498c3e1d07d589122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9213031670568028388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409887421272596487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6448e6663c824fe44a7af76e678bca70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttackDelayTime: 0
+  attackRadius: 1
 --- !u!212 &9071124242432759104
 SpriteRenderer:
   m_ObjectHideFlags: 0

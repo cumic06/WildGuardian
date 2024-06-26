@@ -41,7 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7847175267931079052}
   - component: {fileID: 5214369738462922375}
-  - component: {fileID: 3332567118814495561}
+  - component: {fileID: 9088135639987960743}
+  - component: {fileID: 2014707408652455391}
   - component: {fileID: 7648453107987080553}
   - component: {fileID: 4999181554716128589}
   - component: {fileID: 7853832083144551536}
@@ -88,9 +89,9 @@ MonoBehaviour:
     defensePower: 0
     attackRange: 0
     attackPower: 0
-    attackCoolTime: 0
+    attackDelayTime: 0
   currentAttackCoolTime: 0
---- !u!114 &3332567118814495561
+--- !u!114 &9088135639987960743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,9 +100,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8852297909823247964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d21f5a557126134b96486c394c29239, type: 3}
+  m_Script: {fileID: 11500000, guid: 235901ed6b2c705498c3e1d07d589122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2014707408652455391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8852297909823247964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6448e6663c824fe44a7af76e678bca70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttackDelayTime: 0
+  attackRadius: 0
 --- !u!212 &7648453107987080553
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -4,13 +4,24 @@ using UnityEngine;
 
 public abstract class UnitAttack : MonoBehaviour, IAttackable
 {
-    [SerializeField] protected int attackPower;
-    [SerializeField] protected float attackDelayTime;
-    [SerializeField] protected float currentAttackDelayTime;
+    protected int attackPower;
+    /*[SerializeField] */protected float attackDelayTime;
+    public float currentAttackDelayTime;
+    /*[SerializeField] */protected float attackRange;
 
-    public void SetAttackPower(int damageValue)
+    public void SetAttackPower(int attackPowerValue)
     {
-        attackPower = damageValue;
+        attackPower = attackPowerValue;
+    }
+
+    public void SetAttackDelayTime(float attackDelayTime)
+    {
+        this.attackDelayTime = attackDelayTime;
+    }
+
+    public void SetAttackRange(float attackRange)
+    {
+        this.attackRange = attackRange;
     }
 
     public abstract void Attack();

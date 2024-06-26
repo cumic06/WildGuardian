@@ -6,11 +6,10 @@ using UnityEngine;
 public class Sword : Weapon
 {
     public Transform halfCircleCenter;
-    public float radius;
 
     public override void Attack()
     {
-        Collider2D monsters = Physics2D.OverlapCircleAll(transform.position, radius, LayerMaskManager.monsterLayer).FirstOrDefault();
+        Collider2D monsters = Physics2D.OverlapCircleAll(transform.position, attackRange, LayerMaskManager.monsterLayer).FirstOrDefault();
 
         if (monsters == null) return;
 
@@ -24,12 +23,12 @@ public class Sword : Weapon
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     public override void SkillAttack()
     {
-        Collider2D monsters = Physics2D.OverlapCircleAll(transform.position, radius, LayerMaskManager.monsterLayer).FirstOrDefault();
+        Collider2D monsters = Physics2D.OverlapCircleAll(transform.position, attackRange * 2, LayerMaskManager.monsterLayer).FirstOrDefault();
 
         if (monsters == null) return;
 

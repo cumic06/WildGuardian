@@ -35,6 +35,7 @@ public class Player : Unit
         playerMove.SetDashPower(playerStat.dashPower);
         playerAttack.SetAttackPower(unitStat.attackPower);
         playerAttack.SetAttackDelayTime(unitStat.attackDelayTime);
+        playerAttack.SetAttackRange(unitStat.attackRange);
     }
 
     private void OnValidate()

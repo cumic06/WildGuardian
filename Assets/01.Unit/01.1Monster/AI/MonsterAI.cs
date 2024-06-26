@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MonsterAI : MonoBehaviour
+public class MonsterAI : MonoBehaviour
 {
     protected Monster monster;
     protected MonsterAttack monsterAttack;
@@ -11,15 +11,27 @@ public abstract class MonsterAI : MonoBehaviour
     protected void Awake()
     {
         monster = GetComponent<Monster>();
+        monsterAttack = GetComponent<MonsterAttack>();
+        monsterMove = GetComponent<MonsterMove>();
+    }
+
+    protected void Start()
+    {
+        monsterAttack.SetAttackPower(monster.GetUnitData().unitStat.attackPower);
+        monsterAttack.SetAttackDelayTime(monster.GetUnitData().unitStat.attackDelayTime);
+        monsterAttack.SetAttackRange(monster.GetUnitData().unitStat.attackRange);
     }
 
     public void AI()
     {
         if (IsCanAttackRange(out Collider2D[] players))
         {
+            monsterAttack.currentAttackDelayTime += Time.deltaTime;
+
             if (monsterAttack.IsCanAttack())
             {
                 monsterAttack.Attack();
+                monsterAttack.currentAttackDelayTime = 0;
                 //#if UNITY_EDITOR
                 //                Debug.Log("Attack");
                 //#endif

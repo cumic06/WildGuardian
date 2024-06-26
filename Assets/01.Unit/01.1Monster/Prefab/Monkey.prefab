@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5759909708150051053}
   - component: {fileID: 991252168630668704}
-  - component: {fileID: 5129944198535824866}
+  - component: {fileID: 9046233623477364762}
+  - component: {fileID: 6249631998812067132}
   - component: {fileID: 2853143550774608815}
   - component: {fileID: 1416734668920911342}
   - component: {fileID: 4524340475740012732}
@@ -56,9 +57,9 @@ MonoBehaviour:
     defensePower: 0
     attackRange: 0
     attackPower: 0
-    attackCoolTime: 0
+    attackDelayTime: 0
   currentAttackCoolTime: 0
---- !u!114 &5129944198535824866
+--- !u!114 &9046233623477364762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,9 +68,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 7321320448436930945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ab744e0d7653043bf518367d9e7268, type: 3}
+  m_Script: {fileID: 11500000, guid: 235901ed6b2c705498c3e1d07d589122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6249631998812067132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7321320448436930945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c4ecd6ceccb3940b15d38f09a968f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttackDelayTime: 0
   bullet: {fileID: -2385245804968839112, guid: 8154010d13a06c34a8c0d2e244f80f91, type: 3}
   bulletPos: {fileID: 0}
 --- !u!61 &2853143550774608815

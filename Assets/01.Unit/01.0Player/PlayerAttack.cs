@@ -8,11 +8,7 @@ public class PlayerAttack : UnitAttack, IAttackable
     private void Start()
     {
         currentWeapon.SetAttackPower(attackPower);
-    }
-
-    public void SetAttackDelayTime(float value)
-    {
-        attackDelayTime = currentWeapon.ManualAttackTime / value;
+        currentWeapon.SetAttackRange(attackRange);
     }
 
     public override void Attack()
