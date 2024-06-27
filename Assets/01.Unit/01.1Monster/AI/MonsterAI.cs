@@ -20,6 +20,7 @@ public class MonsterAI : MonoBehaviour
         monsterAttack.SetAttackPower(monster.GetUnitData().unitStat.attackPower);
         monsterAttack.SetAttackDelayTime(monster.GetUnitData().unitStat.attackDelayTime);
         monsterAttack.SetAttackRange(monster.GetUnitData().unitStat.attackRange);
+        monsterMove.SetMoveSpeed(monster.GetCurrentMoveSpeedStat());
     }
 
     public void AI()
@@ -42,22 +43,13 @@ public class MonsterAI : MonoBehaviour
             //#if UNITY_EDITOR
             //            Debug.Log("FollowPlayer");
             //#endif
-            FollowPlayer();
+            monsterMove.FollowPlayer();
         }
-    }
-
-    protected void FollowPlayer()
-    {
-        if (Player.Instance == null) return;
-        Vector3 dir = Player.Instance.transform.position - transform.position;
-        float speed = monster.GetCurrentMoveSpeedStat();
-        Vector3 moveVec = speed * dir.normalized;
-        transform.Translate(moveVec * Time.deltaTime);
     }
 
     public virtual bool IsCanAttackRange(out Collider2D[] player)
     {
-        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, monster.AttackRange, LayerMaskManager.playerLayer);
+        Collider2D[] checkCircle = Physics2D.OverlapCircleAll(transform.position, monster.AttackRange * 0.005f, LayerMaskManager.playerLayer);
         player = checkCircle;
         return checkCircle.Length > 0;
     }
@@ -67,7 +59,7 @@ public class MonsterAI : MonoBehaviour
         if (Application.isPlaying)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, monster.AttackRange);
+            Gizmos.DrawWireSphere(transform.position, monster.AttackRange * 0.005f);
         }
     }
 }

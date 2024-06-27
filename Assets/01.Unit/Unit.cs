@@ -16,9 +16,12 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
 
     protected Color originColor;
 
-    private const float speedCorrection = 0.025f;
+    protected const float speedCorrection = 0.025f;
 
-    private const float hitChangeTime = 0.25f;
+    protected const float hitChangeTime = 0.25f;
+
+    protected Vector3 startSize;
+    public Vector3 StartSize => startSize;
     #endregion
 
     protected virtual void Awake()
@@ -27,6 +30,7 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         originColor = sprite.color;
+        startSize = transform.localScale;
     }
 
     protected virtual void Start()
@@ -96,6 +100,7 @@ public abstract class Unit : MonoBehaviour, IHpable, IDamageable
     #endregion
 
     private Coroutine speedUpCor;
+
     public void SpeedUp(float parcentValue)
     {
         if (speedUpCor != null)

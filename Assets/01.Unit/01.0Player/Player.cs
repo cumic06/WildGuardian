@@ -38,17 +38,6 @@ public class Player : Unit
         playerAttack.SetAttackRange(unitStat.attackRange);
     }
 
-    private void OnValidate()
-    {
-        if (Application.isPlaying)
-        {
-            playerMove.SetMoveSpeed(GetCurrentMoveSpeedStat());
-            playerMove.SetDashPower(playerStat.dashPower);
-            playerAttack.SetAttackPower(unitStat.attackPower);
-            playerAttack.SetAttackDelayTime(unitStat.attackDelayTime);
-        }
-    }
-
     #region Hp
     public override void TakeDamage(int damage)
     {

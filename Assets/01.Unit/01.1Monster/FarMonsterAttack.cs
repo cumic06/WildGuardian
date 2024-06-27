@@ -7,22 +7,36 @@ public class FarMonsterAttack : MonsterAttack
     public Bullet bullet;
     public Transform bulletPos;
 
+    public int bulletCount;
+    public float bulletAngle;
+
     public override void Attack()
     {
         base.Attack();
 
-        Bullet spawnBullet = Instantiate(bullet);
+        for (int i = 0; i < bulletCount; i++)
+        {
+            Bullet spawnBullet = Instantiate(bullet);
 
-        if (bulletPos == null)
-        {
-            spawnBullet.transform.position = transform.position;
+            if (bulletPos == null)
+            {
+                spawnBullet.transform.position = transform.position;
+            }
+            else
+            {
+                spawnBullet.transform.position = bulletPos.position;
+            }
+            Vector3 bulletRotation = new(0, 0, GetBulletAngle() - bulletAngle * i);
+            spawnBullet.transform.eulerAngles = bulletRotation;
         }
-        else
-        {
-            spawnBullet.transform.position = bulletPos.position;
-        }
+    }
+
+    private float GetBulletAngle()
+    {
         Vector2 dir = Player.Instance.transform.position - transform.position;
+        dir.Normalize();
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        spawnBullet.transform.eulerAngles = new Vector3(0, 0, angle);
+        float resultAngle = bulletCount * bulletAngle * 0.5f + angle;
+        return resultAngle;
     }
 }

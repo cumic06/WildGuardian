@@ -34,9 +34,9 @@ public class Monster : Unit
     IEnumerator ChangeSize()
     {
         WaitForSeconds changeWait = new(0.25f);
-        transform.localScale = new Vector2(1.15f, 1.15f);
+        transform.localScale = startSize * 1.15f;
         yield return changeWait;
-        transform.localScale = new Vector2(1, 1);
+        transform.localScale = startSize;
         yield return changeWait;
     }
 

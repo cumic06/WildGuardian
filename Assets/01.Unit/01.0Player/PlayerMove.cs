@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
     private void Flip()
     {
-        transform.localScale = TouchInputManager.Instance.TouchDirection.x >= 0 ? Vector3.one : new Vector3(-1, 1, 1);
+        transform.localScale = TouchInputManager.Instance.TouchDirection.x >= 0 ? Player.Instance.StartSize : new Vector3(-Player.Instance.StartSize.x, Player.Instance.StartSize.y, Player.Instance.StartSize.z);
     }
 
     public void Dash()
