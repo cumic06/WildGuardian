@@ -19,8 +19,10 @@ public class PlayerAttack : UnitAttack, IAttackable
             if (IsCanAttack())
             {
                 currentWeapon.Attack();
+                animator.SetAnimation(AnimationType.Attack, true);
                 currentAttackDelayTime = 0;
             }
+            animator.SetAnimation(AnimationType.Attack, false);
         }
     }
 

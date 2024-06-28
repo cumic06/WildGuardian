@@ -7,6 +7,12 @@ public class PlayerMove : MonoBehaviour, IMoveable
 {
     private float dashPower;
     private float moveSpeed;
+    private IAnimatorCommand animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<PlayerAnimationController>();
+    }
 
     private void Start()
     {
@@ -42,7 +48,16 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
     public void Move()
     {
-        transform.Translate(moveSpeed * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * (Vector3)TouchInputManager.Instance.TouchDirection);
+        Vector3 moveVec = moveSpeed * Time.deltaTime * TouchInputManager.Instance.TouchOfViewDistance * (Vector3)TouchInputManager.Instance.TouchDirection;
+        Debug.Log(moveVec);
+
+        if (moveVec.x <= 0.01f || moveVec.y <= 0.01f)
+        {
+            animator.SetAnimation(AnimationType.Move, false);
+            return;
+        }
+        animator.SetAnimation(AnimationType.Move, true);
+        transform.Translate(moveVec);
     }
 
     private void OnDestroy()

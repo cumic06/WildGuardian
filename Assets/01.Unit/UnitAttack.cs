@@ -9,6 +9,13 @@ public abstract class UnitAttack : MonoBehaviour, IAttackable
     public float currentAttackDelayTime;
     /*[SerializeField] */protected float attackRange;
 
+    protected IAnimatorCommand animator;
+
+    protected void Awake()
+    {
+        animator = GetComponent<PlayerAnimationController>();
+    }
+
     public void SetAttackPower(int attackPowerValue)
     {
         attackPower = attackPowerValue;

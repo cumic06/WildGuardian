@@ -10,6 +10,8 @@ public class Player : Unit
     public static Player Instance;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
+    public PlayerAnimationController playerAnimationController;
+
     [Space]
     public PlayerData playerData;
     public PlayerStat playerStat;
