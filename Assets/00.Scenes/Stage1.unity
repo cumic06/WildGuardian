@@ -2843,6 +2843,7 @@ MonoBehaviour:
     attackRange: 0
     attackPower: 0
     attackDelayTime: 0
+  playerAnimationController: {fileID: 0}
   playerData: {fileID: 11400000, guid: 379533906e9f6f14199b1b01415ceea7, type: 2}
   playerStat:
     mana: 0
@@ -3787,7 +3788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5213851117883785015, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3840,8 +3841,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1996102459}
   m_SourcePrefab: {fileID: 100100000, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
+--- !u!1 &1996102458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1930696333449167692, guid: 34124ef18758e3245a88cb5e1d589810, type: 3}
+  m_PrefabInstance: {fileID: 1996102457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1996102459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996102458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8b6034ef9ffaa4c9c881a34b874e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData: {fileID: 11400000, guid: 5797cb1130ee30d40b2ee6de9abd39a8, type: 2}
+  unitStat:
+    maxHp: 0
+    hp: 0
+    moveSpeed: 0
+    defensePower: 0
+    attackRange: 0
+    attackPower: 0
+    attackDelayTime: 0
+  currentAttackCoolTime: 0
 --- !u!1 &2036126128 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 592858190467275832, guid: 95d0c308422b7f74780d3444d16992ff, type: 3}

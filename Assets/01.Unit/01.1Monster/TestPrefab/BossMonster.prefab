@@ -142,7 +142,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5213851117883785015}
-  - component: {fileID: 8215854901706723567}
   - component: {fileID: 8946312961617608009}
   - component: {fileID: 8702797859017366932}
   - component: {fileID: 6567761914595951729}
@@ -170,28 +169,6 @@ Transform:
   - {fileID: 6636621916761400761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8215854901706723567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930696333449167692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a1e3ca3cffbc5c448cd353cd3aa500b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitData: {fileID: 11400000, guid: 0cc2242afe138af4da41d4b7c1f0f4bc, type: 2}
-  currentHp: 0
-  currentMoveSpeed: 0
-  currentDefensePower: 0
-  currentAttackPower: 0
-  attackCoolTime: 5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  currentAttackCoolTime: 0
 --- !u!114 &8946312961617608009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,13 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8932a2bf6c92449b288287c0f5804a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: -2385245804968839112, guid: 8154010d13a06c34a8c0d2e244f80f91, type: 3}
-  bulletPos: {fileID: 0}
-  buffRange: 6
-  buffImage: {fileID: 1300870337170046009}
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!212 &8702797859017366932
 SpriteRenderer:
   m_ObjectHideFlags: 0
