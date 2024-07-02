@@ -28,7 +28,8 @@ public class Bullet : MonoBehaviour
 
     protected virtual void Move()
     {
-        transform.Translate(bulletSpeed * Time.deltaTime * Vector2.right);
+        Vector2 moveVec = bulletSpeed * Time.deltaTime * Vector2.right;
+        transform.Translate(moveVec);
     }
 
     private void OnDestroy()

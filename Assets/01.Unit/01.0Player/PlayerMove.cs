@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
     private void Awake()
     {
-        animator = GetComponent<PlayerAnimationController>();
+        animator = GetComponent<PlayerAnimatorController>();
     }
 
     private void Start()
@@ -73,13 +73,14 @@ public class PlayerMove : MonoBehaviour, IMoveable
         }
 
     }
+
     private bool IsCanMove()
     {
         //움직이다 뗐을 때 IsCanMoveTrue버그
-        Debug.Log($"0.01f { Mathf.Abs(GetMoveVec().x) <= 0.01f && Mathf.Abs(GetMoveVec().y) <= 0.01f}");
-        Debug.Log($"!=0{ GetMoveVec().x != 0 || GetMoveVec().y != 0}");
+        //Debug.Log($"0.01f { Mathf.Abs(GetMoveVec().x) <= 0.01f && Mathf.Abs(GetMoveVec().y) <= 0.01f}");
+        //Debug.Log($"!=0{ GetMoveVec().x != 0 || GetMoveVec().y != 0}");
         bool isCanMove = Mathf.Abs(GetMoveVec().x) <= 0.01f && Mathf.Abs(GetMoveVec().y) <= 0.01f && GetMoveVec().x != 0 || GetMoveVec().y != 0;
-        Debug.Log($"isCanMove{isCanMove}");
+        //Debug.Log($"isCanMove{isCanMove}");
         return isCanMove;
     }
 

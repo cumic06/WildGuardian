@@ -13,6 +13,9 @@ public class ScratchPattern : IPattern
 
     public void ExcutePattern()
     {
-
+        for (int i = 0; i < scratchCount; i++)
+        {
+            Debug.Log("Scratch");
+        }
     }
 }

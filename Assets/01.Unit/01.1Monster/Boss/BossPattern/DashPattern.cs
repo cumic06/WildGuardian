@@ -25,5 +25,6 @@ public class DashPattern : IPattern
     {
         Vector3 dir = (playerPos - bossTransform.position).normalized;
         bossTransform.position += dashSpeed * Time.deltaTime * dir;
+        Debug.Log("Dash");
     }
 }

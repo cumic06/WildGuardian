@@ -5,15 +5,18 @@ using UnityEngine;
 public abstract class UnitAttack : MonoBehaviour, IAttackable
 {
     protected int attackPower;
-    /*[SerializeField] */protected float attackDelayTime;
+    /*[SerializeField] */
+    protected float attackDelayTime;
     public float currentAttackDelayTime;
-    /*[SerializeField] */protected float attackRange;
+    /*[SerializeField] */
+    protected float attackRange;
 
     protected IAnimatorCommand animator;
+    public IAnimatorCommand Animator => animator;
 
     protected void Awake()
     {
-        animator = GetComponent<PlayerAnimationController>();
+        animator = GetComponent<UnitAnimatorController>();
     }
 
     public void SetAttackPower(int attackPowerValue)

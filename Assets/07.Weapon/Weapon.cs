@@ -21,5 +21,6 @@ public abstract class Weapon : MonoBehaviour
     public void SetAttackRange(float attackRange)
     {
         this.attackRange = attackRange;
+        Debug.Log(attackRange);
     }
 }

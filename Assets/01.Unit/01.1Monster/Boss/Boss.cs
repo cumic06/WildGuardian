@@ -14,12 +14,17 @@ public class Boss : Monster
 
     protected override void Start()
     {
-        base.Start();
-        bossAI.ExcuteBossAI();
+        UpdateSystem.Instance.AddFixedUpdateAction(bossAI.ExcuteBossAI);
     }
 
     protected void SetBossAI(BossPattern bossPattern)
     {
         bossAI = new BossAI(bossPattern);
+    }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+        UpdateSystem.Instance.RemoveFixedUpdateAction(bossAI.ExcuteBossAI);
     }
 }

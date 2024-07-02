@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public interface IPattern
 {
@@ -13,7 +14,6 @@ public class BossPattern
 {
     protected List<IPattern> closePatterns = new();
     protected List<IPattern> farPatterns = new();
-    public int patternIndex;
 
     public BossPattern(IPattern[] closePatterns, IPattern[] farPatterns)
     {
@@ -23,11 +23,13 @@ public class BossPattern
 
     public void ExcuteClosePattern()
     {
-        closePatterns[patternIndex].ExcutePattern();
+        int randomIndex = Random.Range(0, closePatterns.Count);
+        closePatterns[randomIndex].ExcutePattern();
     }
 
     public void ExcuteFarPattern()
     {
-        farPatterns[patternIndex].ExcutePattern();
+        int randomIndex = Random.Range(0, farPatterns.Count);
+        farPatterns[randomIndex].ExcutePattern();
     }
 }

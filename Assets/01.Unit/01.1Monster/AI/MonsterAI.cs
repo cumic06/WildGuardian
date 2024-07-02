@@ -15,7 +15,7 @@ public class MonsterAI : MonoBehaviour
         monsterMove = GetComponent<MonsterMove>();
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         monsterAttack.SetAttackPower(monster.GetUnitData().unitStat.attackPower);
         monsterAttack.SetAttackDelayTime(monster.GetUnitData().unitStat.attackDelayTime);
@@ -31,6 +31,7 @@ public class MonsterAI : MonoBehaviour
 
             if (monsterAttack.IsCanAttack())
             {
+                monsterAttack.Animator.SetAnimation(AnimationType.Attack, true);
                 monsterAttack.Attack();
                 monsterAttack.currentAttackDelayTime = 0;
                 //#if UNITY_EDITOR
@@ -44,6 +45,7 @@ public class MonsterAI : MonoBehaviour
             //            Debug.Log("FollowPlayer");
             //#endif
             monsterMove.FollowPlayer();
+            monsterAttack.Animator.SetAnimation(AnimationType.Move, true);
         }
     }
 

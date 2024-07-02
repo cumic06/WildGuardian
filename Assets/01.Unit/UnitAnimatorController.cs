@@ -31,7 +31,6 @@ public class UnitAnimatorController : MonoBehaviour, IAnimatorCommand
         {
             case AnimationType.Move:
                 animator.SetBool(isMove, active);
-                animator.SetBool(isAttack, false);
                 break;
             case AnimationType.Attack:
                 animator.SetTrigger(isAttack);

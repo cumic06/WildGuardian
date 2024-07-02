@@ -5,22 +5,34 @@ using UnityEngine;
 public class BossAI : MonsterAI
 {
     private BossPattern bossPattern;
-    private float detectedRange;
+    public float detectedRange;
 
     public BossAI(BossPattern bossPattern)
     {
         this.bossPattern = bossPattern;
     }
 
+    protected override void Start()
+    {
+        monsterMove.SetMoveSpeed(monster.GetCurrentMoveSpeedStat());
+    }
+
     public void ExcuteBossAI()
     {
-        if (IsClosePattern())
+        if (IsCanAttackRange(out Collider2D[] players))
         {
-            bossPattern.ExcuteClosePattern();
+            if (IsClosePattern())
+            {
+                bossPattern.ExcuteClosePattern();
+            }
+            else
+            {
+                bossPattern.ExcuteFarPattern();
+            }
         }
         else
         {
-            bossPattern.ExcuteFarPattern();
+            monsterMove.FollowPlayer();
         }
     }
 
