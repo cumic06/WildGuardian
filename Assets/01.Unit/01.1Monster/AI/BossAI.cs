@@ -4,40 +4,61 @@ using UnityEngine;
 
 public class BossAI : MonsterAI
 {
-    private BossPattern bossPattern;
+    //private BossPattern bossPattern;
     public float detectedRange;
+    public float patternDelay;
 
-    public BossAI(BossPattern bossPattern)
-    {
-        this.bossPattern = bossPattern;
-    }
+    //public BossAI(BossPattern bossPattern)
+    //{
+    //    this.bossPattern = bossPattern;
+    //}
+    protected Coroutine[] patternCor;
+
 
     protected override void Start()
     {
         monsterMove.SetMoveSpeed(monster.GetCurrentMoveSpeedStat());
     }
 
-    public void ExcuteBossAI()
+    public virtual void ExcuteBossAI()
     {
-        if (IsCanAttackRange(out Collider2D[] players))
-        {
-            if (IsClosePattern())
-            {
-                bossPattern.ExcuteClosePattern();
-            }
-            else
-            {
-                bossPattern.ExcuteFarPattern();
-            }
-        }
-        else
-        {
-            monsterMove.FollowPlayer();
-        }
+        StartCoroutine(BossAIPattern());
     }
+
+    protected virtual IEnumerator BossAIPattern()
+    {
+        yield return null;
+    }
+
+    //public void ExcuteBossAI()
+    //{
+    //    if (IsCanAttackRange(out Collider2D[] players))
+    //    {
+    //        if (IsClosePattern())
+    //        {
+    //            bossPattern.ExcuteClosePattern();
+    //        }
+    //        else
+    //        {
+    //            bossPattern.ExcuteFarPattern();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        monsterMove.FollowPlayer();
+    //    }
+    //}
 
     public bool IsClosePattern()
     {
-        return detectedRange <= (Player.Instance.transform.position - transform.position).sqrMagnitude;
+        Collider2D playerCheck = Physics2D.OverlapCircle(transform.position, detectedRange * 0.005f, LayerMaskManager.playerLayer);
+
+        return playerCheck;
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectedRange * 0.005f);
     }
 }

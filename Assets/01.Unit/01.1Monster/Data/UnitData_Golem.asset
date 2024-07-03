@@ -15,10 +15,10 @@ MonoBehaviour:
   unitInfo:
     unitName: Golem
     unitStat:
-      maxHp: 300
+      maxHp: 1500
       hp: 0
-      moveSpeed: 140
+      moveSpeed: 60
       defensePower: 0
-      attackRange: 600
+      attackRange: 800
       attackPower: 1
       attackDelayTime: 2

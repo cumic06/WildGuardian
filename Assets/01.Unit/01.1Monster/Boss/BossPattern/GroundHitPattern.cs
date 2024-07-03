@@ -1,26 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashPattern : IPattern
+public class GroundHitPattern : IPattern
 {
     private Transform bossTransform;
-    private Vector3 playerPos;
-    private float dashSpeed;
+    private float attackRange;
     private int attackDamage;
     private float attackDelay;
-
     public bool IsEndPattern { get; set; }
 
-    public DashPattern(Transform bossTransform, Vector3 playerPos, float dashSpeed, int attackDamage, float attackDelay)
+    public GroundHitPattern(Transform bossTransform, float attackRange, int attackDamage, float attackDelay)
     {
         this.bossTransform = bossTransform;
-        this.playerPos = playerPos;
-        this.dashSpeed = dashSpeed;
+        this.attackRange = attackRange;
         this.attackDamage = attackDamage;
         this.attackDelay = attackDelay;
     }
+
 
     public void ExcutePattern()
     {
@@ -29,21 +26,12 @@ public class DashPattern : IPattern
         {
             time += Time.deltaTime;
         }
-        DashPlayer();
+        GroundHit();
     }
 
-    public void DashPlayer()
+    private void GroundHit()
     {
-        Vector3 dir = (playerPos - bossTransform.position).normalized;
-        bossTransform.position += dashSpeed * Time.deltaTime * dir;
-
-        DashAttack();
-        Debug.Log("Dash");
-    }
-
-    private void DashAttack()
-    {
-        Collider2D playerCheck = Physics2D.OverlapCircle(bossTransform.position, 1);
+        Collider2D playerCheck = Physics2D.OverlapCircle(bossTransform.position, attackRange);
 
         if (playerCheck == null) return;
 

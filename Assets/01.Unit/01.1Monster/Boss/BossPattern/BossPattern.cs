@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public interface IPattern
 {
+    public bool IsEndPattern { get; set; }
     public void ExcutePattern();
 }
 
@@ -24,12 +25,18 @@ public class BossPattern
     public void ExcuteClosePattern()
     {
         int randomIndex = Random.Range(0, closePatterns.Count);
-        closePatterns[randomIndex].ExcutePattern();
+        if (closePatterns[randomIndex].IsEndPattern)
+        {
+            closePatterns[randomIndex].ExcutePattern();
+        }
     }
 
     public void ExcuteFarPattern()
     {
         int randomIndex = Random.Range(0, farPatterns.Count);
-        farPatterns[randomIndex].ExcutePattern();
+        if (farPatterns[randomIndex].IsEndPattern)
+        {
+            farPatterns[randomIndex].ExcutePattern();
+        }
     }
 }

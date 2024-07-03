@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private int bulletDamage;
+    [SerializeField] protected float bulletSpeed;
+    [SerializeField] protected int bulletDamage;
 
-    private void Start()
+    protected void Start()
     {
         UpdateSystem.Instance.AddFixedUpdateAction(Move);
     }
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         this.bulletDamage = bulletDamage;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IDamageable unit))
         {
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(moveVec);
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         UpdateSystem.Instance.RemoveFixedUpdateAction(Move);
     }

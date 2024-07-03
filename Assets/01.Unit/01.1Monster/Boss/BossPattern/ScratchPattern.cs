@@ -11,6 +11,8 @@ public class ScratchPattern : IPattern
         this.scratchCount = scratchCount;
     }
 
+    public bool IsEndPattern { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
     public void ExcutePattern()
     {
         for (int i = 0; i < scratchCount; i++)
