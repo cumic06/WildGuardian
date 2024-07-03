@@ -19,6 +19,6 @@ MonoBehaviour:
       hp: 0
       moveSpeed: 120
       defensePower: 0
-      attackRange: 1
+      attackRange: 125
       attackPower: 15
       attackDelayTime: 1

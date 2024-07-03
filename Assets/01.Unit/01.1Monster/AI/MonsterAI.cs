@@ -46,6 +46,7 @@ public class MonsterAI : MonoBehaviour
             //#endif
             monsterMove.FollowPlayer();
             monsterAttack.Animator.SetAnimation(AnimationType.Move, true);
+            monsterAttack.currentAttackDelayTime = 0;
         }
     }
 

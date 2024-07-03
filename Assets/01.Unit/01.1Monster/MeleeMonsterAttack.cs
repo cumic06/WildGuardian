@@ -12,7 +12,6 @@ public class MeleeMonsterAttack : MonsterAttack
         Collider2D player = Physics2D.OverlapCircleAll(transform.position, attackRadius, LayerMaskManager.playerLayer).FirstOrDefault();
 
         if (player == null) return;
-        Debug.Log(player.name);
 
         if (player.TryGetComponent(out IDamageable monster))
         {

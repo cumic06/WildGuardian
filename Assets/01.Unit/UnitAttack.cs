@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class UnitAttack : MonoBehaviour, IAttackable
 {
     protected int attackPower;
-    /*[SerializeField] */
+    //[SerializeField] 
     protected float attackDelayTime;
     public float currentAttackDelayTime;
     /*[SerializeField] */
