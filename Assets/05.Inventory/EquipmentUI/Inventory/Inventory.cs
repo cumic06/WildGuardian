@@ -19,6 +19,9 @@ public class Inventory : EquipmentUI, IVisitElement
         //InventorySet();
         equipmentData.EquipmentInfoDataSet();
         StartSet();
+        Dataes.Datass = new SaveDatas<List<Image>, List<GameObject>>(Equipments, disappearImage);
+        json.LoadJson();
+        StartInventory();
     }
 
     private void StartSet()
@@ -36,10 +39,29 @@ public class Inventory : EquipmentUI, IVisitElement
 
     public void InventoryAdd(Sprite newEquipment)
     {
-        equipments.Add(Instantiate(slot));
-        equipments.Last().transform.GetChild(0).TryGetComponent(out Image equipmentImage);
+        //Bar.Instance.EquipmentsOrderby();
+        Image sprite = Instantiate(slot);
+        Equipments.Add(sprite);
+        Equipments.Last().transform.GetChild(0).TryGetComponent(out Image equipmentImage);
         equipmentImage.sprite = newEquipment;
-        equipments.Last().transform.parent = transform.GetChild(0);
+        Equipments.Last().transform.parent = transform.GetChild(0);
+        //Debug.Log(equipments_Tr.Last().position);
+        json.ReadJson();
+    }
+
+    public void StartInventory()
+    {
+        if (Equipments.Count != 0)
+        {
+            Debug.Log("»ý¼º");
+            foreach (var equip in Equipments)
+            {
+                Image sprite = Instantiate(slot);
+                sprite.transform.GetChild(0).TryGetComponent(out Image equipmentImage);
+                equipmentImage = equip;
+                sprite.transform.parent = transform.GetChild(0);
+            }
+        }
     }
 
     public void Accept(IVisit visitor)

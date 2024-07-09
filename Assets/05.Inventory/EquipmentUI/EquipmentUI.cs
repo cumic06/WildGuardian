@@ -13,9 +13,16 @@ public class EquipmentUI : MonoBehaviour, I_Click
     public EquipmentData equipmentData;
     protected Image equipmentSlot;
     protected static List<GameObject> disappearImage = new();
-    protected static List<Image> equipments = new();
+    public static List<Image> Equipments = new();
+    public static DataSave Dataes = new DataSave();
     protected Action<Image> clickFunc = (image) => { };
+    public static Json json = new Json();
 
+    public void Start()
+    {
+        
+
+    }
     public virtual void OnClick(PointerEventData eventData)
     {
         if (eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Image>().TryGetComponent(out Image image))
@@ -34,9 +41,15 @@ public class EquipmentUI : MonoBehaviour, I_Click
         optionUI.EquipmentExplain.text = $"{equipmentData.EquipmentInfoData[sprite].Item2.EquipmentExplain}";
         optionUI.EquipmentRank.text = $"등급 : {equipmentData.EquipmentInfoData[sprite].Item1}";
         if (type.Equals(ButtonType.Mounting))
+        {
             optionUI.clearBtn.gameObject.SetActive(false);
+            Debug.Log("비활성");
+        }
         else
+        {
             optionUI.clearBtn.gameObject.SetActive(true);
+            Debug.Log("활성");
+        }
     }
 
     protected void EquipmentActive(Image image, int num)
@@ -52,7 +65,7 @@ public class EquipmentUI : MonoBehaviour, I_Click
             {
                 if (disappearImage[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite.Equals(image.sprite))
                 {
-                    disappearImage[i].gameObject.SetActive(true); 
+                    disappearImage[i].gameObject.SetActive(true);
                     image.sprite = null;
                     disappearImage.Remove(disappearImage[i]);
                     break;
